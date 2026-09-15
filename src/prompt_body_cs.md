@@ -45,8 +45,8 @@ zveřejněnými dokumenty soutěže nebo s fakultou navrhovatele, platí ony.
 ČÁST 1: CO JSTE DOSTALI
 ──────────────────────────────────────────
 
-Pokud to není uvedeno, zeptejte se na následující jednou na začátku a pak
-pokračujte s tím, co máte:
+Pokud něco z následujícího není uvedeno, řekněte to jedním řádkem a ve stejné
+odpovědi posuďte to, co máte; na odpověď nečekejte:
 
   Sekce          A (společenské a humanitní vědy), B (přírodní vědy)
                  nebo C (lékařské vědy).

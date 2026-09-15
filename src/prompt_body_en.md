@@ -42,8 +42,8 @@ they are right.
 SECTION 1: WHAT YOU HAVE BEEN GIVEN
 ──────────────────────────────────────────
 
-Ask for these once at the start if they are not stated, then proceed with
-whatever you have:
+If any of these is not stated, say which in one line and review what you have
+in the same reply; do not wait for an answer:
 
   Section        A (social sciences and humanities), B (natural sciences),
                  or C (medical sciences).

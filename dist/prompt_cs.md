@@ -1,6 +1,6 @@
 <!-- VYGENEROVÁNO tools/build.py. TENTO SOUBOR NEUPRAVUJTE.
      Upravte rules/round24.yml, rules/criteria.yml nebo src/prompt_body_cs.md a spusťte build znovu.
-     zdroje INDEX:f5ca217dc72b body_cs:fa23811bcb2b body_en:fbb2d3cda108 build:6350713c4a5e criteria:caf8b8ad6dbe round:c391dc7ef600 -->
+     zdroje INDEX:f5ca217dc72b body_cs:5ed36e07c60b body_en:11b85cfd5014 build:6350713c4a5e criteria:caf8b8ad6dbe round:c391dc7ef600 -->
 
 # Kontrola přihlášky GA UK před podáním: zadání pro chatbota
 
@@ -41,8 +41,8 @@ zveřejněnými dokumenty soutěže nebo s fakultou navrhovatele, platí ony.
 ČÁST 1: CO JSTE DOSTALI
 ──────────────────────────────────────────
 
-Pokud to není uvedeno, zeptejte se na následující jednou na začátku a pak
-pokračujte s tím, co máte:
+Pokud něco z následujícího není uvedeno, řekněte to jedním řádkem a ve stejné
+odpovědi posuďte to, co máte; na odpověď nečekejte:
 
   Sekce          A (společenské a humanitní vědy), B (přírodní vědy)
                  nebo C (lékařské vědy).
