@@ -1,5 +1,8 @@
 # gauk-ai-feedback
 
+*Tomáš Havránek, Charles University · methods, data and code for
+meta-analysis at [meta-analysis.cz](https://meta-analysis.cz)*
+
 An unofficial pre-submission review for applications to the Charles University
 Grant Agency (GA UK, Grantová agentura Univerzity Karlovy). It reads a draft
 the way an opponent will and tells the student what to fix before the faculty
@@ -16,6 +19,11 @@ and whether the methods and the time requested can deliver it.
 > application. Read [DISCLOSURE.md](DISCLOSURE.md) before using it.
 
 Česky: [README.cs.md](README.cs.md).
+
+**The easiest way is the web page:
+[tjhavranek.github.io/gauk-ai-feedback](https://tjhavranek.github.io/gauk-ai-feedback/)**,
+in Czech and English, with nothing to install. It copies the prompt for you and
+can check your attachments in your own browser without uploading them.
 
 ## Quick start
 
@@ -146,8 +154,10 @@ that you prepared the application independently. The review says what is
 missing and where it belongs; you write it.
 
 It is not for evaluators. Opponents, rapporteurs, board members and faculty
-officers must not use it on applications they assess. Faculty and GA UK staff
-are welcome to point students to it before the faculty deadline.
+officers should not use it on applications they assess: assessment is
+confidential, and a chatbot would send someone else's application to a third
+party. Faculty and GA UK staff are welcome to point students to it before the
+faculty deadline.
 
 ## The AI declaration
 
@@ -198,8 +208,8 @@ issue.
 
 ## Author and licence
 
-Written by Tomáš Havránek, Charles University, who is a member of the GA UK
-Grant Council; [DISCLOSURE.md](DISCLOSURE.md) sets out what follows from that.
+Written by Tomáš Havránek ([meta-analysis.cz](https://meta-analysis.cz)),
+Charles University, who is a member of the GA UK Grant Council; [DISCLOSURE.md](DISCLOSURE.md) sets out what follows from that.
 The design follows [erc-ai-feedback](https://github.com/tjhavranek/erc-ai-feedback),
 a similar review for ERC Starting and Consolidator Grant proposals. MIT
 licence.

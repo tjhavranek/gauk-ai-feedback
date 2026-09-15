@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.4.0 - 2026-09-15
+
+- A web page, published with GitHub Pages at
+  <https://tjhavranek.github.io/gauk-ai-feedback/>, in Czech and English. It
+  offers the three routes: it copies the chatbot prompt once the student
+  confirms the project leader's consent, it runs the formal check on the
+  student's attachments inside the browser (the unchanged checker under
+  Pyodide, served from the same address, with nothing uploaded), and it points
+  to the agentic route. The page is generated from `rules/`, `src/` and `web/`
+  on every push and is never committed, so it cannot drift from the prompts.
+- The page-size check accepts landscape and rotated A4 pages (found by Codex).
+- A link to meta-analysis.cz in the READMEs and on the page.
+
 ## v0.3.0 - 2026-09-15
 
 First public release.

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'self'; worker-src 'self'; img-src 'self' data:; style-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Kontrola přihlášky GA UK před podáním (neoficiální)</title>
+<meta name="description" content="Neoficiální kontrola přihlášky do Grantové agentury Univerzity Karlovy před podáním. Vaše soubory se nikam neodesílají.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23234e52'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="app.css">
+<script src="data.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main" data-t="skip"></a>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="#main">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8"/><path d="M9 16.5l4.5 4.5L23 11.5"/></svg>
+      <span data-t="brand"></span>
+    </a>
+    <span class="pill" data-t="pill"></span>
+    <div class="lang" role="group" aria-label="Jazyk / Language">
+      <button type="button" data-lang="cs" aria-pressed="true" lang="cs">Česky</button>
+      <button type="button" data-lang="en" aria-pressed="false" lang="en">English</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <p class="expired" id="expired" hidden></p>
+
+  <section class="hero">
+    <h1 data-t="hero_h1"></h1>
+    <p class="lead" data-t="hero_lead"></p>
+    <p class="points" data-t="hero_points"></p>
+    <p class="byline" data-t-html="byline"></p>
+    <p class="note" data-t-html="hero_note"></p>
+  </section>
+
+  <section aria-labelledby="choose-h">
+    <h2 id="choose-h" class="section-h" data-t="choose_h"></h2>
+    <div class="choices">
+      <button type="button" class="choice" id="tab-chat" aria-controls="panel-chat" aria-expanded="true" data-panel="chat">
+        <span class="choice-top"><span class="choice-n">1</span><span class="badge badge-rec" data-t="c1_badge"></span></span>
+        <span class="choice-title" data-t="c1_title"></span>
+        <span class="choice-text" data-t="c1_text"></span>
+      </button>
+      <button type="button" class="choice" id="tab-check" aria-controls="panel-check" aria-expanded="false" data-panel="check">
+        <span class="choice-top"><span class="choice-n">2</span><span class="badge" data-t="c2_badge"></span></span>
+        <span class="choice-title" data-t="c2_title"></span>
+        <span class="choice-text" data-t="c2_text"></span>
+      </button>
+    </div>
+    <button type="button" class="choice choice-slim" id="tab-agent" aria-controls="panel-agent" aria-expanded="false" data-panel="agent">
+      <span class="choice-n">3</span>
+      <span class="choice-title" data-t="c3_title"></span>
+      <span class="choice-text" data-t="c3_text"></span>
+      <span class="badge badge-exp" data-t="c3_badge"></span>
+    </button>
+  </section>
+
+  <!-- 1. CHATBOT -->
+  <section class="panel" id="panel-chat" aria-labelledby="tab-chat">
+    <h2 data-t="c1_title"></h2>
+    <ol class="steps">
+      <li>
+        <h3 data-t="chat_s1_h"></h3>
+        <p data-t="chat_s1_p"></p>
+        <details class="why"><summary data-t="why_summary"></summary><p data-t-html="why_text"></p></details>
+        <label class="check"><input type="checkbox" id="consent"> <span data-t="chat_consent"></span></label>
+      </li>
+      <li>
+        <h3 data-t="chat_s2_h"></h3>
+        <p data-t="chat_s2_p"></p>
+        <div class="seg" role="group" aria-labelledby="plang-label">
+          <span id="plang-label" class="seg-label" data-t="plang_label"></span>
+          <button type="button" data-plang="cs" aria-pressed="true" lang="cs">Čeština</button>
+          <button type="button" data-plang="en" aria-pressed="false" lang="en">English</button>
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn-big" id="copy-prompt" disabled data-t="copy_prompt"></button>
+          <a class="dl" id="dl-prompt" href="#" download data-t="download_prompt" hidden></a>
+        </div>
+        <p class="hint" id="consent-hint" data-t="consent_hint"></p>
+        <p class="status" id="copy-status" role="status" aria-live="polite"></p>
+        <details class="fallback" id="fallback" hidden>
+          <summary data-t="fallback_summary"></summary>
+          <textarea id="prompt-text" readonly rows="8"></textarea>
+        </details>
+      </li>
+      <li>
+        <h3 data-t="chat_s3_h"></h3>
+        <p data-t="chat_s3_p"></p>
+        <div class="links">
+          <a class="btn btn-ghost" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT ↗</a>
+          <a class="btn btn-ghost" href="https://claude.ai/new" target="_blank" rel="noopener noreferrer">Claude ↗</a>
+          <a class="btn btn-ghost" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer">Gemini ↗</a>
+        </div>
+        <p class="hint" data-t="chat_s3_hint"></p>
+      </li>
+      <li>
+        <h3 data-t="chat_s4_h"></h3>
+        <p data-t="chat_s4_p"></p>
+        <div class="row">
+          <button type="button" class="btn btn-ghost" id="goto-check" data-t="goto_check"></button>
+          <button type="button" class="linkish" id="copy-selfreport" data-t="copy_selfreport"></button>
+        </div>
+        <p class="hint" data-t="selfreport_hint"></p>
+        <p class="status" id="selfreport-status" role="status" aria-live="polite"></p>
+      </li>
+      <li>
+        <h3 data-t="chat_s5_h"></h3>
+        <p data-t="chat_s5_p"></p>
+      </li>
+    </ol>
+    <p class="aside" data-t-html="ai_note"></p>
+  </section>
+
+  <!-- 2. FORMAL CHECK IN THE BROWSER -->
+  <section class="panel" id="panel-check" aria-labelledby="tab-check" hidden>
+    <h2 data-t="c2_title"></h2>
+    <p class="privacy" data-t-html="check_privacy"></p>
+
+    <h3 class="sub-h" data-t="files_h"></h3>
+    <p class="hint" data-t="files_p"></p>
+    <ul class="slots" id="slots"></ul>
+
+    <h3 class="sub-h" data-t="form_h"></h3>
+    <div class="grid2">
+      <label class="field"><span data-t="form_version"></span>
+        <select id="f-form-language">
+          <option value="" data-t="unknown_opt"></option>
+          <option value="cs" data-t="form_cs"></option>
+          <option value="en" data-t="form_en"></option>
+        </select>
+      </label>
+      <label class="field"><span data-t="duration"></span>
+        <select id="f-duration">
+          <option value="" data-t="unknown_opt"></option>
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+        </select>
+      </label>
+    </div>
+
+    <details class="more">
+      <summary data-t="budget_summary"></summary>
+      <p class="hint" data-t="budget_hint"></p>
+      <div class="grid3">
+        <label class="field"><span data-t="budget_total"></span><input id="f-total" inputmode="numeric" autocomplete="off"></label>
+        <label class="field"><span data-t="budget_wages"></span><input id="f-wages" inputmode="numeric" autocomplete="off"></label>
+        <label class="field"><span data-t="budget_stipends"></span><input id="f-stipends" inputmode="numeric" autocomplete="off"></label>
+      </div>
+      <label class="field"><span data-t="budget_just"></span><textarea id="f-just" rows="5"></textarea></label>
+      <label class="field"><span data-t="budget_table"></span><input id="f-table" autocomplete="off" placeholder="80 000; 40 000; 20 000"></label>
+    </details>
+
+    <details class="more">
+      <summary data-t="ai_summary"></summary>
+      <label class="field"><span data-t="ai_used"></span>
+        <select id="f-ai-used">
+          <option value="" data-t="unknown_opt"></option>
+          <option value="yes" data-t="yes"></option>
+          <option value="no" data-t="no"></option>
+        </select>
+      </label>
+      <label class="field" id="ai-desc-field" hidden><span data-t="ai_desc"></span><textarea id="f-ai-desc" rows="3"></textarea></label>
+    </details>
+
+    <div class="row">
+      <button type="button" class="btn btn-big" id="run" data-t="run"></button>
+      <button type="button" class="linkish" id="clear" data-t="clear_all"></button>
+    </div>
+    <p class="status" id="progress" role="status" aria-live="polite"></p>
+    <p class="status err" id="check-error" role="alert"></p>
+
+    <div class="results" id="results" hidden>
+      <h3 id="res-h" tabindex="-1" data-t="res_h"></h3>
+      <p class="hint" data-t="res_en_note"></p>
+      <div class="chips" id="chips"></div>
+      <div id="findings"></div>
+      <details class="list" open><summary data-t="res_notchecked"></summary><ul id="notchecked"></ul></details>
+      <details class="list"><summary data-t="res_measured"></summary><ul id="measured"></ul></details>
+      <div class="row">
+        <button type="button" class="btn" id="copy-result" data-t="copy_result"></button>
+        <a class="dl" id="dl-result" href="#" download="gauk_formal_check.txt" data-t="download_result"></a>
+      </div>
+      <p class="hint" data-t="copy_result_hint"></p>
+      <p class="status" id="result-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- 3. AGENTIC TOOL -->
+  <section class="panel" id="panel-agent" aria-labelledby="tab-agent" hidden>
+    <h2 data-t="c3_title"></h2>
+    <p data-t-html="agent_intro"></p>
+    <ol class="plain" data-t-html="agent_steps"></ol>
+    <p class="aside" data-t-html="agent_more"></p>
+  </section>
+
+  <section class="limits" aria-labelledby="limits-h">
+    <h2 id="limits-h" class="section-h" data-t="limits_h"></h2>
+    <ul data-t-html="limits_list"></ul>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="author" data-t-html="footer_author"></p>
+    <p data-t-html="footer_links"></p>
+    <p class="small" id="rules-line"></p>
+  </div>
+</footer>
+
+<noscript><p class="wrap">Tato stránka potřebuje JavaScript. / This page needs JavaScript.</p></noscript>
+</body>
+</html>

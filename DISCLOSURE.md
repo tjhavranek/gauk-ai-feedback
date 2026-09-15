@@ -26,7 +26,8 @@ lack.
 
 It is not for evaluation. The author does not use it in assessing
 applications, and opponents, rapporteurs, board members and faculty officers
-must not use it on applications under evaluation.
+should not use it on applications under evaluation: assessment is
+confidential.
 
 The application asks whether AI was used in preparing it. The applicant guide
 states that this information is not a criterion for assessing the project.

@@ -5,5 +5,7 @@ tests/out/
 gauk_output*/
 application_text.txt
 gauk_review.md
+site/
+.cache/
 .DS_Store
 Thumbs.db

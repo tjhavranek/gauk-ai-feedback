@@ -763,7 +763,10 @@ def _proposal_rules(path, facts, form, rnd, criteria, rep) -> None:
                                "(a Word draft; check them on the PDF)")
         return
     typ = typography(path)
-    if "error" not in typ:
+    if "error" in typ:
+        rep.not_checked.append(f"font size and line spacing of the proposal "
+                               f"({typ['error']})")
+    else:
         spec = next(a for a in rnd["attachments"]["items"] if a["id"] == "proposal")
         if typ["modal_pt"] and typ["modal_pt"] < spec["font_size_pt"] - 0.6:
             rep.add(Finding(

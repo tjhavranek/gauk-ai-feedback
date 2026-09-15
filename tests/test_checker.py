@@ -315,6 +315,35 @@ def main() -> int:
         check(f"prompt_{lang}: no stale citation of a repealed measure",
               "11/2023" not in txt and "42/2025" not in txt.split("repeals")[0])
 
+    print("\nthe web page")
+    import json
+    import build as bld
+    with tempfile.TemporaryDirectory() as tmp:
+        site = Path(tmp) / "site"
+        bld.build_site(site, vendor=False)
+        data = json.loads((site / "data.js").read_text(encoding="utf-8")
+                          .split("=", 1)[1].strip().rstrip(";"))
+        for lang in ("en", "cs"):
+            dist_txt = (ROOT / "dist" / f"prompt_{lang}.md").read_text(encoding="utf-8")
+            check(f"web: the {lang} prompt is exactly the one in dist/",
+                  data["prompt"][lang] in dist_txt.replace("\r\n", "\n"))
+        check("web: the browser runs the repository's own checker",
+              (site / "py/checker/gauk_check.py").read_bytes()
+              == (ROOT / "checker/gauk_check.py").read_bytes())
+        check("web: the browser gets the repository's own rules",
+              all((site / "py/rules" / n).read_bytes() == (ROOT / "rules" / n).read_bytes()
+                  for n in ("INDEX.yml", "criteria.yml", "round24.yml")))
+    strings = json.loads((ROOT / "web/strings.json").read_text(encoding="utf-8"))
+    probs = bld.site_problems(strings)
+    check("web: every text on the page exists in Czech and English", not probs, str(probs))
+    untranslated = [s for s in gc.NOT_CHECKED_ALWAYS if s not in strings["cs"].get("nc", {})]
+    check("web: every fixed NOT CHECKED line has a Czech translation", not untranslated,
+          str(untranslated[:2]))
+    page = (ROOT / "web/index.html").read_text(encoding="utf-8")
+    check("web: the page loads nothing from another site",
+          "connect-src 'self'" in page and 'src="http' not in page
+          and "fonts.googleapis" not in page)
+
     print("\nno personal path or address in a published file")
     # built from pieces so that this file does not trip its own scan
     markers = ["C:" + "\\Users", "/Us" + "ers/", "/ho" + "me/", "@gm" + "ail", "Drop" + "box"]

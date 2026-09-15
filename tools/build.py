@@ -34,6 +34,41 @@ ROOT = Path(__file__).resolve().parent.parent
 RULES = ROOT / "rules"
 SRC = ROOT / "src"
 DIST = ROOT / "dist"
+WEB = ROOT / "web"
+CACHE = ROOT / ".cache"
+
+# The web page runs the checker under Pyodide. Every runtime file it serves is
+# listed here with its SHA-256, and a file that does not match is refused, so
+# the page never ships code nobody checked and never loads anything from
+# another site. Update the version and the hashes together.
+PYODIDE_VERSION = "314.0.7"
+_CDN = f"https://cdn.jsdelivr.net/pyodide/v{PYODIDE_VERSION}/full/"
+VENDOR = {
+    "pyodide/pyodide.mjs": (
+        _CDN + "pyodide.mjs",
+        "6f1d60f7bf529beb300f0f47983c921d3982363640ba20af0e38efdddbc66109"),
+    "pyodide/pyodide.asm.mjs": (
+        _CDN + "pyodide.asm.mjs",
+        "f7cdc8ece80678ceb712f8e65ebe6d3a83203a180c399865f49612a051693635"),
+    "pyodide/pyodide.asm.wasm": (
+        _CDN + "pyodide.asm.wasm",
+        "cc36e3cab04fdfc9a63ff13eb52eae2b911bf46c025cc7b281f394bd3de1d5e6"),
+    "pyodide/python_stdlib.zip": (
+        _CDN + "python_stdlib.zip",
+        "fa1957e5777068fc4f7437f96d860ae2fbe9c19732ba06c84e004ec16dd7dd7a"),
+    "pyodide/pyodide-lock.json": (
+        _CDN + "pyodide-lock.json",
+        "5dc2fc119108bc148c7457dc86e7675b5c87e1cafd420b9c34c1eaef7b36c010"),
+    "pyodide/pyyaml-6.0.3-cp314-cp314-pyemscripten_2026_0_wasm32.whl": (
+        _CDN + "pyyaml-6.0.3-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+        "a05d2a48c13ed72a8c60c73b30b753a25c3a591bb66c15428b7e95e69a9e806f"),
+    "py/pypdf-6.18.1-py3-none-any.whl": (
+        "https://files.pythonhosted.org/packages/58/13/"
+        "645df3995075112cb3cce15e8797c205f0f88fb50acc11012b84b071bc22/"
+        "pypdf-6.18.1-py3-none-any.whl",
+        "ee93a2665670ecf57ee81d197a4ca548f3dc15f9cefc56e59b8140866aaa3de5"),
+}
+WEB_FILES = ("index.html", "app.css", "app.js", "worker.js")
 
 LANGS = ("en", "cs")
 
@@ -714,6 +749,107 @@ def build(target: Path) -> dict:
     return manifest
 
 
+# --------------------------------------------------------------------------
+# the web page
+# --------------------------------------------------------------------------
+
+def prompt_text(index, criteria, rnd, lang: str) -> str:
+    """The prompt from === PROMPT BEGIN === to === PROMPT END ===, exactly as
+    in dist/prompt_<lang>.md."""
+    body = extract_prompt((SRC / f"prompt_body_{lang}.md").read_text(encoding="utf-8"))
+    return splice(body, index, criteria, rnd, lang)
+
+
+def site_problems(strings: dict) -> list[str]:
+    """Every text the page shows must exist in both languages."""
+    import re
+    problems = []
+    cs, en = set(strings["cs"]), set(strings["en"])
+    problems += [f"'{k}' only in Czech" for k in sorted(cs - en)]
+    problems += [f"'{k}' only in English" for k in sorted(en - cs)]
+    html = (WEB / "index.html").read_text(encoding="utf-8")
+    js = (WEB / "app.js").read_text(encoding="utf-8")
+    used = set(re.findall(r'data-t(?:-html)?="([a-z0-9_]+)"', html))
+    used |= set(re.findall(r'\bt\("([a-z0-9_]+)"\s*[,)]', js))
+    # keys app.js builds at run time
+    used |= {f"k_{k}" for k in ("BLOCKING", "ADVISORY", "UNKNOWN")}
+    used |= {f"slot_{s}" for s in re.findall(r'\["([a-z_]+)", "[a-z_]+"\]', js)}
+    used.add("rule_R10")
+    problems += [f"'{k}' used by the page but not defined" for k in sorted(used - cs)]
+    return problems
+
+
+def _fetch_verified(rel: str) -> bytes:
+    url, want = VENDOR[rel]
+    cached = CACHE / f"pyodide-{PYODIDE_VERSION}" / Path(rel).name
+    if cached.exists():
+        data = cached.read_bytes()
+    else:
+        import urllib.request
+        with urllib.request.urlopen(url, timeout=120) as r:
+            data = r.read()
+        cached.parent.mkdir(parents=True, exist_ok=True)
+        cached.write_bytes(data)
+    got = hashlib.sha256(data).hexdigest()
+    if got != want:
+        raise SystemExit(f"{rel}: SHA-256 {got} does not match the pinned {want}")
+    return data
+
+
+def build_site(target: Path, vendor: bool = False) -> None:
+    """Write the web page to `target`. With vendor=True, also the Pyodide
+    runtime and the pypdf wheel, each checked against its pinned hash."""
+    index, criteria, rnd = load_rules()
+    hard = [p for p in validate(criteria, rnd) if not p.startswith("NOTE")]
+    strings = json.loads((WEB / "strings.json").read_text(encoding="utf-8"))
+    hard += [f"web/strings.json: {p}" for p in site_problems(strings)]
+    if hard:
+        raise SystemExit("site build refused:\n  " + "\n  ".join(hard))
+
+    if target.exists():
+        shutil.rmtree(target)
+    (target / "py" / "checker").mkdir(parents=True)
+    (target / "py" / "rules").mkdir(parents=True)
+    for name in WEB_FILES:
+        shutil.copyfile(WEB / name, target / name)
+    (target / ".nojekyll").write_text("", encoding="utf-8")
+    shutil.copyfile(ROOT / "checker" / "gauk_check.py", target / "py" / "checker" / "gauk_check.py")
+    rule_files = ["INDEX.yml", "criteria.yml", index["current_rules_file"]]
+    for n in rule_files:
+        shutil.copyfile(RULES / n, target / "py" / "rules" / n)
+
+    prompts = {lang: prompt_text(index, criteria, rnd, lang) for lang in LANGS}
+    for lang in LANGS:
+        (target / f"prompt_{lang}.txt").write_text(prompts[lang] + "\n",
+                                                   encoding="utf-8", newline="\n")
+    data = {
+        "strings": strings,
+        "prompt": prompts,
+        "promptFile": {lang: f"prompt_{lang}.txt" for lang in LANGS},
+        "selfReport": {lang: r_self_report(index, criteria, rnd, lang) for lang in LANGS},
+        "meta": {"round": rnd["round"], "verified": str(rnd["verified_on"]),
+                 "sunset": str(index["sunset_on"])},
+        "fieldNames": {f["en"]: f["cs"] for f in rnd["form_fields"]["fields"]},
+        "attachNames": {a["en_name"]: a["cs_name"] for a in rnd["attachments"]["items"]},
+        "pyodide": {
+            "index": "pyodide/",
+            "packages": ["pyyaml"],
+            "wheels": sorted(k for k in VENDOR if k.startswith("py/")),
+            "files": [{"url": "py/checker/gauk_check.py", "path": "/work/checker/gauk_check.py"}]
+                     + [{"url": f"py/rules/{n}", "path": f"/work/rules/{n}"} for n in rule_files],
+        },
+    }
+    (target / "data.js").write_text(
+        "window.GAUK = " + json.dumps(data, ensure_ascii=False, indent=1) + ";\n",
+        encoding="utf-8", newline="\n")
+
+    if vendor:
+        for rel in VENDOR:
+            out = target / rel
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_bytes(_fetch_verified(rel))
+
+
 def check() -> int:
     tmp = Path(tempfile.mkdtemp(prefix="gauk-build-"))
     try:
@@ -763,10 +899,18 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--diff", nargs=2, type=int, metavar=("OLD", "NEW"))
+    ap.add_argument("--site", type=Path, metavar="DIR",
+                    help="write the web page to DIR (not committed; see .github/workflows/pages.yml)")
+    ap.add_argument("--vendor", action="store_true",
+                    help="with --site: also add the pinned, hash-checked Pyodide runtime and pypdf")
     args = ap.parse_args()
 
     if args.diff:
         return diff_rounds(*args.diff)
+    if args.site:
+        build_site(args.site, args.vendor)
+        print(f"wrote the web page to {args.site}" + (" with Pyodide" if args.vendor else ""))
+        return 0
     if args.check:
         return check()
 

@@ -1,5 +1,8 @@
 # gauk-ai-feedback česky
 
+*Tomáš Havránek, Univerzita Karlova · metody, data a kód pro metaanalýzu na
+[meta-analysis.cz](https://meta-analysis.cz)*
+
 Neoficiální kontrola přihlášky do Grantové agentury Univerzity Karlovy (GA UK)
 před podáním. Přečte váš návrh a řekne, co opravit, dokud je čas. Nejdřív
 formální problémy: chybějící kapitola, limit stran, rozpočet nad limity,
@@ -13,6 +16,11 @@ projekt přinese, a zda to popsané metody a požadovaný čas umožňují.
 > uspějete, a nikdy za vás nenapíše žádnou část přihlášky. Autor je členem
 > Grantové rady GA UK; co z toho plyne, popisuje [DISCLOSURE.md](DISCLOSURE.md)
 > (anglicky).
+
+**Nejjednodušší je webová stránka:
+[tjhavranek.github.io/gauk-ai-feedback](https://tjhavranek.github.io/gauk-ai-feedback/)**,
+česky i anglicky a bez instalace. Zkopíruje za vás zadání pro chatbota a přílohy
+umí zkontrolovat přímo ve vašem prohlížeči, aniž by je kamkoli odeslala.
 
 ## Než cokoli vložíte do chatu
 
@@ -52,7 +60,8 @@ jinými. Nepíše ani nepřepisuje váš text, ani když ji o to požádáte: po
 že jste přihlášku zpracovali samostatně.
 
 Není pro hodnotitele. Oponenti, zpravodajové, členové oborových rad a fakultní
-referenti ji nesmějí používat na přihlášky, které posuzují. Fakulty a kancelář
+referenti by ji na přihlášky, které posuzují, používat neměli: hodnocení je
+důvěrné a chatbot by text cizí přihlášky poslal třetí straně. Fakulty a kancelář
 GA UK na ni ale mohou studenty upozornit před fakultním termínem.
 
 ## Prohlášení o použití AI
@@ -81,4 +90,5 @@ Chybu v pravidlech prosím nahlaste v
 [issues](https://github.com/tjhavranek/gauk-ai-feedback/issues) s odkazem na
 zveřejněný zdroj. Nevkládejte tam žádnou část skutečné přihlášky.
 
-Autor: Tomáš Havránek, Univerzita Karlova. Licence MIT.
+Autor: Tomáš Havránek ([meta-analysis.cz](https://meta-analysis.cz)), Univerzita
+Karlova. Licence MIT.
