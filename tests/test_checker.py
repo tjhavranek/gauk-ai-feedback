@@ -160,6 +160,20 @@ def main() -> int:
           found.get("proposal") == Path("navrh.pdf") and not amb, str(found))
 
     with tempfile.TemporaryDirectory() as tmp:
+        index, criteria, rnd = gc.load_rules()
+        for label, width, height, rotation, expect_finding in (
+                ("portrait A4", 595.28, 841.89, 0, False),
+                ("landscape A4", 841.89, 595.28, 0, False),
+                ("rotated A4", 841.89, 595.28, 90, False),
+                ("portrait Letter", 612, 792, 0, True),
+                ("landscape Letter", 792, 612, 0, True)):
+            with gc.pypdf.PdfWriter() as pdf:
+                pdf.add_blank_page(width=width, height=height).rotate(rotation)
+                pdf.write(Path(tmp) / "proposal.pdf")
+            rep = gc.check_one(Path(tmp), None, None, index, criteria, rnd)
+            check(f"page size: {label}",
+                  ("R03B_PAGE_SIZE" in rules_of(rep)) == expect_finding,
+                  str([(f.rule, f.measured) for f in rep.findings]))
         docx = Path(tmp) / "draft.docx"
         with zipfile.ZipFile(docx, "w") as z:
             z.writestr("word/document.xml", (

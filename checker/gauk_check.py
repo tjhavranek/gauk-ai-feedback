@@ -324,9 +324,10 @@ def pdf_facts(path: Path) -> dict:
         box = reader.pages[0].mediabox
         facts["width_pt"] = float(box.width)
         facts["height_pt"] = float(box.height)
+        short_side, long_side = sorted((facts["width_pt"], facts["height_pt"]))
         facts["is_a4"] = (
-            abs(facts["width_pt"] - A4_PT[0]) <= A4_TOL
-            and abs(facts["height_pt"] - A4_PT[1]) <= A4_TOL
+            abs(short_side - A4_PT[0]) <= A4_TOL
+            and abs(long_side - A4_PT[1]) <= A4_TOL
         )
     except Exception as exc:  # a corrupt or encrypted file is UNKNOWN, not a breach
         facts["error"] = f"{type(exc).__name__}: {exc}"
