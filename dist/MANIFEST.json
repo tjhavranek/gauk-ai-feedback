@@ -5,12 +5,12 @@
   "warn_after": "2026-10-01",
   "sunset_on": "2027-02-01",
   "source_sha256": {
-    "INDEX": "55f3546db85c10d6cc4dee37ec6da36d91b0fd206ac4ee03d8f0c1ac193a9fd2",
-    "criteria": "10f14c410b06382c2c3bfa6c5bd4b7fa42f6a0a1ca5a70d1fe5c3d9a0c64ee48",
-    "round": "c2827a7cb5dc9e97d26a22dc89d5ac041f49752cf3d0189c770e7865b673d310",
-    "body_en": "74422570bb8a9553e15e8d55cb6de30c0b31945f2c5be904d49d574562b3ff0d",
-    "body_cs": "cd36ef588d4c424d2ef74cfa5910275a2671a37851fcc9925454f5e75fb48522",
-    "build": "15efdde947e1e46aafdb1c4ebf545f4c072e9c5a47fb4697cd5fe7165ea9e9cc"
+    "INDEX": "f5ca217dc72b6a1dfdb5333b45822d56f62cdd2a0bad1729239f3e47981ada75",
+    "criteria": "caf8b8ad6dbe79ef015e41f2546205be51206b14767622c0c94672fc9dcaba79",
+    "round": "beb7b442c2166a0145d22c4f6f9757659abe4fc8c02b851da6290f142016c2c6",
+    "body_en": "8a929b62c8a525d5cc1e06b64c2f0d5b399cca305c07010cc8c8947773815933",
+    "body_cs": "dedea80e0eef4824951e4f9ec18f39d5e44bffe99506674a2b807d0bfec9babc",
+    "build": "4acd2e8606b66294b7841c7d5b6b7a1751414bd61ac26a6b27397b6293d46433"
   },
   "files": [
     "prompt_cs.md",
