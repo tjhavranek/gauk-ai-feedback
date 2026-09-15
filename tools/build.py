@@ -62,6 +62,9 @@ VENDOR = {
     "pyodide/pyyaml-6.0.3-cp314-cp314-pyemscripten_2026_0_wasm32.whl": (
         _CDN + "pyyaml-6.0.3-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
         "a05d2a48c13ed72a8c60c73b30b753a25c3a591bb66c15428b7e95e69a9e806f"),
+    "pyodide/pycryptodome-3.23.0-cp37-abi3-pyemscripten_2026_0_wasm32.whl": (
+        _CDN + "pycryptodome-3.23.0-cp37-abi3-pyemscripten_2026_0_wasm32.whl",
+        "67b86abb0de02dceebf422d10fc6e0e3754aea08626d1957e6fe69b75cbf644d"),
     "py/pypdf-6.18.1-py3-none-any.whl": (
         "https://files.pythonhosted.org/packages/58/13/"
         "645df3995075112cb3cce15e8797c205f0f88fb50acc11012b84b071bc22/"
@@ -833,7 +836,10 @@ def build_site(target: Path, vendor: bool = False) -> None:
         "attachNames": {a["en_name"]: a["cs_name"] for a in rnd["attachments"]["items"]},
         "pyodide": {
             "index": "pyodide/",
-            "packages": ["pyyaml"],
+            # pycryptodome lets pypdf open AES-encrypted PDFs, including ones
+            # locked only against editing. pypdf picks its crypto library when
+            # it is imported, so it has to be there from the start.
+            "packages": ["pyyaml", "pycryptodome"],
             "wheels": sorted(k for k in VENDOR if k.startswith("py/")),
             "files": [{"url": "py/checker/gauk_check.py", "path": "/work/checker/gauk_check.py"}]
                      + [{"url": f"py/rules/{n}", "path": f"/work/rules/{n}"} for n in rule_files],

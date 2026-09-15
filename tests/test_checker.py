@@ -174,6 +174,28 @@ def main() -> int:
             check(f"page size: {label}",
                   ("R03B_PAGE_SIZE" in rules_of(rep)) == expect_finding,
                   str([(f.rule, f.measured) for f in rep.findings]))
+        try:
+            import fitz
+        except ImportError:
+            fitz = None
+        if fitz is not None and gc.pdfplumber is not None:
+            doc = fitz.open()
+            page = doc.new_page()
+            page.insert_text((72, 100), "Eleven point text on a rotated page. " * 3, fontsize=11)
+            page.set_rotation(90)
+            doc.save(str(Path(tmp) / "rotated.pdf"))
+            doc.close()
+            typ = gc.typography(Path(tmp) / "rotated.pdf")
+            check("a rotated page gives no false font-size reading",
+                  "error" in typ or abs(typ["modal_pt"] - 11) < 0.6, str(typ))
+            doc = fitz.open()
+            doc.new_page().insert_text((72, 100), "Locked against editing only.", fontsize=11)
+            doc.save(str(Path(tmp) / "locked.pdf"), encryption=fitz.PDF_ENCRYPT_AES_128,
+                     owner_pw="owner", user_pw="", permissions=fitz.PDF_PERM_PRINT)
+            doc.close()
+            facts = gc.pdf_facts(Path(tmp) / "locked.pdf")
+            check("a PDF locked only against editing is still read",
+                  "error" not in facts and facts.get("pages") == 1, str(facts.get("error")))
         docx = Path(tmp) / "draft.docx"
         with zipfile.ZipFile(docx, "w") as z:
             z.writestr("word/document.xml", (
@@ -259,6 +281,9 @@ def main() -> int:
     check("an altered second line of a quote is caught",
           verdicts('- **Quote:** "Fiktivní projekt se zabývá\n  úplně jiným problémem"\n'
                    '- **Type:** statement') == ["not_found"])
+    check("„…\" quotes closed with a straight mark, two to a line, are both checked",
+          verdicts('- **Citace:** „Fiktivní projekt se zabývá" / „slouží pouze k testování '
+                   'kontrolního skriptu."') == ["exact", "exact"])
     check("a Czech quote does not swallow the next fields or their quoted terms",
           verdicts("- **Citace:** „Fiktivní projekt se zabývá modelovým problémem“\n"
                    "- **Typ:** tvrzení\n"

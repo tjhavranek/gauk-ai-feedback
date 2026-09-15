@@ -2,3 +2,4 @@ pyyaml>=6
 pypdf>=4
 pdfplumber>=0.10
 openpyxl>=3
+pycryptodome>=3.20

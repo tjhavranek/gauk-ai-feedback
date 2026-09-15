@@ -382,12 +382,16 @@ def typography(path: Path) -> dict:
             sizes: dict[float, int] = {}
             tops: list[float] = []
             for page in pdf.pages[:3]:
-                for ch in page.chars:
+                # Text on a rotated page reports its size sideways (an 11 pt
+                # glyph comes back as its 6 pt advance), so only upright text
+                # is measured.
+                upright = [c for c in page.chars if c.get("upright", True)]
+                for ch in upright:
                     s = round(float(ch["size"]), 1)
                     sizes[s] = sizes.get(s, 0) + 1
-                tops += sorted({round(float(c["top"]), 1) for c in page.chars})
+                tops += sorted({round(float(c["top"]), 1) for c in upright})
             if not sizes:
-                return {"error": "no characters"}
+                return {"error": "no upright text to measure"}
             modal = max(sizes.items(), key=lambda kv: kv[1])[0]
             small = sum(n for s, n in sizes.items() if s < 10.5)
             deltas = sorted(b - a for a, b in zip(tops, tops[1:]) if 0 < b - a < 4 * modal)

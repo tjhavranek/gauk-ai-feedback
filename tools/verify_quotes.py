@@ -42,8 +42,9 @@ MIN_CHARS = 12      # a shorter quote cannot identify a place in the text
 WINDOW = 1500       # the pieces of an ellipsed quote must lie this close together
 
 # Opening mark -> the marks that may close it. English “…”, Czech „…“ (or „…”),
-# straight "…" and both directions of guillemets.
-PAIRS = {"“": "”", "„": "“”", '"': '"',
+# straight "…" and both directions of guillemets. A curly opening mark may also
+# close with a straight one, as in „…" — chatbots type that often.
+PAIRS = {"“": "”\"", "„": "“”\"", '"': '"',
          "»": "«", "«": "»"}
 LABEL = re.compile(r"^\s*[-*]?\s*\*{0,2}\s*(quote|citace)\s*\*{0,2}\s*:\s*\*{0,2}\s*(.*)$",
                    re.IGNORECASE)

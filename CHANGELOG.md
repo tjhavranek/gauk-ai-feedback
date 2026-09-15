@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.4.1 - 2026-09-16
+
+Fixes from an overnight stress test: 39 invented and broken applications run
+through the command line and the web page (identical results on every case
+the page accepts), and invented drafts reviewed through the prompts by three
+different models.
+
+- The font-size check no longer misreads text on rotated pages as small type.
+- PDFs locked only against editing (they open without a password) are read on
+  the web page as well as the command line; `pycryptodome` is now a dependency.
+- The quote verifier accepts „…" quotes closed with a straight mark, which
+  chatbots often type, instead of reporting correct quotes as not found.
+- The prompts: the first reply gives the consent reminder and then the review,
+  without waiting for confirmation; the formal-check table holds only values
+  from the checker or the student's own numbers; a fix never includes
+  replacement or example wording, with an example of the difference; a
+  personnel cost without a stated role is MEDIUM, not HIGH.
+
 ## v0.4.0 - 2026-09-15
 
 - A web page, published with GitHub Pages at
