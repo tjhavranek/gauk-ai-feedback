@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install a Unicode font for the fixtures
+        run: sudo apt-get update && sudo apt-get install -y fonts-dejavu-core
+      - name: Install dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Build fixtures
+        run: python tests/make_fixtures.py
+      - name: Check dist/ matches the rules
+        run: python tools/build.py --check
+      - name: Run the tests
+        run: python tests/test_checker.py

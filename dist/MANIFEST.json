@@ -1,0 +1,26 @@
+{
+  "round": 24,
+  "rules_verified_on": "2026-09-15",
+  "official_review": "none",
+  "warn_after": "2026-10-01",
+  "sunset_on": "2027-02-01",
+  "source_sha256": {
+    "INDEX": "55f3546db85c10d6cc4dee37ec6da36d91b0fd206ac4ee03d8f0c1ac193a9fd2",
+    "criteria": "10f14c410b06382c2c3bfa6c5bd4b7fa42f6a0a1ca5a70d1fe5c3d9a0c64ee48",
+    "round": "c2827a7cb5dc9e97d26a22dc89d5ac041f49752cf3d0189c770e7865b673d310",
+    "body_en": "74422570bb8a9553e15e8d55cb6de30c0b31945f2c5be904d49d574562b3ff0d",
+    "body_cs": "cd36ef588d4c424d2ef74cfa5910275a2671a37851fcc9925454f5e75fb48522",
+    "build": "15efdde947e1e46aafdb1c4ebf545f4c072e9c5a47fb4697cd5fe7165ea9e9cc"
+  },
+  "files": [
+    "prompt_cs.md",
+    "prompt_en.md",
+    "rubric_locked_cs.md",
+    "rubric_locked_en.md",
+    "self_report_cs.md",
+    "self_report_en.md"
+  ],
+  "notes": [
+    "NOTE character counting is not calibrated against the GA UK application; rule R05 stays disabled"
+  ]
+}

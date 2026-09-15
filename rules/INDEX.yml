@@ -1,0 +1,40 @@
+# INDEX.yml: which round's rules are current, and when they go stale.
+#
+# HAND-WRITTEN. Read at runtime by checker/gauk_check.py and stamped into every
+# generated artefact in dist/.
+#
+# A rules file that has quietly gone out of date is more dangerous than no tool
+# at all, because it answers confidently. So staleness stops the answer rather
+# than relying on anyone to remember.
+
+schema_version: 2
+
+current_round: 24
+current_rules_file: round24.yml
+
+# Every rules file stays in rules/ once shipped, so that
+# `python tools/build.py --diff 24 25` can print the round-to-round delta.
+rounds:
+  24:
+    file: round24.yml
+    transcribed_on: 2026-09-15
+
+# --- staleness gates -------------------------------------------------------
+# warn_after : the checker prints a warning from this date
+# sunset_on  : the checker exits 3 unless run with --rules-may-be-stale, and
+#              the prompt tells the reader the rules are out of date
+#
+# warn_after is the day the round-24 call opens formally and Rector's Measure
+# 31/2026 takes effect. The published guides can still be revised around that
+# date, so anything here should be re-checked against the published call then.
+warn_after: 2026-10-01
+sunset_on: 2027-02-01
+
+# Printed verbatim at the top of every output, in both languages.
+precedence_notice:
+  en: >-
+    Where the current round's published documents, or your faculty, say anything
+    different from this review, they are right and this review is wrong.
+  cs: >-
+    Pokud zveřejněné dokumenty aktuálního kola nebo vaše fakulta uvádějí něco
+    jiného než tato kontrola, platí ony a tato kontrola se mýlí.

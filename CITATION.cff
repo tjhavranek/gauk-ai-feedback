@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you refer to this tool, please cite it as below."
+title: "gauk-ai-feedback: an unofficial pre-submission review for GA UK applications"
+type: software
+authors:
+  - given-names: Tomáš
+    family-names: Havránek
+    affiliation: "Charles University"
+    orcid: "https://orcid.org/0000-0002-3158-2539"
+version: 0.3.0
+date-released: 2026-09-15
+license: MIT
+repository-code: "https://github.com/tjhavranek/gauk-ai-feedback"
+keywords:
+  - grant proposals
+  - Charles University
+  - GA UK
+  - pre-review
+  - large language models

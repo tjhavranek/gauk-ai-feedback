@@ -1,0 +1,300 @@
+# criteria.yml: the locked evaluation rubric. CANONICAL, HAND-WRITTEN.
+#
+# Every rule-bearing block in the applicant prompts is generated from this file
+# by tools/build.py. Do not restate any of it in prose elsewhere.
+#
+# LANGUAGE CONTRACT
+#   cs: the Czech of the published documents; verbatim where it is a quotation
+#       (the criteria, the checklist, the section texts), otherwise a close summary.
+#   en: working translation. Unofficial unless marked otherwise.
+# The English prompt is the primary artefact, but Czech is the authoritative
+# text of the rules. Where the two could be read differently, the Czech governs.
+#
+# tools/build.py refuses to build if any node is missing either language, so a
+# criterion cannot silently exist in only one language.
+#
+# UNOFFICIAL. Not reviewed or endorsed by GA UK or Charles University.
+
+schema_version: 3
+verified_on: 2026-09-15
+verified_by: "transcribed from the published round-24 documents; unofficial"
+
+sources:
+  - id: OR31_2026
+    cs: "Opatření rektora č. 31/2026, Zásady činnosti Grantové agentury Univerzity Karlovy"
+    en: "Rector's Measure 31/2026, Principles of Activities of the Charles University Grant Agency"
+    url: "https://cuni.cz/UK-15993.html"
+    note: "In force from 1 October 2026; repeals Rector's Measure 42/2025."
+    retrieved: 2026-09-15
+  - id: OR30_2026
+    cs: "Opatření rektora č. 30/2026, Vyhlášení 24. kola soutěže GA UK"
+    en: "Rector's Measure 30/2026, announcement of the 24th GA UK round"
+    url: "https://cuni.cz/UK-15968.html"
+    retrieved: 2026-09-15
+  - id: INFO_24
+    cs: "Informace k podání přihlášky grantového projektu – 24. kolo soutěže"
+    en: "Information on submitting a grant project application – 24th round"
+    url: "https://cuni.cz/UK-2446-version1-informace_k_podani_prihlasky_2027.pdf"
+    url_en: "https://cuni.cz/UKEN-756-version1-information_on_submitting_a_grant_project_application.pdf"
+    retrieved: 2026-09-15
+  - id: PRAKT_24
+    cs: "Praktické informace k podání návrhu projektu GA UK (2027)"
+    en: "Practical information for submitting a GA UK project proposal (2027)"
+    url: "https://cuni.cz/UK-2446-version1-prakticke_informace_pro_studenty_2027.pdf"
+    url_en: "https://cuni.cz/UKEN-756-version1-practical_information_for_submitting_a_ga_uk_project_proposal_2027.pdf"
+    retrieved: 2026-09-15
+  - id: FAQ_24
+    cs: "Často kladené otázky – 24. kolo (2027)"
+    en: "Frequently asked questions – 24th round (2027)"
+    url: "https://cuni.cz/UK-9961.html"
+    url_en: "https://cuni.cz/UKEN-761.html"
+    retrieved: 2026-09-15
+  - id: INFO_PDF_23
+    cs: "Informace k .pdf příloze Návrh projektu – 23. kolo"
+    en: "Information on the PDF attachment Project proposal – 23rd round"
+    url: "https://cuni.cz/UK-2446-version1-informace_k_pdf_priloze___navrh_projektu_23_kolo.pdf"
+    retrieved: 2026-09-15
+  - id: GRANT_RULES
+    cs: "Grantový řád Univerzity Karlovy (2016)"
+    en: "Grant Rules of Charles University (2016)"
+    url: "https://cuni.cz/UKEN-652.html"
+    retrieved: 2026-09-15
+  - id: FINAL_CRITERIA
+    cs: "Řeším projekt: kritéria hodnocení závěrečných zpráv"
+    en: "Running a project: criteria for evaluating final reports"
+    url: "https://cuni.cz/UK-12257.html"
+    retrieved: 2026-09-15
+
+# ---------------------------------------------------------------------------
+# 1. THE OFFICIAL EVALUATION CRITERIA: Rector's Measure 31/2026, art. 3(2).
+# ---------------------------------------------------------------------------
+evaluation:
+  source: OR31_2026
+  locator: "čl. 3 odst. 2"
+  preamble:
+    cs: "Přihláška nového projektu je posuzována nejméně dvěma oponenty a to především podle následujících hledisek:"
+    en: "An application for a new project is assessed by at least two opponents, chiefly according to the following aspects:"
+  criteria:
+    - id: a
+      cs: "vědecká závažnost a aktuálnost projektu"
+      en: "scientific significance and topicality of the project"
+    - id: b
+      cs: "zpracování návrhu projektu a reálnost cílů řešení"
+      en: "the working-out of the project proposal and the realism of the objectives"
+    - id: c
+      cs: "koncepce a metodika řešení"
+      en: "the concept and the methodology of the work"
+    - id: d
+      cs: "přiměřenost finančních nákladů"
+      en: "the adequacy of the financial costs"
+
+# ---------------------------------------------------------------------------
+# 2. THE DEAN'S STATEMENT: art. 3(1). A separate gate: an application the dean
+#    does not recommend is registered but not evaluated.
+# ---------------------------------------------------------------------------
+dean_statement:
+  source: OR31_2026
+  locator: "čl. 3 odst. 1"
+  items:
+    - id: strategy
+      cs: "přihláška nového projektu je v souladu se strategickými záměry fakulty a univerzity"
+      en: "the application is consistent with the strategic aims of the faculty and the university"
+    - id: facilities
+      cs: "lze zajistit projektu potřebné provozní zázemí z prostředků pracovišť fakulty"
+      en: "the operational facilities the project needs can be provided from the faculty's resources"
+    - id: team
+      cs: "personální složení pracovního týmu je přiměřené stanoveným cílům"
+      en: "the composition of the team is appropriate to the stated objectives"
+
+# ---------------------------------------------------------------------------
+# 3. WHAT THE OPPONENT IS ASKED: applicant guide, "Proces posuzování grantové
+#    přihlášky". Each item maps to a criterion above.
+# ---------------------------------------------------------------------------
+opponent_checklist:
+  source: INFO_24
+  locator: "Proces posuzování grantové přihlášky: Oponent hodnotí"
+  items:
+    - id: novelty
+      maps_to: a
+      cs: "zda projekt přinese nové přístupy nebo poznatky v oboru"
+      en: "whether the project will bring new approaches or new knowledge in the field"
+    - id: goal_clarity
+      maps_to: b
+      cs: "nakolik jsou cíle a přístupy k řešení jasně definované a formulované"
+      en: "how clearly the objectives and the approaches to the work are defined and formulated"
+    - id: method_fit
+      maps_to: c
+      cs: "nakolik je navržená metodika či schéma experimentů a přístup k řešení problému adekvátní a odpovídající cílům projektu"
+      en: "how adequate the proposed methodology or scheme of experiments and the approach to the problem are, and whether they correspond to the objectives of the project"
+    - id: facilities_and_time
+      maps_to: b
+      cs: "zda je reálné očekávat splnění cílů projektu v navrhovaném čase a s navrhovanou pracovní kapacitou; zda je z návrhu zřejmé, že vybavení pracoviště je na takové úrovni, aby bylo možno cílů projektu dosáhnout"
+      en: "whether it is realistic to expect the objectives to be met in the proposed time and with the proposed working capacity; whether the proposal makes clear that the workplace's equipment is at a level that allows the objectives to be reached"
+    - id: team_capacity
+      maps_to: b
+      cs: "zda složení týmu poskytuje záruku vyřešení cílů projektu; posuzuje publikační aktivitu vedoucího i ostatních relevantních akademických pracovníků (v přírodovědných oborech především publikace v časopisech s IF, citace dle SCI) a eventuálně i pedagogickou činnost v rámci doktorského vzdělávání"
+      en: "whether the composition of the team guarantees that the objectives will be met; assesses the publication activity of the project leader and of the other relevant academic staff (in the natural sciences chiefly publications in journals with an impact factor, and SCI citations) and possibly also teaching within doctoral education"
+    - id: costs
+      maps_to: d
+      cs: "zda požadované prostředky jsou přiměřené cílům projektu a zda jsou řádně zdůvodněné dle jednotlivých položek"
+      en: "whether the requested funds are adequate to the objectives of the project and whether they are properly justified item by item"
+    - id: overall
+      maps_to: null
+      cs: "oponent celkově zhodnotí projekt a slovně uvede důvody doporučení (originální nápad, zpracování unikátního materiálu, vysoce aktuální téma, naděje na špičkovou publikaci atd.), případně nedoporučení"
+      en: "the opponent gives an overall assessment and states in words the reasons for recommending (an original idea, work on unique material, a highly topical theme, the prospect of a top publication, and so on) or for not recommending"
+
+# ---------------------------------------------------------------------------
+# 4. THE PRESCRIBED STRUCTURE OF THE "NÁVRH PROJEKTU" ATTACHMENT: applicant
+#    guide, verbatim.
+# ---------------------------------------------------------------------------
+proposal_sections:
+  source: INFO_24
+  mandatory: true
+  intro:
+    cs: "Příloha má 8 povinných oddílů. Dodržujte tuto předepsanou strukturu (pořadí a oddíly)."
+    en: "The attachment has eight mandatory sections. Keep to this prescribed structure, both the order and the sections."
+  sections:
+    - n: 1
+      id: state_of_the_art
+      cs_title: "Současný stav poznání"
+      en_title: "Current state of knowledge"
+      cs: "Shrnutí současného stavu poznání odborné problematiky v dané vědní oblasti. Uveďte současný stav poznání řešeného problému v ČR a v zahraničí a svá tvrzení doložte citacemi. Je vhodné uvést i důvod/motivaci k řešení daného problému. Stejně tak je vhodné uvést, pokud se jedná o novou, jinde neřešenou problematiku nebo pokud dosavadní řešení jinde není známo."
+      en: "A summary of the current state of knowledge of the subject in the given field. State the current state of knowledge of the problem in the Czech Republic and abroad and support your claims with citations. It is advisable to give the reason for and motivation behind addressing the problem, and to say if this is a new problem not addressed elsewhere or if no existing solution is known."
+      # heading phrases the checker matches, both languages, after folding
+      match:
+        - "současný stav poznání"
+        - "stav poznání"
+        - "current state of knowledge"
+        - "state of the art"
+        - "background"
+        - "introduction and state of the art"
+    - n: 2
+      id: facilities
+      cs_title: "Materiální zajištění projektu"
+      en_title: "Material provision for the project"
+      cs: "Údaje o připravenosti navrhovatele a jeho pracoviště. Uveďte informace o přístrojovém vybavení pracovišť, které bude využíváno při řešení projektu. Uveďte, zda celý projekt bude řešen na pracovišti řešitele/vedoucího, nebo zda část projektu bude řešena v rámci výzkumného pobytu u experimentální infrastruktury, či formou služeb. U experimentálních projektů popište zejména přístrojové zajištění. Doporučujeme uvést, jak bude projekt financován, pokud nebudete požadovat náklady z GA UK, aby měl zpravodaj přehled, zda je možné projekt řešit."
+      en: "Information on the readiness of the applicant and their workplace. Give information on the instrumentation that will be used. State whether the whole project will run at the applicant's or the leader's workplace, or whether part of it will run as a research stay at an experimental infrastructure or be bought in as a service. For experimental projects, describe the instrumentation in particular. It is recommended to say how the project will be funded for anything not requested from GA UK, so that the rapporteur can see whether the project is feasible."
+      match:
+        - "materiální zajištění"
+        - "material provision"
+        - "facilities"
+        - "equipment"
+        - "infrastructure"
+    - n: 3
+      id: objectives
+      cs_title: "Cíle řešení projektu"
+      en_title: "Objectives of the project"
+      cs: "Vyjádření podstaty a aktuálnosti tématu grantového projektu a jeho cílů. Cíle projektu by měly být realistické, konkrétní a jasně formulované. Musí být dosažitelné v rámci požadované doby řešení projektu. (V této části je vhodné rozšířit cíle uvedené v první části přihlášky, kde je omezen počet znaků na 1000)."
+      en: "A statement of the essence and topicality of the theme of the project and of its objectives. The objectives should be realistic, specific and clearly formulated. They must be achievable within the requested project duration. (Here it is appropriate to expand on the objectives given in the first part of the application, where the character count is limited to 1000.)"
+      match:
+        - "cíle"
+        - "cíle řešení"
+        - "cíle projektu"
+        - "objectives"
+        - "aims"
+        - "goals"
+    - n: 4
+      id: methodology
+      cs_title: "Způsob řešení"
+      en_title: "Method of work"
+      pivotal: true
+      cs: "Vyjádření způsobu řešení včetně koncepčních a metodických postupů. Způsob získávání dat, statistické zpracování. Konkretizujte způsob řešení, uveďte všechny metody, které budou využity při řešení výzkumného projektu. Toto je stěžejní kapitola přihlášky a je třeba, aby byla dostatečně podrobná."
+      en: "A statement of how the work will be done, including conceptual and methodological procedures, how data will be obtained, and statistical treatment. Be specific and list every method that will be used. This is the pivotal chapter of the application and it needs to be sufficiently detailed."
+      match:
+        - "způsob řešení"
+        - "metodika"
+        - "metody"
+        - "method of work"
+        - "methodology"
+        - "methods"
+        - "research design"
+    - n: 5
+      id: timetable
+      cs_title: "Časový harmonogram"
+      en_title: "Timetable"
+      cs: "Časový harmonogram pro jednotlivé roky nebo etapy řešení. Je vhodné použít např. Ganttův diagram. Uvádějte prosím časový harmonogram v souladu s kalendářním rokem (ne akademickým rokem) a v souladu s dobou řešení (ne s dobou Vašeho studia). Minimální délka řešení je jeden kalendářní rok."
+      en: "A timetable by year or by phase. A Gantt chart, for instance, is a good way to do it. Please give the timetable by calendar year (not academic year) and in line with the project's duration (not the duration of your studies). The minimum duration is one calendar year."
+      match:
+        - "časový harmonogram"
+        - "harmonogram"
+        - "timetable"
+        - "time schedule"
+        - "work plan"
+        - "timeline"
+    - n: 6
+      id: risks
+      cs_title: "Identifikace rizik"
+      en_title: "Identification of risks"
+      cs: "Identifikujte rizika dosažení výsledků řešení projektu, včetně jejich intenzity, pravděpodobnosti a způsobu jejich minimalizace."
+      en: "Identify the risks to achieving the project's results, including their intensity, their probability, and how they will be minimised."
+      match:
+        - "identifikace rizik"
+        - "rizika"
+        - "risk"
+        - "risks"
+        - "identification of risks"
+        - "risk assessment"
+    - n: 7
+      id: team
+      cs_title: "Charakteristika řešitelského kolektivu"
+      en_title: "Characteristics of the team"
+      cs: "Zdůvodnění účasti všech členů týmu, vymezení jejich podílu na řešení problematiky. Specifikujete roli, způsob a míru/podíl zapojení hlavního řešitele a spoluřešitelů. Zdůvodněte účast spoluřešitelů a uveďte výčet a rozsah jejich činnosti, zejména pokud se jedná o specialistu na některou využitou metodiku či technologii. Vyzdvihněte kvalitu týmu jako celku. Popište rozsah a obsah spolupráce navrhovatele se zahraničními vědeckými institucemi, pokud je v projektu plánována. Nevkládejte životopisy ani seznamy publikací – to je součást příloh. V této části je vhodné rozšířit informace o řešitelském kolektivu z první části přihlášky."
+      en: "Justification for every team member's participation and a statement of their share of the work. Specify the role, the manner, and the extent of the involvement of the principal investigator and of the co-investigators. Justify the co-investigators and list the scope of their activity, particularly where someone is a specialist in a method or technology being used. Bring out the quality of the team as a whole. Describe the scope and content of collaboration with foreign scientific institutions if any is planned. Do not include CVs or publication lists; those are attachments. This is the place to expand on the team information given in the first part of the application."
+      match:
+        - "charakteristika řešitelského kolektivu"
+        - "řešitelský kolektiv"
+        - "kolektiv"
+        - "team"
+        - "research team"
+        - "characteristics of the team"
+    - n: 8
+      id: outputs
+      cs_title: "Očekávané výsledky projektu včetně jejich prezentace"
+      en_title: "Expected results and their presentation"
+      cs: "Předpokládané publikační výsledky řešení projektu (spíše zaměření na kvalitu než počet) a nástin plánu diseminace (prezentace) výsledků výzkumu (komunikace k jejich potencionálním uživatelům a veřejnosti). Uveďte předpokládaný počet publikačních výsledků řešení projektu a způsob prezentace. Uveďte, o kterých časopisech/nakladatelství uvažujete. Berte v potaz i Kritéria hodnocení závěrečných zpráv (viz www stránky GA UK)."
+      en: "The expected publication results of the project (focus on quality rather than number) and an outline of the plan for disseminating the results (communicating them to potential users and to the public). State the expected number of publication outputs and the form of presentation. Say which journals or publishers you are considering. Take the criteria for evaluating final reports into account as well (see the GA UK website)."
+      match:
+        - "očekávané výsledky"
+        - "výsledky projektu"
+        - "prezentace výsledků"
+        - "expected results"
+        - "expected outputs"
+        - "dissemination"
+        - "publication plan"
+
+# ---------------------------------------------------------------------------
+# 5. THE EVALUATION CHAIN: who reads what, in what order. Background for the
+#    maintainer; not rendered into the prompts.
+# ---------------------------------------------------------------------------
+process:
+  source: OR31_2026
+  stages:
+    - id: dean
+      cs: "vyjádření děkana fakulty; nedoporučená přihláška se pouze zařadí do evidence a nebude hodnocena"
+      en: "statement of the faculty dean; an application the dean does not recommend is only registered and not evaluated"
+    - id: opponents
+      source: INFO_24      # acceptance on the basis of the annotation
+      cs: "nejméně dva oponenti, univerzitní i mimouniverzitní, mohou být i ze zahraničí a nesmějí být ve střetu zájmů; posudek se zadává na základě anotace"
+      en: "at least two opponents, from inside and outside the university and possibly from abroad, with no conflict of interest; they accept or decline the review on the basis of the annotation"
+    - id: rapporteur
+      cs: "zpravodaj (není ze stejného pracoviště jako navrhovatel) posoudí projekt a korektnost oponentských posudků a může si vyžádat další posudek; může krátit nezdůvodněné finance"
+      en: "rapporteur (not from the applicant's workplace) assesses the project and the correctness of the opponents' reviews and may commission a further review; may cut funding that is not justified"
+    - id: board
+      cs: "dílčí oborová rada / oborová rada: stanoví výsledné pořadí projektů"
+      en: "subject sub-board / subject board: sets the final ranking of the projects"
+    - id: council
+      cs: "Grantová rada univerzity"
+      en: "the university Grant Council"
+    - id: rector
+      cs: "kolegium rektora potvrdí výsledky"
+      en: "the Rector's Collegium confirms the results"
+  returns:
+    cs: "Přihlášku lze vrátit k úpravě; pokud není včas opravena, nemusí být hodnocena."
+    en: "An application can be returned for correction; if it is not corrected in time, it need not be evaluated."
+  appeal:
+    cs: "Žádost o přezkoumání rozhodnutí o nedoporučení projektu k financování zasílá Grantové radě hlavní řešitel do 15 kalendářních dnů od vyhlášení výsledků soutěže."
+    en: "A request to review a decision not to recommend a project for funding is sent to the Grant Council by the principal investigator within 15 calendar days of the results being announced."
+  visibility:
+    source: INFO_24
+    cs: "Po vyhlášení výsledků, přijetí i nepřijetí, si navrhovatel může zobrazit oponentní posudky a posudek zpravodaje."
+    en: "Once the results are announced, whether the project was accepted or not, the applicant can view the opponents' reviews and the rapporteur's report."

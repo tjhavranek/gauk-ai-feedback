@@ -1,0 +1,440 @@
+# round24.yml: the countable rules of the 24th GA UK round. CANONICAL, HAND-WRITTEN.
+#
+# Everything here is a number, a name, a date or a short list: something a
+# script can decide without judgement. Anything requiring judgement lives in
+# criteria.yml and is the model's work, not this file's.
+#
+# PROVENANCE. Transcribed on 2026-09-15 from the published round-24 documents
+# listed under `sources` in criteria.yml: the applicant guide, the practical
+# tips, the FAQ, and Rector's Measures 30/2026 and 31/2026.
+#
+# UNOFFICIAL. Nothing here has been reviewed or endorsed by GA UK or Charles
+# University. Where the published documents differ from this file, they win.
+
+schema_version: 3
+round: 24
+verified_on: 2026-09-15
+official_review: none         # no GA UK or university body has reviewed this file
+
+sources: [OR31_2026, OR30_2026, INFO_24, PRAKT_24, FAQ_24, INFO_PDF_23]
+
+# ---------------------------------------------------------------------------
+# CALENDAR (Rector's Measure 30/2026)
+# ---------------------------------------------------------------------------
+calendar:
+  source: OR30_2026
+  application_opens: 2026-10-01
+  rectorate_deadline_new: 2026-11-12
+  rectorate_deadline_continuation: 2027-01-21
+  rectorate_deadline_final_report: 2027-04-01
+  zasady_in_force: 2026-10-01      # Rector's Measure 31/2026, not 30/2026
+  note:
+    en: "Faculties set their own, earlier deadlines, and the faculty deadline is the one that binds the applicant: after it, the application can no longer be submitted."
+    cs: "Fakulty stanovují vlastní, dřívější termíny a pro navrhovatele je závazný fakultní termín: po jeho uplynutí již projekt podat nelze."
+
+# ---------------------------------------------------------------------------
+# WEB-FORM FIELDS. Character counts include spaces. The counting convention is
+# NFC-normalised code points; this is an ASSUMPTION, and the character rule
+# stays switched off until it has been checked against the application's own
+# counter.
+# ---------------------------------------------------------------------------
+form_fields:
+  counting:
+    unit: nfc_codepoints
+    spaces_included: true
+    calibrated: false          # set true only after checking against the application's counter
+  fields:
+    - id: annotation
+      cs: "Anotace"
+      en: "Annotation"
+      min: 500
+      max: 1500
+      bilingual_in_cs_version: true
+      note:
+        en: "Describe the project and the course of work in the calendar year, and the plan for later years. In the Czech version of the form it is given in Czech and in English. The prospective opponent accepts or declines the review on the basis of this text."
+        cs: "Uveďte popis projektu, charakter a průběh prací předpokládaných v kalendářním roce, příp. představu pro další roky. V české verzi přihlášky se vyplňuje česky i anglicky. Oslovený oponent se na základě anotace rozhoduje, zda posudek přijme, či odmítne."
+    - id: objectives
+      cs: "Cíle projektu"
+      en: "Objectives of the project"
+      min: 300
+      max: 1000
+    - id: keywords
+      cs: "Klíčová slova"
+      en: "Keywords"
+      min: 20
+      max: 150
+    - id: team_characteristics
+      cs: "Charakteristika řešitelského kolektivu"
+      en: "Characteristics of the team"
+      min: 50
+      max: 750
+      note:
+        en: "Describe the team members who are paid from personnel costs. Do not name anyone who is not in the team table."
+        cs: "Uveďte členy řešitelského kolektivu hrazené formou osobních nákladů. Jiné osoby než ty, které jsou v tabulce řešitelského kolektivu, neuvádějte."
+    - id: budget_justification
+      cs: "Struktura finančních požadavků"
+      en: "Structure of the financial requirements"
+      min: 50
+      max: 7500
+      note:
+        en: "Justify the requested funds item by item, personnel costs per team member. Funds that are not justified may be cut by the rapporteur."
+        cs: "Požadované prostředky zdůvodněte po jednotlivých položkách, osobní náklady po jednotlivých členech týmu. Nezdůvodněné prostředky může zpravodaj krátit."
+    - id: other_projects
+      cs: "Další projekty řešené navrhovatelem, vedoucím či spoluřešiteli"
+      en: "Other projects run by the applicant, the leader or co-investigators"
+      min: 50
+      max: 25000
+      note:
+        en: "Projects you take part in at the time of applying, from any funder including GA UK: provider, number, duration, title, principal investigator and your role, and whether they address a similar problem. If they do, explain the relation, for proposed and completed projects as well. The explanation is advisable too where the proposal falls within wider work at the workplace of the leader or a co-investigator, or uses the same method as another GA UK project on different material. Thematically similar projects of other team members are recommended as well."
+        cs: "Projekty, na jejichž řešení se v době podání podílíte, od jakéhokoli poskytovatele včetně GA UK: poskytovatel, číslo projektu, doba řešení, název, jméno hlavního řešitele a vaše role, a zda řeší podobnou problematiku. Pokud ano, vysvětlete návaznost či příbuznost, a to i u navrhovaných a ukončených projektů. Vysvětlení je vhodné i tehdy, spadá-li návrh do širší problematiky řešené na pracovišti vedoucího či spoluřešitele, nebo používá-li stejnou metodiku jako jiný projekt GA UK na jiném materiálu. Doporučuje se uvést i tematicky podobné projekty řešené členy týmu."
+    - id: ai_description
+      cs: "Způsob a míra použití AI"
+      en: "How and to what extent AI was used"
+      min: null                  # the guide gives no minimum
+      max: 500
+      conditional:
+        en: "shown only when the applicant declares that AI was used, and then to be filled in"
+        cs: "zobrazí se, pouze pokud navrhovatel uvede, že AI použil, a pak se vyplňuje"
+
+# ---------------------------------------------------------------------------
+# ATTACHMENTS
+# ---------------------------------------------------------------------------
+attachments:
+  max_file_size_mb: 5
+  extra_attachments_permitted: false
+  note:
+    en: "Charts, diagrams and preliminary results belong inside the project proposal, not in separate attachments. Do not upload attachments other than those listed."
+    cs: "Grafy, diagramy a předběžné výsledky patří do přílohy Návrh projektu, nikoli do samostatných příloh. Nevkládejte jiné přílohy než uvedené."
+  items:
+    - id: proposal
+      cs_name: "Návrh projektu"
+      en_name: "Project proposal"
+      required: always
+      types: [pdf]
+      max_pages: 5
+      page_size: A4
+      font_size_pt: 11
+      line_spacing: 1
+      structure: "criteria.yml proposal_sections"
+      note:
+        en: "Standard font, size 11, line spacing 1. Keep the eight prescribed sections in the prescribed order: a proposal that does not keep the structure may be returned for correction."
+        cs: "Standardní písmo, velikost 11, řádkování 1. Dodržte osm předepsaných oddílů v předepsaném pořadí: návrh, který strukturu nedodrží, může být vrácen k úpravě."
+    - id: cv_pi
+      cs_name: "Životopis hlavního řešitele"
+      en_name: "CV of the principal investigator"
+      required: always
+      types: [pdf]
+      max_pages: 2
+      window_years: 5
+      should_contain:
+        en:
+          - "participation in university scientific competitions"
+          - "presentation of the applicant's own results at conferences, or publications"
+          - "involvement in sub-tasks of other projects"
+        cs:
+          - "účast na vysokoškolských vědeckých soutěžích"
+          - "prezentace vlastních výsledků na konferencích a příp. publikace"
+          - "zapojení do řešení dílčích úkolů jiných projektů"
+    - id: cv_supervisor
+      cs_name: "Životopis vedoucího"
+      en_name: "CV of the project leader"
+      required: always
+      types: [pdf]
+      max_pages: 2
+      window_years: 5
+      publications_max: 10
+      must_contain:
+        en:
+          - "a list of at most ten of the most significant publications of the last five years (Rector's Measure 31/2026)"
+          - "for medical and natural sciences: total citation count and h-index per Web of Science"
+          - "in the humanities and social sciences, counts from other databases such as SCOPUS or ERIH are acceptable"
+        cs:
+          - "seznam nejvýše deseti nejvýznamnějších publikací za posledních 5 let (opatření rektora č. 31/2026)"
+          - "pro lékařské a přírodovědné obory celkový počet citací a h-index podle WoS"
+          - "v humanitních a sociálních vědách lze uvést počty citací z jiných databází, např. SCOPUS nebo ERIH"
+      recommended: ["ORCID", "Researcher ID"]
+    - id: references
+      cs_name: "Odkazy na použitou literaturu"
+      en_name: "References"
+      required: always
+      types: [pdf]
+      max_pages: null
+    - id: ethics
+      cs_name: "Etická komise"
+      en_name: "Ethics committee statement"
+      required: conditional
+      types: [pdf]
+      condition:
+        en: "Mandatory for every project involving clinical evaluation of medicinal products or medical devices, work with human biological material or sensitive personal data, or any other intervention in health care. If you are unsure whether you need one, ask your faculty."
+        cs: "Stanovisko etické komise je povinné u všech projektů, které zahrnují klinické hodnocení léčivých přípravků nebo zdravotnických prostředků, pracují s lidským biologickým materiálem či citlivými osobními údaji, nebo jinak zasahují do poskytování zdravotní péče. Máte-li pochybnosti, zda je potřeba, obraťte se na fakultu."
+      must_be_current: true
+      note:
+        en: "It must be current; a statement from an earlier, unsuccessful application cannot be reused. One approval may cover several projects of one workplace, but each application carries a copy."
+        cs: "Musí být vždy aktuální; vyjádření z dřívějšího nepřijatého návrhu nelze použít. Pro několik projektů jednoho pracoviště je přípustné jedno schválení, kopie ale musí být součástí každé přihlášky."
+    - id: animal_form
+      source: INFO_24
+      cs_name: "Formulář projektu pokusu"
+      en_name: "Animal experiment project form"
+      required: false
+      note:
+        en: "For planned work with animals, this form is used instead of the ethics committee statement. It is added only once the project is accepted, on paper, to the faculty's research office; it is not uploaded with the application or sent to GA UK."
+        cs: "Pokud jsou v projektu plánované práce se zvířaty, nepoužívá se vyjádření Etické komise, ale formulář projektu pokusu. Přikládá se až k přijatému projektu v listinné podobě na vědecké oddělení fakulty; nevkládá se do aplikace a neposílá na GA UK."
+
+# ---------------------------------------------------------------------------
+# TIMETABLE (section 5 of the proposal)
+# ---------------------------------------------------------------------------
+timetable:
+  source: INFO_24
+  calendar_years: true
+  min_years: 1
+  first_funding_year: 2027
+  cs: "Uvádějte prosím časový harmonogram v souladu s kalendářním rokem (ne akademickým rokem) a v souladu s dobou řešení (ne s dobou Vašeho studia). Minimální délka řešení je jeden kalendářní rok."
+  en: "Give the timetable by calendar year (not academic year) and in line with the project's duration (not with the duration of your studies). The minimum duration is one calendar year."
+  example:
+    en: "For a one-year project in this round, the timetable runs from January to December 2027; a two-year project runs to December 2028, and so on."
+    cs: "U jednoletého projektu v tomto kole běží harmonogram od ledna do prosince 2027; u dvouletého do prosince 2028 a tak dále."
+
+# ---------------------------------------------------------------------------
+# BUDGET. All amounts in CZK, per project per calendar year.
+# ---------------------------------------------------------------------------
+budget:
+  currency: CZK
+  max_per_year: 300000                 # including overhead (Rector's Measure 31/2026, art. 5)
+  min_per_year: null
+  amounts_in_whole_thousands: true
+  duration_years: [1, 2, 3]
+  duration_locked_at_submission: true
+  duration_note:
+    en: "Duration is fixed when the application is submitted. It cannot be extended later, and funding for later years cannot be raised at continuation by more than 10 percent over the outlook given in the application."
+    cs: "Délka řešení je dána podáním přihlášky. Nelze ji později prodloužit a finance na další roky nelze v žádosti o pokračování navýšit o více než 10 % oproti finančnímu výhledu v přihlášce."
+  continuation_increase_max_pct: 10
+  overhead_pct: 15                     # a ceiling; the application computes it
+  overhead_auto_computed: true
+  caps:
+    wages_and_opc_per_project: 40000
+    wages_and_opc_per_supervisor: 20000
+    stipends_per_project: 160000
+    stipends_per_pi: 80000
+    per_person_wages_and_opc: 40000
+    per_person_stipends: 100000
+    per_person_combined: 100000
+  supervisor_recommended_pct_of_pi_stipend: 10   # a recommendation, not a limit
+  stipend_share_of_personnel_min_pct: 75
+  stipend_share_note:
+    en: "Strictly greater than 75 percent, not at least 75."
+    cs: "Ostře více než 75 %, nikoli alespoň 75 %."
+  table_must_match_text: true
+  table_must_match_text_note:
+    en: "The amounts in the budget table must match the amounts in the written justification. Where they differ, the table is what counts for funding."
+    cs: "Částky v tabulce finančních požadavků musí odpovídat částkám v textovém zdůvodnění. Pokud se liší, jsou pro financování relevantní částky v tabulce."
+  notes:
+    - en: "Amounts are entered in thousands of CZK, rounded to whole thousands."
+      cs: "Částky se zadávají v tisících korun a zaokrouhlují na celé tisíce."
+    - en: "A doctoral stipend (doktorské stipendium) may make up at most 25 percent of the stipend funds a doctoral student receives from the project (Rector's Measure 31/2026, art. 5(2)(c)). The limit applies to that type of stipend only, not to a doctoral student's research stipend."
+      cs: "Doktorské stipendium může u každého jednotlivého studenta doktorského studijního programu činit nejvýše 25 % stipendijních prostředků přidělených z projektu tomuto studentovi (opatření rektora č. 31/2026, čl. 5 odst. 2 písm. c). Limit se týká jen tohoto druhu stipendia, nikoli stipendia na výzkumnou činnost."
+    - en: "The recommended amount for the supervisor is 10 percent of the principal investigator's stipend; the cap remains 20 000 CZK."
+      cs: "Doporučená výše osobních nákladů pro školitele je 10 % stipendia hlavního řešitele; limit zůstává 20 000 Kč."
+    - en: "The principal investigator and student co-investigators are always paid by stipend. Travel costs are for student members; for the leader only in exceptional, well-justified cases. Students without an employment contract with the faculty cannot claim per diems, meals or pocket money."
+      cs: "Hlavní řešitel a studentští spoluřešitelé musí mít vždy stipendia. Pobytové náklady lze hradit studentským řešitelům; vedoucím jen ve zcela výjimečných a dobře zdůvodněných případech. Studentům bez pracovní smlouvy s fakultou nelze z pobytových nákladů hradit diety, stravné ani kapesné."
+    - en: "Conferences, workshops and schools are funded only with a declared active contribution. If several team members attend the same conference, each presents a different contribution. Placements may last at most six months."
+      cs: "Konference, workshopy a školy lze hradit pouze s deklarovaným aktivním výstupem. Pokud se konference účastní více členů týmu, každý musí prezentovat jiný příspěvek. Stáže lze hradit nejvýše do půl roku."
+    - en: "Justifying later years is required only where funding rises; a significant rise must be justified."
+      cs: "Zdůvodnění na další rok je požadováno, pouze pokud dojde k nárůstu finančních prostředků; významné navýšení je nutné zdůvodnit."
+
+ineligible_costs:
+  note:
+    en: "The list in the applicant guide. It is not exhaustive: costs not related to the project are never eligible."
+    cs: "Seznam z informací k podání přihlášky. Není vyčerpávající: náklady nesouvisející s projektem nejsou uznatelné nikdy."
+  items:
+    - id: unrelated
+      cs: "náklady nesouvisející s řešením projektu"
+      en: "costs unrelated to the work on the project"
+    - id: above_market
+      cs: "náklady, jejichž cena přesahuje cenu v místě a čase obvyklou"
+      en: "costs above the price usual in the place and time"
+    - id: assets_over_80k
+      cs: "dlouhodobý nehmotný a hmotný majetek s dobou použitelnosti delší než jeden rok a v ocenění vyšším než 80 000 Kč"
+      en: "intangible and tangible fixed assets with a useful life over one year and a value over 80 000 CZK"
+    - id: computers_unjustified
+      cs: "výpočetní techniku v neodůvodněných případech"
+      en: "computing equipment in unjustified cases"
+    - id: faculty_software
+      cs: "počítačové programy, které může poskytnout fakulta"
+      en: "software the faculty can provide"
+    - id: respondent_rewards
+      cs: "náklady na odměny či dárky pro respondenty"
+      en: "rewards or gifts for respondents"
+    - id: training
+      cs: "školení, kurzy a školné"
+      en: "training, courses and tuition"
+    - id: events
+      cs: "přípravu koncertů, výstav, konferencí atd."
+      en: "organising concerts, exhibitions, conferences and the like"
+    - id: incoming_travel
+      cs: "úhradu cestovného a pobytových nákladů pro přijíždějící osoby"
+      en: "travel and accommodation costs for incoming persons"
+    - id: catering
+      cs: "náklady na pohoštění, náklady na reprezentaci"
+      en: "catering and representation costs"
+    - id: passive_attendance
+      cs: "konference, workshopy a letní / zimní školy a stáže bez aktivní účasti"
+      en: "conferences, workshops, summer and winter schools and placements without active participation"
+
+# ---------------------------------------------------------------------------
+# WHAT THIS TOOL DOES NOT TREAT AS A FORMAL DEFECT. Neither the checker nor the
+# prompt reports any of these as a breach. Each is allowed by the published
+# document named in `basis`.
+# ---------------------------------------------------------------------------
+not_defects:
+  items:
+    - id: supervisor_over_recommendation
+      basis: INFO_24
+      en: "Supervisor personnel costs above 10 percent of the principal investigator's stipend, up to the 20 000 CZK cap. The 10 percent is a recommendation, so a higher amount wants a sentence of justification, not a correction."
+      cs: "Osobní náklady školitele nad 10 % stipendia hlavního řešitele, do limitu 20 000 Kč. Oněch 10 % je doporučení, takže vyšší částka potřebuje větu zdůvodnění, nikoli opravu."
+    - id: overhead_below_15
+      basis: INFO_24
+      en: "Overhead below exactly 15 percent: the application computes and rounds it."
+      cs: "Doplňkové náklady pod přesnými 15 %: aplikace je dopočítá a zaokrouhlí."
+    - id: overhead_unjustified
+      basis: INFO_24
+      en: "Overhead that is not justified in the text; it needs no justification."
+      cs: "Nezdůvodněné doplňkové náklady; zdůvodnění nepotřebují."
+    - id: later_years_justified
+      basis: INFO_24
+      en: "Later years justified in the budget text even where funding does not rise."
+      cs: "Zdůvodnění dalších let i v případě, že nedojde k nárůstu financí."
+    - id: tentative_conferences
+      basis: INFO_24
+      en: "Conferences named as ones under consideration, with estimated amounts."
+      cs: "Konference uvedené jako zvažované, s předpokládanými částkami."
+    - id: respondents_as_service
+      basis: INFO_24
+      en: "Respondents or probands paid as a service from other non-investment costs."
+      cs: "Respondenti či probandi hrazení z ostatních neinvestičních nákladů formou služeb."
+    - id: conference_fee_either_line
+      basis: FAQ_24
+      en: "A conference fee under either other non-investment costs or travel costs; faculties differ."
+      cs: "Konferenční poplatek z ostatních neinvestičních nákladů i z pobytových nákladů; záleží na fakultě."
+    - id: low_budget
+      basis: INFO_24
+      en: "A low budget as such: there is no minimum. Whether the money covers the planned work is a question of substance."
+      cs: "Nízký rozpočet sám o sobě: minimum určeno není. Zda peníze na plánovanou práci stačí, je otázka obsahu."
+    - id: section_choice
+      basis: INFO_24
+      en: "A section or group that fits imperfectly, which the subject board may change. A clearly wrong choice is still worth a sentence."
+      cs: "Ne zcela přesně zvolená sekce či skupina, kterou oborová rada může změnit. Zjevně chybná volba si přesto zaslouží zmínku."
+    - id: bachelor_stipend
+      basis: OR31_2026
+      en: "A bachelor's student on a stipend in a new application."
+      cs: "Bakalářský student se stipendiem v nové přihlášce."
+
+# ---------------------------------------------------------------------------
+# TEAM
+# ---------------------------------------------------------------------------
+team:
+  supervisor_mandatory_member: true
+  students_at_least_equal_to_nonstudents: true    # the application enforces the ratio
+  student_share_min_pct: 50
+  pi_must_receive_stipend: true
+  student_coinvestigators_must_receive_stipend: true
+  bachelor_students_count_as_students: true       # new applications, from round 24
+  bachelor_students_may_receive_stipends: true    # new applications only
+  other_university_students_count: false
+  note:
+    en: "Only members paid from personnel costs are listed in the team table; anyone not listed cannot be paid a wage, reward or stipend from the grant. From round 24, bachelor's students count as students in new applications and are paid by stipend. Students of other universities do not count as students."
+    cs: "Do tabulky řešitelského kolektivu se uvádějí pouze členové hrazení formou osobních nákladů; osobě, která v týmu není, nelze z grantu vyplatit mzdu, odměnu ani stipendium. Od 24. kola se u nových přihlášek evidují studenti bakalářských programů jako studenti hrazení formou stipendia. Student jiné vysoké školy se mezi studenty nepočítá."
+  caveat:
+    en: "The Grant Rules of 2016 count only doctoral and master's students for the student ratio; the round-24 guide counts bachelor's students in new applications. If this matters for your team, ask your faculty."
+    cs: "Grantový řád z roku 2016 počítá do poměru studentů jen studenty doktorských a magisterských programů; informace k 24. kolu u nových přihlášek započítávají i bakalářské studenty. Pokud to je pro váš tým důležité, obraťte se na fakultu."
+
+# ---------------------------------------------------------------------------
+# ELIGIBILITY. None of this is visible in the documents; the review lists it
+# as not checked every time.
+# ---------------------------------------------------------------------------
+eligibility:
+  visible_in_documents: false
+  rules:
+    - id: one_as_pi
+      en: "One application as principal investigator per round, and at most one running project as principal investigator at a time."
+      cs: "Nejvýše jedna přihláška v roli hlavního řešitele k danému termínu; souběžně lze v pozici hlavního řešitele řešit nejvýše jeden projekt."
+    - id: concurrency_ladder
+      en: "Participation in at most three projects at once: already on one project, at most two further applications; on two, at most one; on three, none. A project in its final year does not count."
+      cs: "Účast nejvýše na třech projektech současně: kdo se podílí na jednom, může být uveden nejvýše na dvou přihláškách; kdo na dvou, pouze na jedné; kdo na třech, na žádné. Končící projekt se nezapočítává."
+    - id: standard_period
+      en: "The applicant must be within the standard period of a master's or doctoral programme, full-time or combined. The project may be finished after the standard period runs out."
+      cs: "Navrhovatel musí být ve standardní době magisterského či doktorského studia, v prezenční nebo kombinované formě. Projekt lze dokončit i po překročení standardní doby studia."
+    - id: interrupted
+      en: "A student with interrupted studies cannot apply. Interrupted study does not count towards the standard period."
+      cs: "Student s přerušeným studiem nemůže podat přihlášku. Přerušené studium se do standardní doby studia nezapočítává."
+    - id: finishing_during
+      en: "The duration should fit the expected length of study. A project is cancelled if the applicant finishes studying before the results or before the contract is signed."
+      cs: "Délka řešení by měla odpovídat předpokládané délce studia. Pokud navrhovatel ukončí studium před vyhlášením výsledků či před podpisem smlouvy, projekt bude zrušen."
+
+# ---------------------------------------------------------------------------
+# LANGUAGE
+# ---------------------------------------------------------------------------
+language:
+  permitted: [cs, sk, en]
+  bilingual_in_cs_version: [title, annotation]
+  proposal_vs_form:
+    en_form_cs_proposal: advisory       # the guide: languages cannot be combined within one project
+    cs_form_en_proposal: advisory       # the same rule; the language is inferred, hence advisory
+  note:
+    en: "The application is written in Czech (or Slovak) or in English, using the matching version of the form, and one application cannot combine languages. In the Czech version the title and the annotation are given in both Czech and English. Opponents may be from abroad. English is recommended especially in sections B and C."
+    cs: "Přihláška se podává v češtině (slovenštině) nebo angličtině v odpovídající verzi formuláře a v rámci jednoho projektu nelze kombinovat jazyky. V české verzi se název a anotace uvádějí česky i anglicky. Oponenti mohou být i ze zahraničí. Anglický jazyk je doporučován zvláště v sekcích B a C."
+  recommended_en_in_sections: [B, C]
+
+sections:
+  items:
+    - id: A
+      cs: "společenské vědy"
+      en: "social sciences and humanities"
+      group_required: true
+    - id: B
+      cs: "přírodní vědy"
+      en: "natural sciences"
+      group_required: true
+      subgroup_required_for: [BIO]
+    - id: C
+      cs: "lékařské vědy"
+      en: "medical sciences"
+      group_required: true
+
+# ---------------------------------------------------------------------------
+# THE DECLARATION OF HONOUR, verbatim from the applicant guide. Two of its
+# clauses are things the tool must respect rather than merely check.
+# ---------------------------------------------------------------------------
+declaration_of_honour:
+  source: INFO_24
+  cs: >-
+    Prohlašuji, že jsem tuto přihlášku zpracoval/a samostatně a není mi známo, že by cíle
+    tohoto projektu byly shodné s jiným projektem financovaným/ucházejícím se o financování
+    GA UK či jinou grantovou agenturou. Beru na vědomí, že pokud dochází k tematické podobnosti
+    nebo návaznosti na probíhající či navrhovaný projekt, je třeba tuto skutečnost uvést a
+    vysvětlit v části "Další projekty řešené vedoucím a navrhovatelem". Seznámil/a jsem všechny
+    členy řešitelského kolektivu s obsahem navrhovaného projektu a jsem si vědom/a, že bez
+    svolení vedoucího projektu nesmí být text projektu poskytnut osobě mimo řešitelský kolektiv.
+  en_unofficial: >-
+    I declare that I prepared this application independently and that I am not aware of the
+    objectives of this project being identical to those of another project financed by, or
+    applying for financing from, GA UK or another grant agency. I acknowledge that where there
+    is thematic similarity to, or continuity with, an ongoing or proposed project, this must be
+    stated and explained in the section "Other projects run by the leader and the applicant".
+    I have acquainted all members of the team with the content of the proposed project and I am
+    aware that without the consent of the project leader the text of the project may not be
+    provided to a person outside the team.
+  operative_clauses:
+    - id: independent_preparation
+      en: "The application is prepared independently. This tool's policy follows from that: it points to problems in the text you wrote and never writes any of it. What other AI help is acceptable is a matter for the university's and your faculty's guidance."
+      cs: "Přihláška je zpracována samostatně. Z toho vychází zásada tohoto nástroje: upozorňuje na problémy v textu, který jste napsali, a sám nic nenapíše. Jaká další pomoc AI je přípustná, určují pokyny univerzity a vaší fakulty."
+    - id: no_text_outside_team
+      en: "The project text may not be given to a person outside the team without the project leader's consent. Whether to paste your text into a chat product is your decision; agree it with your leader first."
+      cs: "Text projektu nesmí být bez svolení vedoucího projektu poskytnut osobě mimo řešitelský kolektiv. Zda text vložíte do chatovacího nástroje, je vaše rozhodnutí; domluvte se na něm předem s vedoucím projektu."
+
+ai_use:
+  source: INFO_24
+  declaration_required: true
+  description_max_chars: 500
+  cs: "V přihlášce je nutné uvést, zda při přípravě projektu bylo použito umělé inteligence. Pokud navrhovatel uvede, že ano, zobrazí se kolonka, v které navrhovatel uvede, jakým způsobem a v jaké míře byla AI použita (max. 500 znaků). Informace neslouží jako kritérium hodnocení projektu."
+  en_unofficial: "The application must state whether artificial intelligence was used in preparing the project. If the applicant says yes, a field appears in which they state how and to what extent AI was used (at most 500 characters). The information is not used as a criterion for assessing the project."
+  university_template: "https://ai.cuni.cz/AI-81.html"

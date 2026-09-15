@@ -1,0 +1,30 @@
+# form.yml: the web-form fields of your GA UK application, for the local check.
+#
+# Copy this file into your application folder and fill in what you have. Leave
+# a field as "" if you do not have it yet: the check then lists it as not
+# checked, never as missing. Nothing in this file leaves your computer.
+#
+# Pole webového formuláře vaší přihlášky pro lokální kontrolu. Zkopírujte soubor
+# do složky s přihláškou a vyplňte, co máte. Pole, které zatím nemáte, nechte
+# jako "": kontrola ho uvede jako nekontrolované, nikdy jako chybějící.
+#
+# Multi-line text: put a | after the colon and indent the text by two spaces.
+# Víceřádkový text: za dvojtečku dejte | a text odsaďte o dvě mezery.
+
+form_language: ""          # cs or en: which version of the form you use / verze formuláře
+duration_years: ""         # 1, 2 or 3, as entered in the application / doba řešení
+
+annotation: ""             # Anotace
+objectives: ""             # Cíle projektu
+keywords: ""               # Klíčová slova
+team_characteristics: ""   # Charakteristika řešitelského kolektivu
+budget_justification: ""   # Struktura finančních požadavků (the text / text)
+other_projects: ""         # Další projekty řešené navrhovatelem, vedoucím či spoluřešiteli
+ai_used: ""                # yes or no: was AI used in preparing it? This review counts. / ano, nebo ne
+ai_description: ""         # Způsob a míra použití AI (only if ai_used is yes / jen při ano)
+
+# Budget figures for the first year, in CZK / Rozpočet na první rok v Kč
+budget_table: ""           # the amounts from the budget table, e.g. "80 000; 40 000"
+budget_total_year1: ""     # total requested, including overhead / celkem včetně doplňkových nákladů
+budget_wages: ""           # wages and other personnel costs / mzdy a ostatní osobní náklady
+budget_stipends: ""        # stipends / stipendia

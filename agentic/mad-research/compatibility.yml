@@ -1,0 +1,19 @@
+# The GA UK rubric in this folder was written against this state of mad-research.
+
+target_repo: tjhavranek/mad-research
+pinned_version: "v1.2.1"
+last_tested: null          # no end-to-end run on a GA UK application yet
+
+rubric_version: "1.1"
+
+overrides:
+  - file: rubric.md
+    source: agentic/mad-research/gauk_rubric_for_mad_research.md
+    purpose: "Replace the empirical-paper synthesis rubric with the GA UK rubric for one run."
+  - file: gauk_rubric_locked_en.md
+    source: dist/rubric_locked_en.md
+    purpose: "The verbatim criteria and the not-a-defect list the rubric refers to."
+
+upgrade_watchlist:
+  - "If mad-research adds front matter or new fields to rubric.md, update the GA UK rubric to match."
+  - "If mad-research adds an option for an external rubric, use it instead of replacing the file."

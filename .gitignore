@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+tests/fixtures/
+tests/out/
+gauk_output*/
+application_text.txt
+gauk_review.md
+.DS_Store
+Thumbs.db
