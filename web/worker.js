@@ -68,7 +68,14 @@ function abs(u) { return new URL(u, self.location.href).href; }
 function load(config) {
   if (ready) return ready;
   ready = (async function () {
-    var py = await loadPyodide({ indexURL: abs(config.index) });
+    // Say where everything comes from, rather than rely on Pyodide's
+    // defaults, which may point at a CDN.
+    var base = abs(config.index);
+    var py = await loadPyodide({
+      indexURL: base,
+      lockFileURL: base + "pyodide-lock.json",
+      packageBaseUrl: base
+    });
     await py.loadPackage(config.packages.concat(config.wheels.map(abs)));
     for (var i = 0; i < config.files.length; i++) {
       var f = config.files[i];
@@ -103,7 +110,11 @@ self.onmessage = async function (e) {
     });
     py.globals.set("FORM_JSON", JSON.stringify(m.form || {}));
     var out = py.runPython(RUN);
-    self.postMessage({ type: "result", report: out });
+    // Every host this worker downloaded anything from, so that the promise
+    // "from the same address as this page" can be checked, not just stated.
+    var hosts = {};
+    performance.getEntriesByType("resource").forEach(function (e) { hosts[new URL(e.name).host] = 1; });
+    self.postMessage({ type: "result", report: out, hosts: Object.keys(hosts) });
   } catch (err) {
     self.postMessage({ type: "error", message: String((err && err.message) || err).slice(0, 300) });
   }

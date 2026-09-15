@@ -274,6 +274,8 @@
     } else if (m.type === "result") {
       finish();
       report = JSON.parse(m.report);
+      // not shown; lets anyone confirm in the console where the worker downloaded from
+      document.documentElement.dataset.workerHosts = (m.hosts || []).join(" ");
       $("progress").textContent = t("done");
       renderReport();
       $("results").hidden = false;
