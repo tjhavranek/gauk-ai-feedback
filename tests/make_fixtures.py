@@ -305,10 +305,11 @@ def en_form_cs_proposal(base: Path):
 
 
 def accepted_variants(base: Path):
-    """Variants the published documents allow, all at once. Must produce no
-    finding at all.
+    """Variants the published documents allow, all at once, plus a Word draft
+    of the proposal. Must produce no finding at all.
 
-    - the proposal is still a Word draft (the checker reads it)
+    - the proposal is still a Word draft: the guide asks for PDF, so the
+      checker reads it and asks for the PDF under NOT CHECKED
     - an ethics committee statement in the ethics slot
     - the leader's CV lists exactly ten publications
     - supervisor pay of 20 000 CZK, above the 10 % recommendation

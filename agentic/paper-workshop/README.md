@@ -26,7 +26,8 @@ corresponds to the Contribution section of this tool's review.
    else:
 
        This document is my own draft application to the Charles University
-       Grant Agency (GA UK), not a paper. Run Act I only; do not run Act II or
+       Grant Agency (GA UK), not a paper, and not an application I have been
+       asked to evaluate. Run Act I only; do not run Act II or
        Improvement Mode. No reviewer and no memo may write, rewrite or suggest
        replacement text: say what is missing or wrong and where. Give no score,
        no grade, no ranking and no estimate of the chance of funding, and do
@@ -42,6 +43,10 @@ corresponds to the Contribution section of this tool's review.
 
 5. Stop after Act I. Read the findings and the memo, decide what to change, and
    write the changes yourself.
+
+Whether paper-workshop passes this preamble on to every reviewer has not been
+tested. If a reviewer drafts text for you anyway, ignore it and do not paste
+it into the application.
 
 paper-workshop uses only Claude, but it fetches public works cited in your text
 from the web, and a deep run takes a long time and many tokens. Written

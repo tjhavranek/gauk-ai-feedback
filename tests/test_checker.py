@@ -145,6 +145,16 @@ def main() -> int:
     found, amb = gc.assign_slots({n: Path(n) for n in ("navrh_v1.pdf", "navrh_v2.pdf")})
     check("two candidate proposals are reported as ambiguous, not guessed",
           "proposal" not in found and len(amb.get("proposal", [])) == 2, str(amb))
+    found, amb = gc.assign_slots({n: Path(n) for n in ("navrh_projektu.pdf",
+                                                       "zivotopis_navrhovatele.pdf")})
+    check("'navrhovatel' in a CV's name does not make it a proposal",
+          found.get("proposal") == Path("navrh_projektu.pdf")
+          and found.get("cv_pi") == Path("zivotopis_navrhovatele.pdf") and not amb,
+          f"{found} {amb}")
+    found, amb = gc.assign_slots({n: Path(n) for n in ("projekt.pdf",
+                                                       "proposal_bibliography.pdf")})
+    check("a bibliography named like the proposal is never taken for it",
+          "proposal" not in found, str(found))
     found, amb = gc.assign_slots({n: Path(n) for n in ("navrh.docx", "navrh.pdf")})
     check("a PDF and its Word draft are one attachment, and the PDF is used",
           found.get("proposal") == Path("navrh.pdf") and not amb, str(found))
@@ -167,6 +177,24 @@ def main() -> int:
         except gc.FormError:
             raised = True
         check("a broken form.yml raises FormError, not a traceback", raised)
+        yml = Path(tmp) / "form.yml"
+        yml.write_text("budget_wages: 20000\nbudget_stipends: 120.000\n"
+                       "budget_total_year1: 161000\nai_used: yes\n", encoding="utf-8")
+        form = gc.read_form(yml, None)
+        check("form.yml values stay text: 120.000 and yes survive unquoted",
+              form.get("budget_stipends") == "120.000" and form.get("ai_used") == "yes",
+              str(form))
+        index, criteria, rnd = gc.load_rules()
+        rep = gc.Report("t", 24, "x", False, "x")
+        gc._budget_rules(form, rnd, rep)
+        check("so a Czech thousands separator gives no false stipend-share breach",
+              not rep.findings and any("stipends" in m for m in rep.measured),
+              str([(f.rule, f.measured) for f in rep.findings]))
+        rep = gc.Report("t", 24, "x", False, "x")
+        gc._budget_rules({"budget_wages": "20", "budget_stipends": "120000"}, rnd, rep)
+        check("an amount that looks like thousands is UNKNOWN, not a breach",
+              not rep.findings and any("in thousands" in n for n in rep.not_checked),
+              str(rep.not_checked))
         csvf = Path(tmp) / "form.csv"
         csvf.write_text("annotation;keywords\nshort row\n", encoding="utf-8")
         check("a CSV row with a missing cell does not become the text 'None'",
@@ -214,6 +242,18 @@ def main() -> int:
     check("a quote running over two lines is joined and checked",
           verdicts('- **Quote:** "Fiktivní projekt se zabývá\n  modelovým problémem"')
           == ["exact"])
+    check("an altered second line of a quote is caught",
+          verdicts('- **Quote:** "Fiktivní projekt se zabývá\n  úplně jiným problémem"\n'
+                   '- **Type:** statement') == ["not_found"])
+    check("a Czech quote does not swallow the next fields or their quoted terms",
+          verdicts("- **Citace:** „Fiktivní projekt se zabývá modelovým problémem“\n"
+                   "- **Typ:** tvrzení\n"
+                   "- **Náprava:** doplňte „Metody odhadu panelových dat“") == ["exact"])
+    bare_review = ("## Findings\n\n### 1. First\n- **Quote:** \"Fiktivní projekt se "
+                   "zabývá\"\n\n### 2. Second\n- **Type:** omission\n\n## For your supervisor\n")
+    check("a finding without a quote is reported",
+          vq.findings_without_quote(bare_review) == ["2. Second"],
+          str(vq.findings_without_quote(bare_review)))
     two = "The first sentence says one thing. The second sentence says another."
     check("the pieces of an ellipsed quote must come in order",
           verdicts('- **Quote:** "The second sentence ... The first sentence"', two)

@@ -11,9 +11,11 @@ Version: 1.1 (GA UK round 24, for mad-research)
 Source: tjhavranek/gauk-ai-feedback v0.3.0
 Last verified: 2026-09-15 against the published round-24 documents.
 
-## Rules for every agent in this run
+## Rules for this run
 
-These bind every reviewer, every critic and the synthesis alike.
+mad-research gives this file to its synthesis step; its reviewers run on their
+own prompts. The rules below bind the synthesis memo, and the README asks the
+user to give them to the whole run when starting it.
 
 - The document is the user's own draft application to the Charles University
   Grant Agency (GA UK). If it turns out to be someone else's application that

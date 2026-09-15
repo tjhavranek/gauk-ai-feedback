@@ -1,6 +1,6 @@
 <!-- VYGENEROVÁNO tools/build.py. TENTO SOUBOR NEUPRAVUJTE.
      Upravte rules/round24.yml, rules/criteria.yml nebo src/prompt_body_cs.md a spusťte build znovu.
-     zdroje INDEX:f5ca217dc72b body_cs:dedea80e0eef body_en:8a929b62c8a5 build:4acd2e8606b6 criteria:caf8b8ad6dbe round:beb7b442c216 -->
+     zdroje INDEX:f5ca217dc72b body_cs:91e8b6a56050 body_en:3bfc309c1a5f build:4acd2e8606b6 criteria:caf8b8ad6dbe round:c391dc7ef600 -->
 
 ```text
 VERZE PRAVIDEL: GA UK, 24. kolo, přepsáno 2026-09-15 ze zveřejněných dokumentů 24. kola.
@@ -287,8 +287,7 @@ JAZYK PŘIHLÁŠKY
   Přihláška se podává v češtině (slovenštině) nebo angličtině v
   odpovídající verzi formuláře a v rámci jednoho projektu nelze
   kombinovat jazyky. V české verzi se název a anotace uvádějí česky i
-  anglicky. Oponenti mohou být i ze zahraničí. Anglický jazyk je
-  doporučován zvláště v sekcích B a C.
+  anglicky. Anglický jazyk je doporučován zvláště v sekcích B a C.
 ```
 
 ```text

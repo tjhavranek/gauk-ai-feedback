@@ -193,6 +193,7 @@ timetable:
   example:
     en: "For a one-year project in this round, the timetable runs from January to December 2027; a two-year project runs to December 2028, and so on."
     cs: "U jednoletého projektu v tomto kole běží harmonogram od ledna do prosince 2027; u dvouletého do prosince 2028 a tak dále."
+  example_source: "OR31_2026, art. 5(1): funds are granted for one calendar year at a time"
 
 # ---------------------------------------------------------------------------
 # BUDGET. All amounts in CZK, per project per calendar year.
@@ -380,8 +381,8 @@ language:
     en_form_cs_proposal: advisory       # the guide: languages cannot be combined within one project
     cs_form_en_proposal: advisory       # the same rule; the language is inferred, hence advisory
   note:
-    en: "The application is written in Czech (or Slovak) or in English, using the matching version of the form, and one application cannot combine languages. In the Czech version the title and the annotation are given in both Czech and English. Opponents may be from abroad. English is recommended especially in sections B and C."
-    cs: "Přihláška se podává v češtině (slovenštině) nebo angličtině v odpovídající verzi formuláře a v rámci jednoho projektu nelze kombinovat jazyky. V české verzi se název a anotace uvádějí česky i anglicky. Oponenti mohou být i ze zahraničí. Anglický jazyk je doporučován zvláště v sekcích B a C."
+    en: "The application is written in Czech (or Slovak) or in English, using the matching version of the form, and one application cannot combine languages. In the Czech version the title and the annotation are given in both Czech and English. English is recommended especially in sections B and C."
+    cs: "Přihláška se podává v češtině (slovenštině) nebo angličtině v odpovídající verzi formuláře a v rámci jednoho projektu nelze kombinovat jazyky. V české verzi se název a anotace uvádějí česky i anglicky. Anglický jazyk je doporučován zvláště v sekcích B a C."
   recommended_en_in_sections: [B, C]
 
 sections:

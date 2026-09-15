@@ -234,7 +234,10 @@ def read_form(path: Path, mapping: dict | None) -> dict:
     suffix = path.suffix.lower()
     try:
         if suffix in (".yml", ".yaml"):
-            data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+            # BaseLoader keeps every value as the text the student typed: an
+            # unquoted 120.000 stays "120.000" rather than becoming 120.0, and
+            # yes stays "yes" rather than becoming True
+            data = yaml.load(path.read_text(encoding="utf-8"), Loader=yaml.BaseLoader) or {}
             if not isinstance(data, dict):
                 raise FormError("the file is not a list of 'field: value' lines")
             return {str(k): str(v) for k, v in data.items()
@@ -481,11 +484,14 @@ def section_lines(text: str, criteria: dict) -> tuple[list[str], dict[int, int]]
 # the rules
 # --------------------------------------------------------------------------
 
+# Regular expressions over the folded file name. "navrh" must not match the
+# word for applicant, navrhovatel, which belongs to the PI's CV.
 WANTED = {
-    "proposal": ("navrh", "proposal"),
-    "cv_pi": ("cv_resitel", "cv_pi", "zivotopis_resitel", "zivotopis_hlavniho"),
+    "proposal": (r"navrh(?!ovatel)", "proposal"),
+    "cv_pi": ("cv_resitel", "cv_pi", "zivotopis_resitel", "zivotopis_hlavniho",
+              "navrhovatel"),
     "cv_supervisor": ("cv_vedouci", "cv_supervisor", "zivotopis_vedouci"),
-    "references": ("literatura", "references", "odkazy"),
+    "references": ("literatura", "references", "odkazy", "bibliograph"),
 }
 # A file named for the ethics committee statement is not an extra attachment.
 ETHICS_SLOT = ("etick", "etik", "ethic")
@@ -502,7 +508,7 @@ def assign_slots(files: dict[str, Path]) -> tuple[dict[str, Path], dict[str, lis
     """
     def slots_of(name: str) -> list[str]:
         n = fold(name).replace(" ", "_")
-        return [k for k, stems in WANTED.items() if any(s in n for s in stems)]
+        return [k for k, stems in WANTED.items() if any(re.search(s, n) for s in stems)]
 
     by_slot: dict[str, list[Path]] = {k: [] for k in WANTED}
     multi: list[tuple[Path, list[str]]] = []
@@ -545,7 +551,8 @@ def run_rules(app: Path, form: dict, rnd: dict, criteria: dict, rep: Report) -> 
             confirm = ("rename the files so that each name fits one attachment "
                        "only, then run the check again")
         else:
-            measured = f"no file whose name contains {' or '.join(WANTED[key])}"
+            words = " or ".join(s.split("(")[0] for s in WANTED[key])
+            measured = f"no file whose name contains {words}"
             confirm = "list the folder; the file may simply be named differently"
         rep.add(Finding(
             rule="R01_ATTACHMENT_SET", kind=UNKNOWN, where=f"{app.name}/",
@@ -602,10 +609,11 @@ def run_rules(app: Path, form: dict, rnd: dict, criteria: dict, rep: Report) -> 
             continue
 
         if facts["format"] != "pdf":
-            if limit:
-                rep.not_checked.append(
-                    f"page count of {path.name}: a Word draft. The guide asks for "
-                    f"PDF attachments; convert it and run the check again")
+            rep.not_checked.append(
+                f"{path.name} is a Word file. The guide asks for PDF attachments; "
+                f"convert it before uploading"
+                + (" and run the check again, since its page count is not checked"
+                   if limit else ""))
         elif limit and facts.get("pages", 0) > limit:
             rep.add(Finding(
                 rule="R03_PAGE_LIMIT", kind=BLOCKING, where=path.name,
@@ -660,7 +668,7 @@ def run_rules(app: Path, form: dict, rnd: dict, criteria: dict, rep: Report) -> 
 
     # -- R18 AI use declared but not described ------------------------------
     used = fold(form.get("ai_used", "")).strip()
-    if used in ("yes", "y", "ano", "a") and not form.get("ai_description", "").strip():
+    if used in ("yes", "y", "true", "ano", "a") and not form.get("ai_description", "").strip():
         rep.add(Finding(
             rule="R18_AI_DESCRIPTION", kind=ADVISORY, where="form: AI use",
             measured="AI use is declared, but the form file has no description",
@@ -820,7 +828,7 @@ def _timetable_rule(path, lines, heads, form, rnd, rep) -> None:
             expected=f"calendar years from {first}, matching the duration entered; "
                      f"a one-year project runs January to December {first}",
             confirm="read the timetable; a year cited for another reason is fine",
-            source=SRC_INFO))
+            source=f"{SRC_INFO}; {SRC_OR}, art. 5(1)"))
 
 
 def _publication_list_rule(path, facts, rnd, rep) -> None:
@@ -887,6 +895,11 @@ def _budget_rules(form, rnd, rep) -> None:
         n = parse_amount(v)
         if n is None:
             unreadable.append(f"{key} = {str(v)[:30]!r}")
+        elif 0 < n < 1000:
+            # the application's own table is in thousands; 120 is probably
+            # 120 000 CZK, and guessing would risk a breach that is not there
+            unreadable.append(f"{key} = {str(v)[:30]!r} (in thousands? enter whole CZK)")
+            return None
         return n
 
     total = num("budget_total_year1")

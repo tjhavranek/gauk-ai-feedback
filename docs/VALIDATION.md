@@ -14,7 +14,7 @@ their text is placeholder filler.
 | F005 | Czech version of the form, English proposal | one advisory |
 | F006 | a proposal with no text layer | UNKNOWN, never a breach; the page count is still checked |
 | F007 | English version of the form, Czech proposal | one advisory |
-| F008 | a Word draft, an ethics committee statement, a leader's CV with exactly ten publications, supervisor pay above the 10 % recommendation, respondents paid as a service, a conference with a poster | no finding |
+| F008 | a Word draft of the proposal, which the checker reads and asks to have converted to PDF, an ethics committee statement, a leader's CV with exactly ten publications, supervisor pay above the 10 % recommendation, respondents paid as a service, a conference with a poster | no finding |
 | F009 | a timetable in academic years that names 2026 and 2028 | one advisory |
 | F010 | a leader's CV with twelve publications | one advisory |
 

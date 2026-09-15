@@ -23,7 +23,8 @@ other_projects: ""         # Další projekty řešené navrhovatelem, vedoucím
 ai_used: ""                # yes or no: was AI used in preparing it? This review counts. / ano, nebo ne
 ai_description: ""         # Způsob a míra použití AI (only if ai_used is yes / jen při ano)
 
-# Budget figures for the first year, in CZK / Rozpočet na první rok v Kč
+# Budget figures for the first year, in whole CZK, not thousands
+# Rozpočet na první rok v celých korunách, ne v tisících
 budget_table: ""           # the amounts from the budget table, e.g. "80 000; 40 000"
 budget_total_year1: ""     # total requested, including overhead / celkem včetně doplňkových nákladů
 budget_wages: ""           # wages and other personnel costs / mzdy a ostatní osobní náklady
