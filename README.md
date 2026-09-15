@@ -15,6 +15,19 @@ and whether the methods and the time requested can deliver it.
 > whether you will be funded, and it never writes any part of your
 > application. Read [DISCLOSURE.md](DISCLOSURE.md) before using it.
 
+Česky: [README.cs.md](README.cs.md).
+
+## Quick start
+
+1. Ask your project leader whether you may paste the draft into a chatbot
+   (see [Before you paste anything](#before-you-paste-anything)).
+2. Open the prompt in [English](dist/prompt_en.md) or [Czech](dist/prompt_cs.md)
+   and click the copy icon in the top right corner of the grey box.
+3. Paste it into a new chat in any chatbot, then paste your draft after it.
+
+That is all most students need. The rest of this page explains the review,
+the local formal check and the agentic route.
+
 ## Three ways to use it
 
 You need nothing but a chatbot for the first. The other two are for students
@@ -133,7 +146,8 @@ that you prepared the application independently. The review says what is
 missing and where it belongs; you write it.
 
 It is not for evaluators. Opponents, rapporteurs, board members and faculty
-officers must not use it on applications they assess.
+officers must not use it on applications they assess. Faculty and GA UK staff
+are welcome to point students to it before the faculty deadline.
 
 ## The AI declaration
 

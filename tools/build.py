@@ -635,15 +635,19 @@ def header(lang: str, hashes: dict[str, str]) -> str:
 PROMPT_INTRO = {
     "en": (
         "# GA UK pre-submission review: the prompt\n\n"
-        "Unofficial. Copy everything from `=== PROMPT BEGIN ===` to "
-        "`=== PROMPT END ===` into a new chat, then paste your draft after it. "
-        "See the README for how to use it and what it will not do.\n\n"
+        "Unofficial. On GitHub, click the copy icon in the top right corner of "
+        "the grey box below; it copies everything from `=== PROMPT BEGIN ===` "
+        "to `=== PROMPT END ===`. Paste it into a new chat, then paste your "
+        "draft after it. The [README](../README.md) explains how to use it and "
+        "what it will not do.\n\n"
     ),
     "cs": (
         "# Kontrola přihlášky GA UK před podáním: zadání pro chatbota\n\n"
-        "Neoficiální. Zkopírujte vše od `=== PROMPT BEGIN ===` po "
-        "`=== PROMPT END ===` do nového chatu a za to vložte svůj návrh. "
-        "Jak ji používat a co nedělá, popisuje README.\n\n"
+        "Neoficiální. Na GitHubu klikněte na ikonu kopírování vpravo nahoře v "
+        "šedém rámečku níže; zkopíruje vše od `=== PROMPT BEGIN ===` po "
+        "`=== PROMPT END ===`. Vložte to do nového chatu a za to vložte svůj "
+        "návrh. Jak kontrolu používat a co nedělá, popisuje "
+        "[README.cs.md](../README.cs.md).\n\n"
     ),
 }
 

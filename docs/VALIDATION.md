@@ -29,8 +29,10 @@ quote whose ellipsed pieces are out of order and a quote too short to place;
 that the generated prompts match their sources; and that no personal path or
 email address has entered a published file. It runs on every push.
 
-What the tests cannot show is whether the substantive review helps. That needs
-real applications and the judgement of the students who wrote them and the
-supervisors who read them. If you used the tool, a short issue saying whether a
+What the tests cannot show is whether the tool helps. That needs real
+applications and the judgement of the students who wrote them and the
+supervisors who read them. The next step is a small retrospective: with the
+authors' consent, run the check on applications that had to be corrected, and
+count how many of the real problems it finds and how many it invents. If you used the tool, a short issue saying whether a
 finding helped, or was wrong, is the most useful thing you can send. Describe
 the finding; do not paste your text.
