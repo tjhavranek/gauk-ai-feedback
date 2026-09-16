@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import shutil
 import sys
 import tempfile
@@ -95,6 +96,7 @@ L = {
             "it as a point of substance."
         ),
         "team_head": "THE TEAM",
+        "reminders_head": "REMINDERS BEFORE SUBMITTING",
         "language_head": "LANGUAGE OF THE APPLICATION",
         "up_to": "up to {n}",
         "if_applicable": "only if it applies",
@@ -147,6 +149,7 @@ L = {
             "práci, uveďte to jako věcnou připomínku."
         ),
         "team_head": "ŘEŠITELSKÝ KOLEKTIV",
+        "reminders_head": "PŘIPOMÍNKY PŘED PODÁNÍM",
         "language_head": "JAZYK PŘIHLÁŠKY",
         "up_to": "nejvýše {n}",
         "if_applicable": "jen pokud se vás týká",
@@ -241,6 +244,12 @@ def validate(criteria: dict, rnd: dict) -> list[str]:
     for key in ("note", "caveat"):
         want_both(rnd["team"][key], f"round.team.{key}")
     want_both(rnd["language"]["note"], "round.language.note")
+    for it in rnd.get("reminders", {}).get("items", []):
+        want_both(it, f"round.reminders.{it.get('id')}")
+        for sid in re.findall(r"[A-Z][A-Z0-9]*_[A-Z0-9_]+", it.get("basis", "")):
+            if sid not in ids:
+                problems.append(f"round.reminders.{it.get('id')}: basis "
+                                f"'{sid}' is not a defined source")
     for f in rnd["form_fields"]["fields"]:
         want_both(f, f"round.form_fields.{f['id']}")
 
@@ -468,6 +477,12 @@ def r_team(index, criteria, rnd, lang) -> str:
     return "\n".join(out)
 
 
+def r_reminders(index, criteria, rnd, lang) -> str:
+    out = [L[lang]["reminders_head"], ""]
+    out += _bullets([_t(it, lang) for it in rnd["reminders"]["items"]])
+    return "\n".join(out)
+
+
 def r_language(index, criteria, rnd, lang) -> str:
     out = [L[lang]["language_head"], ""]
     out += ["  " + w for w in _wrap(_t(rnd["language"]["note"], lang), 68)]
@@ -588,6 +603,7 @@ RENDERERS = {
     "round24.team": r_team,
     "round24.language": r_language,
     "round24.eligibility_not_checked": r_not_checked,
+    "round24.reminders": r_reminders,
 }
 
 RUBRIC_BLOCKS = (
@@ -765,7 +781,6 @@ def prompt_text(index, criteria, rnd, lang: str) -> str:
 
 def site_problems(strings: dict) -> list[str]:
     """Every text the page shows must exist in both languages."""
-    import re
     problems = []
     cs, en = set(strings["cs"]), set(strings["en"])
     problems += [f"'{k}' only in Czech" for k in sorted(cs - en)]
@@ -834,6 +849,8 @@ def build_site(target: Path, vendor: bool = False) -> None:
                  "sunset": str(index["sunset_on"])},
         "fieldNames": {f["en"]: f["cs"] for f in rnd["form_fields"]["fields"]},
         "attachNames": {a["en_name"]: a["cs_name"] for a in rnd["attachments"]["items"]},
+        "reminders": {lang: [_t(it, lang) for it in rnd["reminders"]["items"]]
+                      for lang in LANGS},
         "pyodide": {
             "index": "pyodide/",
             # pycryptodome lets pypdf open AES-encrypted PDFs, including ones

@@ -585,6 +585,7 @@ def run_rules(app: Path, form: dict, rnd: dict, criteria: dict, rep: Report) -> 
     # -- R02..R04 file size, pages, page size ------------------------------
     max_mb = rnd["attachments"]["max_file_size_mb"]
     facts_by_key: dict[str, dict] = {}
+    cv_texts: dict[str, str] = {}
     for key, path in found.items():
         facts = attachment_facts(path)
         facts_by_key[key] = facts
@@ -642,6 +643,8 @@ def run_rules(app: Path, form: dict, rnd: dict, criteria: dict, rep: Report) -> 
 
         if "text_error" in facts:
             continue
+        if key in ("cv_pi", "cv_supervisor"):
+            cv_texts[key] = facts.get("text", "")
         if key == "proposal":
             _proposal_rules(path, facts, form, rnd, criteria, rep)
         if key == "cv_supervisor":
@@ -680,6 +683,10 @@ def run_rules(app: Path, form: dict, rnd: dict, criteria: dict, rep: Report) -> 
             expected="how and to what extent AI was used, in at most 500 characters",
             confirm="the AI field in the application; using this review counts",
             source=SRC_INFO))
+
+    # -- R19 projects in the CVs that the other-projects field leaves out ----
+    other_projects_rule(form, cv_texts, rep,
+                        year=int(str(rnd["calendar"]["application_opens"])[:4]))
 
     # -- R06 budget arithmetic ---------------------------------------------
     _budget_rules(form, rnd, rep)
@@ -837,6 +844,75 @@ def _timetable_rule(path, lines, heads, form, rnd, rep) -> None:
                      f"a one-year project runs January to December {first}",
             confirm="read the timetable; a year cited for another reason is fine",
             source=f"{SRC_INFO}; {SRC_OR}, art. 5(1)"))
+
+
+# Funders whose name in a CV usually means a project. A funder's own programmes
+# (EXPRO under GA ČR, ERC under Horizon Europe) count as that funder, so that a
+# project named one way in the CV and another way in the field is not asked
+# about. Matched on folded text, so diacritics and capitals do not matter.
+FUNDERS = (
+    ("GA ČR", r"\bga ?cr\b|grantov\w* agentur\w* ceske republiky|czech science foundation|"
+              r"grant agency of the czech republic|\bexpro\b|\bjunior star\b"),
+    ("TA ČR", r"\bta ?cr\b|technologick\w* agentur\w* ceske republiky|"
+              r"technology agency of the czech republic"),
+    ("AZV", r"\bazv\b|agentur\w* pro zdravotnick\w* vyzkum"),
+    ("GA UK", r"\bga ?uk\b|grantov\w* agentur\w* univerzity karlovy|"
+              r"grant agency of charles university|charles university grant agency"),
+    ("PRIMUS", r"\bprimus\b"),
+    ("Cooperatio", r"\bcooperatio\b"),
+    ("UNCE", r"\bunce\b"),
+    ("EU framework programmes (ERC, MSCA, Horizon)",
+     r"\berc\b|european research council|\bhorizon ?(2020|europe)\b|\bh2020\b|"
+     r"marie sklodowsk|\bmsca\b"),
+)
+
+# A CV line that names a funder only as the place of a review or panel role.
+REVIEW_ROLE = r"review|referee|evaluator|panel|hodnotitel|oponent|recenz|posuzovatel"
+YEAR_RANGE = r"(?<!\d)((?:19|20)\d{2})\s*[-–—]\s*((?:19|20)\d{2}|\d{2})(?!\d)"
+
+
+def _ended_before(line: str, year: int) -> bool:
+    """True if every year range on the line ends before `year`."""
+    ends = []
+    for m in re.finditer(YEAR_RANGE, line):
+        end = m.group(2)
+        ends.append(int(end) if len(end) == 4 else int(m.group(1)[:2] + end))
+    return bool(ends) and max(ends) < year
+
+
+def other_projects_rule(form: dict, cv_texts: dict, rep, year: int = 2026) -> None:
+    """R19: a funder named in a CV that the other-projects field never names.
+
+    The field must list every project the applicant or the leader takes part in
+    at the time of applying, from any funder. A CV also lists finished
+    projects, which need nothing unless related, so this can only ask. Lines
+    naming a funder only as the place of a review role, and lines whose year
+    ranges all end before the year of applying, are left out.
+    Runs only when the form file has the field and a CV has text.
+    """
+    if "other_projects" not in form or not cv_texts:
+        return
+    field = fold(form.get("other_projects", ""))
+    missing = []
+    for key, who in (("cv_supervisor", "the leader's CV"),
+                     ("cv_pi", "the principal investigator's CV")):
+        # split before folding: fold() collapses line breaks
+        lines = [ln for ln in map(fold, cv_texts.get(key, "").splitlines())
+                 if not re.search(REVIEW_ROLE, ln) and not _ended_before(ln, year)]
+        text = "\n".join(lines)
+        names = [name for name, pat in FUNDERS
+                 if re.search(pat, text) and not re.search(pat, field)]
+        if names:
+            missing.append(f"{who} mentions {', '.join(names)}")
+    if missing:
+        rep.add(Finding(
+            rule="R19_OTHER_PROJECTS", kind=ADVISORY, where="form: other projects",
+            measured="; ".join(missing) + "; the other projects field does not",
+            expected="every project you or your leader take part in at the time "
+                     "of applying, from any funder, and how it relates to this one",
+            confirm="list the ones running now; a finished project unrelated to "
+                    "this one needs nothing",
+            source=SRC_INFO))
 
 
 def _publication_list_rule(path, facts, rnd, rep) -> None:

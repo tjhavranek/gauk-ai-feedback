@@ -13,10 +13,10 @@
 
 schema_version: 3
 round: 24
-verified_on: 2026-09-15
+verified_on: 2026-09-16
 official_review: none         # no GA UK or university body has reviewed this file
 
-sources: [OR31_2026, OR30_2026, INFO_24, PRAKT_24, FAQ_24, INFO_PDF_23]
+sources: [OR31_2026, OR30_2026, INFO_24, PRAKT_24, FAQ_24, INFO_PDF_23, INFO_22, FINAL_CRITERIA]
 
 # ---------------------------------------------------------------------------
 # CALENDAR (Rector's Measure 30/2026)
@@ -69,8 +69,9 @@ form_fields:
       min: 50
       max: 750
       note:
-        en: "Describe the team members who are paid from personnel costs. Do not name anyone who is not in the team table."
-        cs: "Uveďte členy řešitelského kolektivu hrazené formou osobních nákladů. Jiné osoby než ty, které jsou v tabulce řešitelského kolektivu, neuvádějte."
+        en: "Describe the team members who are paid from personnel costs: for each, the leader included, the department and their part in the project, and for a student the year of study. Do not name anyone who is not in the team table."
+        cs: "Uveďte členy řešitelského kolektivu hrazené formou osobních nákladů: u každého, včetně vedoucího, pracoviště a náplň v projektu, u studenta i ročník studia. Jiné osoby než ty, které jsou v tabulce řešitelského kolektivu, neuvádějte."
+      note_source: "INFO_24; the year of study and the department: INFO_22"
     - id: budget_justification
       cs: "Struktura finančních požadavků"
       en: "Structure of the financial requirements"
@@ -241,6 +242,10 @@ budget:
       cs: "Konference, workshopy a školy lze hradit pouze s deklarovaným aktivním výstupem. Pokud se konference účastní více členů týmu, každý musí prezentovat jiný příspěvek. Stáže lze hradit nejvýše do půl roku."
     - en: "Justifying later years is required only where funding rises; a significant rise must be justified."
       cs: "Zdůvodnění na další rok je požadováno, pouze pokud dojde k nárůstu finančních prostředků; významné navýšení je nutné zdůvodnit."
+    - en: "The outlook for later years is entered with overhead included. At continuation it can be raised by at most 10 percent, so overhead left out of the outlook cannot be fully added later."
+      cs: "Finanční výhled na další roky se zadává včetně doplňkových nákladů. V žádosti o pokračování ho lze navýšit nejvýše o 10 %, takže chybějící doplňkové náklady už později celé nedoplníte."
+    - en: "Funds are granted for one calendar year and cannot be carried over to the next, so a trip or conference planned for a later year belongs in that year's budget."
+      cs: "Finance se přidělují vždy na jeden kalendářní rok a nelze je přesouvat do dalšího roku, takže cesta či konference plánovaná na pozdější rok patří do rozpočtu toho roku."
 
 ineligible_costs:
   note:
@@ -400,6 +405,40 @@ sections:
       cs: "lékařské vědy"
       en: "medical sciences"
       group_required: true
+
+# ---------------------------------------------------------------------------
+# REMINDERS: a short fixed list printed once at the end of every review and
+# shown under the result of the file check. Each point is easy to miss, cannot
+# be settled from the files alone, and rests on the published document named
+# in `basis`. They are reminders, not findings: a review raises a finding only
+# where the pasted text shows the problem.
+# ---------------------------------------------------------------------------
+reminders:
+  items:
+    - id: timetable_calendar
+      basis: "INFO_24; OR31_2026, art. 5(1)"
+      en: "Timetable: every year of the project runs from January to December, so a one-year project runs from January to December 2027."
+      cs: "Harmonogram: každý rok řešení běží od ledna do prosince, jednoletý projekt tedy od ledna do prosince 2027."
+    - id: team_field
+      basis: "INFO_24; INFO_22"
+      en: "The team characteristics field in the form (not the team table): for each member, the leader included, give the department and their part in the project, and for a student the year of study. People who are not in the team table belong only in the proposal, with a word on how they are paid, if at all."
+      cs: "Pole Charakteristika řešitelského kolektivu ve formuláři (ne tabulka týmu): u každého člena včetně vedoucího uveďte pracoviště a náplň v projektu, u studenta i ročník studia. Kdo není v tabulce týmu, patří jen do návrhu projektu, s poznámkou, zda a jak je hrazen."
+    - id: budget_text
+      basis: "INFO_24"
+      en: "Budget justification: the amounts match the table. Travel is set out trip by trip or conference by conference, each with an estimated amount, also for conferences you are only considering. A trip or conference belongs in the budget of the year it takes place, and for a trip, stay or service you ask no money for, say who pays."
+      cs: "Zdůvodnění rozpočtu: částky odpovídají tabulce. Pobytové náklady jsou rozepsané po jednotlivých cestách či konferencích s odhadem částky, i u konferencí, o kterých teprve uvažujete. Cesta či konference patří do rozpočtu roku, kdy se koná, a u cesty, pobytu nebo služby, na které peníze nežádáte, uveďte, kdo je zaplatí."
+    - id: outlook_overhead
+      basis: "INFO_24"
+      en: "Later years: the outlook is entered with overhead included and can be raised at continuation by at most 10 percent. Explain a significant rise."
+      cs: "Další roky: finanční výhled se zadává včetně doplňkových nákladů a v žádosti o pokračování ho lze navýšit nejvýše o 10 %. Významný nárůst zdůvodněte."
+    - id: other_projects
+      basis: "INFO_24"
+      en: "Other projects: list every project you and your leader take part in at the time of applying, from any funder, and compare the field with both CVs."
+      cs: "Další projekty: uveďte všechny projekty, na kterých se vy a váš vedoucí v době podání podílíte, od jakéhokoli poskytovatele, a porovnejte pole s oběma životopisy."
+    - id: results_publication
+      basis: "FINAL_CRITERIA"
+      en: "Planned results: a finished project is assessed on original publications accepted for print (or a patent), against what the proposal planned. Choose a duration in which that is realistic."
+      cs: "Plánované výsledky: dokončený projekt se posuzuje podle původních publikací přijatých do tisku (případně patentu) a podle toho, co návrh plánoval. Délku řešení volte tak, aby to bylo reálné."
 
 # ---------------------------------------------------------------------------
 # THE DECLARATION OF HONOUR, verbatim from the applicant guide. Two of its

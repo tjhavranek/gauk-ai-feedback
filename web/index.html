@@ -169,6 +169,12 @@
       <label class="field" id="ai-desc-field" hidden><span data-t="ai_desc"></span><textarea id="f-ai-desc" rows="3"></textarea></label>
     </details>
 
+    <details class="more">
+      <summary data-t="other_summary"></summary>
+      <label class="field"><span data-t="other_label"></span><textarea id="f-other" rows="4"></textarea></label>
+      <p class="hint" data-t="other_hint"></p>
+    </details>
+
     <div class="row">
       <button type="button" class="btn btn-big" id="run" data-t="run"></button>
       <button type="button" class="linkish" id="clear" data-t="clear_all"></button>
@@ -183,6 +189,7 @@
       <div id="findings"></div>
       <details class="list" open><summary data-t="res_notchecked"></summary><ul id="notchecked"></ul></details>
       <details class="list"><summary data-t="res_measured"></summary><ul id="measured"></ul></details>
+      <details class="list" open><summary data-t="res_reminders"></summary><ul id="reminders"></ul></details>
       <div class="row">
         <button type="button" class="btn" id="copy-result" data-t="copy_result"></button>
         <a class="dl" id="dl-result" href="#" download="gauk_formal_check.txt" data-t="download_result"></a>

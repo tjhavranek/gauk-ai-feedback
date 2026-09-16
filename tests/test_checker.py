@@ -159,6 +159,43 @@ def main() -> int:
     check("a PDF and its Word draft are one attachment, and the PDF is used",
           found.get("proposal") == Path("navrh.pdf") and not amb, str(found))
 
+    print("\nprojects in the CVs against the other-projects field")
+    cv = {"cv_supervisor": "Projekty:\nŘešitel projektu GA ČR 25-01234S (2025–2027)\n"
+                           "Člen výzkumné skupiny Cooperatio",
+          "cv_pi": "Účast na konferenci, stipendium, bez projektů."}
+    for label, texts, form, expect in (
+            ("a funder in the leader's CV that the field leaves out is asked about",
+             cv, {"other_projects": "Žádné další projekty."}, {"GA ČR", "Cooperatio"}),
+            ("a funder the field names is not asked about, in any spelling",
+             cv, {"other_projects": "Vedoucí: GAČR 25-01234S, blízké téma; skupina COOPERATIO."},
+             set()),
+            ("a project the field gives under its English name is not asked about",
+             {"cv_pi": "Principal investigator, GA UK 123456 (2026-2027)"},
+             {"other_projects": "Charles University Grant Agency 123456, a related topic"},
+             set()),
+            ("a funder's own programme counts as that funder",
+             {"cv_supervisor": "PI, GA CR EXPRO 23-12345X (2023-2027)"},
+             {"other_projects": "GA CR 23-12345X, unrelated"}, set()),
+            ("a funder's English name in a CV is recognised",
+             {"cv_supervisor": "Member of a Charles University Grant Agency project (2026-2028)"},
+             {"other_projects": "None."}, {"GA UK"}),
+            ("a review or panel role is not a project",
+             {"cv_supervisor": "Reviewer for the Czech Science Foundation\n"
+                               "ERC evaluation panel member"},
+             {"other_projects": "None."}, set()),
+            ("a project that ended before the year of applying is not asked about",
+             {"cv_pi": "GA UK 654321, hlavní řešitel (2021–2023)"},
+             {"other_projects": "Žádné."}, set()),
+            ("nothing is said when the form has no such field", cv, {}, set()),
+            ("words that merely contain a funder's letters are not a funder",
+             {"cv_supervisor": "Uncertain gauges; primusová; Mercedes; expropriation."},
+             {"other_projects": "-"}, set())):
+        rep = gc.Report("t", 24, "2026-09-16", False, "2026-09-16")
+        gc.other_projects_rule(form, texts, rep, year=2026)
+        got = {name for f in rep.findings for name, _ in gc.FUNDERS if name in f.measured}
+        check(label, got == expect and all(f.kind == gc.ADVISORY for f in rep.findings),
+              str([f.measured for f in rep.findings]))
+
     with tempfile.TemporaryDirectory() as tmp:
         index, criteria, rnd = gc.load_rules()
         for label, width, height, rotation, expect_finding in (
@@ -337,6 +374,11 @@ def main() -> int:
               "N-CONTRIBUTION" in txt and contrib in txt)
         check(f"prompt_{lang}: says it is unofficial",
               "UNOFFICIAL" in txt or "NEOFICIÁLNÍ" in txt)
+        _, _, rnd = gc.load_rules()
+        flat = " ".join(txt.split())
+        check(f"prompt_{lang}: carries every reminder, printed under the closing heading",
+              all(" ".join(it[lang].split()) in flat for it in rnd["reminders"]["items"])
+              and ("REMINDERS BEFORE SUBMITTING" in txt or "PŘIPOMÍNKY PŘED PODÁNÍM" in txt))
         check(f"prompt_{lang}: no stale citation of a repealed measure",
               "11/2023" not in txt and "42/2025" not in txt.split("repeals")[0])
 
@@ -352,6 +394,10 @@ def main() -> int:
             dist_txt = (ROOT / "dist" / f"prompt_{lang}.md").read_text(encoding="utf-8")
             check(f"web: the {lang} prompt is exactly the one in dist/",
                   data["prompt"][lang] in dist_txt.replace("\r\n", "\n"))
+        check("web: the page shows the same reminders as the prompt",
+              all(data["reminders"][lang] == [it[lang] for it in gc.load_rules()[2]
+                                              ["reminders"]["items"]]
+                  for lang in ("en", "cs")))
         check("web: the browser runs the repository's own checker",
               (site / "py/checker/gauk_check.py").read_bytes()
               == (ROOT / "checker/gauk_check.py").read_bytes())

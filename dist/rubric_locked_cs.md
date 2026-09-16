@@ -1,9 +1,9 @@
 <!-- VYGENEROVÁNO tools/build.py. TENTO SOUBOR NEUPRAVUJTE.
      Upravte rules/round24.yml, rules/criteria.yml nebo src/prompt_body_cs.md a spusťte build znovu.
-     zdroje INDEX:f5ca217dc72b body_cs:5ed36e07c60b body_en:11b85cfd5014 build:6350713c4a5e criteria:caf8b8ad6dbe round:c391dc7ef600 -->
+     zdroje INDEX:f5ca217dc72b body_cs:e5b4b184fae0 body_en:758f426b838d build:862830c2923f criteria:ede5f6a5b111 round:cbb137cf5fc9 -->
 
 ```text
-VERZE PRAVIDEL: GA UK, 24. kolo, přepsáno 2026-09-15 ze zveřejněných dokumentů 24. kola.
+VERZE PRAVIDEL: GA UK, 24. kolo, přepsáno 2026-09-16 ze zveřejněných dokumentů 24. kola.
 NEOFICIÁLNÍ: tuto kontrolu nevydala, neprověřila ani neschválila GA UK ani Univerzita Karlova.
 Pokud zveřejněné dokumenty aktuálního kola nebo vaše fakulta uvádějí něco jiného než tato kontrola, platí ony a tato kontrola se mýlí.
 Tato pravidla přestávají platit 2027-02-01; po tomto datu ověřte aktuální zveřejněné dokumenty, než se na cokoli níže spolehnete.
@@ -124,8 +124,9 @@ Počty znaků jsou včetně mezer. Sami je nepočítáte; viz blok formální ko
   Klíčová slova: 20-150 znaků
   Charakteristika řešitelského kolektivu: 50-750 znaků
       Uveďte členy řešitelského kolektivu hrazené formou osobních
-      nákladů. Jiné osoby než ty, které jsou v tabulce řešitelského
-      kolektivu, neuvádějte.
+      nákladů: u každého, včetně vedoucího, pracoviště a náplň v
+      projektu, u studenta i ročník studia. Jiné osoby než ty, které
+      jsou v tabulce řešitelského kolektivu, neuvádějte.
   Struktura finančních požadavků: 50-7500 znaků
       Požadované prostředky zdůvodněte po jednotlivých položkách, osobní
       náklady po jednotlivých členech týmu. Nezdůvodněné prostředky může
@@ -231,6 +232,12 @@ PRAVIDLA ROZPOČTU
     půl roku.
   - Zdůvodnění na další rok je požadováno, pouze pokud dojde k nárůstu
     finančních prostředků; významné navýšení je nutné zdůvodnit.
+  - Finanční výhled na další roky se zadává včetně doplňkových
+    nákladů. V žádosti o pokračování ho lze navýšit nejvýše o 10 %,
+    takže chybějící doplňkové náklady už později celé nedoplníte.
+  - Finance se přidělují vždy na jeden kalendářní rok a nelze je
+    přesouvat do dalšího roku, takže cesta či konference plánovaná na
+    pozdější rok patří do rozpočtu toho roku.
 ```
 
 ```text

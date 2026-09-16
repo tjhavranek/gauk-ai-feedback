@@ -7,8 +7,8 @@ authors:
     family-names: Havránek
     affiliation: "Charles University"
     orcid: "https://orcid.org/0000-0002-3158-2539"
-version: 0.4.0
-date-released: 2026-09-15
+version: 0.5.0
+date-released: 2026-09-16
 license: MIT
 repository-code: "https://github.com/tjhavranek/gauk-ai-feedback"
 keywords:

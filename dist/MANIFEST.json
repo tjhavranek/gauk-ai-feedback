@@ -1,16 +1,16 @@
 {
   "round": 24,
-  "rules_verified_on": "2026-09-15",
+  "rules_verified_on": "2026-09-16",
   "official_review": "none",
   "warn_after": "2026-10-01",
   "sunset_on": "2027-02-01",
   "source_sha256": {
     "INDEX": "f5ca217dc72b6a1dfdb5333b45822d56f62cdd2a0bad1729239f3e47981ada75",
-    "criteria": "caf8b8ad6dbe79ef015e41f2546205be51206b14767622c0c94672fc9dcaba79",
-    "round": "c391dc7ef600480107692ac4a1b3f46980cb1bb0c730dea5d65565131e3d0525",
-    "body_en": "11b85cfd5014c84a2f0f6fc9c6dbc2bcb7ac830064283b82d155a4c3ff862f42",
-    "body_cs": "5ed36e07c60b9543e8a7422907ecfd3bd4135a29ad261da19367fb51d6a14353",
-    "build": "6350713c4a5e1dd2f0c713ab32cf99599bb678370c9bc092649aca1c76d13e1e"
+    "criteria": "ede5f6a5b11135edb0f79d275e9e4da338eca1678385b416e1fddf9f19f3429f",
+    "round": "cbb137cf5fc9ab554d1fa84714663025d93ff626f0cb96b7f918abc684848a72",
+    "body_en": "758f426b838d274363c6666bbb9c261b234581b4e5cf12e9a4b103e76084199f",
+    "body_cs": "e5b4b184fae0621e64ee995d95ab05451dfd7d3053ed63079171ce4005ea0b50",
+    "build": "862830c2923f7c1a69396f444eabb4105f212324b36023c178b2e16273ad63b4"
   },
   "files": [
     "prompt_cs.md",

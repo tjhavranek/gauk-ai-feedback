@@ -228,7 +228,8 @@
       form_language: "f-form-language", duration_years: "f-duration",
       budget_total_year1: "f-total", budget_wages: "f-wages", budget_stipends: "f-stipends",
       budget_justification: "f-just", budget_table: "f-table",
-      ai_used: "f-ai-used", ai_description: "f-ai-desc"
+      ai_used: "f-ai-used", ai_description: "f-ai-desc",
+      other_projects: "f-other"
     };
     var out = {};
     Object.keys(map).forEach(function (k) {
@@ -359,6 +360,7 @@
 
     fill($("notchecked"), r.not_checked.map(disp), ncText);
     fill($("measured"), r.measured.map(disp), function () { return null; });
+    fill($("reminders"), D.reminders[lang], function (s) { return s; });
     var dl2 = $("dl-result");
     if (dl2.dataset.url) URL.revokeObjectURL(dl2.dataset.url);
     dl2.dataset.url = URL.createObjectURL(new Blob([disp(r.block) + "\n"],
@@ -380,7 +382,7 @@
     files = {};
     report = null;
     ["f-form-language", "f-duration", "f-total", "f-wages", "f-stipends", "f-just",
-     "f-table", "f-ai-used", "f-ai-desc"].forEach(function (id) { $(id).value = ""; });
+     "f-table", "f-ai-used", "f-ai-desc", "f-other"].forEach(function (id) { $(id).value = ""; });
     $("ai-desc-field").hidden = true;
     $("results").hidden = true;
     $("progress").textContent = "";

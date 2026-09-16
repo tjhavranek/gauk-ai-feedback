@@ -54,6 +54,12 @@ sources:
     en: "Information on the PDF attachment Project proposal – 23rd round"
     url: "https://cuni.cz/UK-2446-version1-informace_k_pdf_priloze___navrh_projektu_23_kolo.pdf"
     retrieved: 2026-09-15
+  - id: INFO_22
+    cs: "Informace k podání přihlášky grantového projektu – 22. kolo soutěže"
+    en: "Information on submitting a grant project application – 22nd round"
+    url: "https://cuni.cz/UK-2446-version1-informace_k_podani_prihlasky_2024.pdf"
+    note: "An earlier round's guide, cited only where the round-24 guide is silent and faculty guides still ask the same."
+    retrieved: 2026-09-16
   - id: GRANT_RULES
     cs: "Grantový řád Univerzity Karlovy (2016)"
     en: "Grant Rules of Charles University (2016)"

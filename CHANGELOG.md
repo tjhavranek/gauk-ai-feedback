@@ -1,5 +1,31 @@
 # Changelog
 
+## v0.5.0 - 2026-09-16
+
+Points that are easy to get wrong when filling in the application, added so
+that the review stays about the project rather than turning into a form audit.
+
+- Six reminders, printed at the end of every review and shown under the result
+  of the file check: the timetable by calendar year, what the team field in
+  the form says about each member, how the budget justification is set out,
+  overhead in the outlook for later years, the other-projects field compared
+  with both CVs, and what a finished project is assessed on. Each rests on a
+  published document.
+- The file check asks when a CV names a funder or programme, such as GA ČR,
+  that the other-projects field does not name (advisory). The web page has an
+  optional box for that field.
+- The prompts now also catch a project year that starts after January or ends
+  before December, a risk whose remedy is to extend the project, planned
+  results with no original publication or no time for a manuscript to be
+  accepted, and a budget justification that is hard to follow (one finding for
+  all of it). Missing details in the form's team field are a low-severity
+  finding. Findings about how the form and the budget are filled in take at
+  most three of the ten places.
+- The rules state that the outlook for later years includes overhead and that
+  each cost belongs to the year of its activity. The round-22 applicant guide
+  is cited for the year of study and the department in the team field, which
+  the round-24 guide no longer spells out.
+
 ## v0.4.1 - 2026-09-16
 
 Fixes from an overnight stress test: 39 invented and broken applications run

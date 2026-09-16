@@ -130,6 +130,12 @@ What you may still judge from the text itself, without counting anything:
 
 {{include:round24.not_defects}}
 
+The reminders below are printed once, word for word, under "Before you submit".
+They are not findings. Raise a finding on one of these points only where the
+pasted text shows the problem, through the trigger that covers it.
+
+{{include:round24.reminders}}
+
 ──────────────────────────────────────────
 SECTION 3: WHAT THIS REVIEW CANNOT SEE
 ──────────────────────────────────────────
@@ -209,34 +215,53 @@ not "N-METHOD".
   N-TIMETABLE    Section 5 is absent, or it names no years or phases, or it
                  follows the academic year or the applicant's period of study
                  instead of calendar years and the project's duration, or it
-                 runs before or past the funded years. Criterion (b).
-                 Severity HIGH.
+                 runs before or past the funded years, or a project year it
+                 shows starts after January or ends before December.
+                 Criterion (b). Severity HIGH.
 
-  N-RISKS        Section 6 is absent: severity HIGH. A risk in section 6 lacks
-                 its intensity, its probability or how it will be minimised:
-                 severity MEDIUM, one finding naming the risks concerned.
-                 Criterion (b).
+  N-RISKS        Section 6 is absent: severity HIGH. A risk whose remedy is
+                 to extend the project: severity HIGH, because the duration
+                 is fixed at submission and cannot be extended. A risk in
+                 section 6 lacks its intensity, its probability or how it will
+                 be minimised: severity MEDIUM, one finding naming the risks
+                 concerned. Criterion (b).
 
   N-TEAM         A team member's share of the work is not justified in section
                  7, or CVs and publication lists have been put there instead of
                  in the attachments, or the team characteristics in the form
-                 name someone who is not in the team table. The last concerns
-                 the form field only. Criterion (b). Severity MEDIUM.
+                 name someone who is not in the team table: severity MEDIUM.
+                 The team characteristics in the form leave out, for a member,
+                 the department, their part in the project or, for a student,
+                 the year of study: severity LOW, one finding for all members.
+                 Criterion (b).
 
-  N-OUTPUTS      Section 8 names no journals or publishers, or it gives a count
-                 of publications with no statement of their focus and quality.
-                 Planned outputs are what a final report is later measured
-                 against, so a plan the project cannot deliver costs the
-                 applicant later. Criterion (b). Severity MEDIUM.
+  N-OUTPUTS      Section 8 plans no original publication at all, only
+                 outputs such as a thesis or talks, which the assessment of a
+                 finished project does not count: severity HIGH. Section 8
+                 names no journals or publishers, or gives a count of
+                 publications with no statement of their focus and quality, or
+                 the only planned publication is to be written or submitted in
+                 the last months of the project, with no realistic route to
+                 acceptance by the time the project is assessed: severity
+                 MEDIUM. Planned outputs are what a final report is later
+                 measured against, so a plan the project cannot deliver costs
+                 the applicant later. Criterion (b).
 
   N-BUDGET       A non-personnel budget item has no sentence tying it to a
                  named activity in section 4 or section 5: severity HIGH,
                  because the rapporteur may cut funding that is not justified.
                  A personnel cost that does not say what the person does on the
                  project: severity MEDIUM. A requested cost matches
-                 the list GA UK does not fund: severity HIGH. Nothing on the
-                 list of what this review does not treat as a defect can
-                 trigger this. Criterion (d).
+                 the list GA UK does not fund: severity HIGH. How the
+                 justification is laid out, as one MEDIUM finding covering
+                 every instance: travel given only as totals by type rather
+                 than by trip or conference, a trip or conference budgeted in
+                 a different year from the one the text places it in, a trip,
+                 stay, conference or paid service in the text with no cost
+                 requested and no word on who pays for it, or a significant
+                 rise in a later year with no sentence of justification.
+                 Nothing on the list of what this review does not treat as a
+                 defect can trigger this. Criterion (d).
 
   N-OVERLAP      The text or a CV mentions a current project of the applicant
                  or the leader that the "other projects" field does not list,
@@ -284,6 +309,12 @@ each.'
 Do not invent HIGH findings, and do not pad the list to a number. If the draft
 has few problems, report few findings and say so in one sentence. Severity is
 a property of the draft, not a quota. Report at most ten findings.
+
+Keep the review about the project. Findings on how the form and the budget
+justification are filled in, rather than on what the project proposes, take
+at most three of the ten places, and a finding on the substance of the same
+severity ranks above them. The reminders under "Before you submit" cover the
+rest.
 
 ──────────────────────────────────────────
 SECTION 7: HOW TO WRITE IT
@@ -367,8 +398,9 @@ say why in one line.
 supervisor can act on directly. Say in one neutral sentence what the project
 proposes, only so the reader knows you read the right document. Then the two or
 three most serious problems found, in plain words. Then the
-single change worth making first. Plain does not mean gentle: keep every
-severity word and no reassurance.]
+single change worth making first, preferring one on the substance of the
+project to one on how the form is filled in when both are equally serious.
+Plain does not mean gentle: keep every severity word and no reassurance.]
 
 ## What was reviewed
 
@@ -406,8 +438,9 @@ beyond what the text supports; that is for the supervisor and the opponents.]
 
 ## Findings
 
-[Ranked: HIGH first, and within a severity, TEXT findings before JUDGEMENT
-ones. At most ten.]
+[Ranked: HIGH first. Within a severity, findings on the substance of the
+project come before findings on how the form and the budget justification are
+filled in, and TEXT findings before JUDGEMENT ones. At most ten.]
 
 ### 1. [one line saying what is wrong]
 - **Quote:** "[verbatim, in the application's language]"
@@ -432,6 +465,8 @@ on. The supervisor is a required member of the team and is the person who
 should settle scientific questions this review cannot.]
 
 ## Before you submit
+
+[The reminders from Section 2, word for word, as a short list.]
 
 This review is unofficial and can be wrong; your faculty and the published call
 documents decide. The application asks whether artificial intelligence was

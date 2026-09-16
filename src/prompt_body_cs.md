@@ -134,6 +134,12 @@ Co můžete posoudit z textu samotného, aniž byste cokoli počítali:
 
 {{include:round24.not_defects}}
 
+Připomínky níže vypíšete jednou a doslova pod nadpisem „Než podáte“. Nejsou to
+nálezy. Nález k některému z těchto bodů uveďte jen tehdy, když problém ukazuje
+vložený text, a to přes spouštěč, který ho pokrývá.
+
+{{include:round24.reminders}}
+
 ──────────────────────────────────────────
 ČÁST 3: CO TATO KONTROLA NEVIDÍ
 ──────────────────────────────────────────
@@ -212,26 +218,36 @@ dohledat)“, nikoli „N-METHOD“.
   N-TIMETABLE    Kapitola 5 chybí, nebo neuvádí žádné roky ani etapy, nebo
                  sleduje akademický rok či dobu studia navrhovatele místo
                  kalendářních let a doby řešení projektu, nebo začíná před
-                 financovanými roky či za ně přesahuje. Hledisko (b).
-                 Závažnost VYSOKÁ.
+                 financovanými roky či za ně přesahuje, nebo některý rok
+                 řešení v ní začíná později než v lednu či končí dříve než
+                 v prosinci. Hledisko (b). Závažnost VYSOKÁ.
 
-  N-RISKS        Kapitola 6 chybí: závažnost VYSOKÁ. U některého rizika v
-                 kapitole 6 chybí intenzita, pravděpodobnost nebo způsob
-                 minimalizace: závažnost STŘEDNÍ, jeden nález, který dotčená
-                 rizika jmenuje. Hledisko (b).
+  N-RISKS        Kapitola 6 chybí: závažnost VYSOKÁ. Riziko, jehož řešením má
+                 být prodloužení projektu: závažnost VYSOKÁ, protože doba
+                 řešení je dána podáním přihlášky a prodloužit ji nelze. U
+                 některého rizika v kapitole 6 chybí intenzita,
+                 pravděpodobnost nebo způsob minimalizace: závažnost STŘEDNÍ,
+                 jeden nález, který dotčená rizika jmenuje. Hledisko (b).
 
   N-TEAM         Podíl některého člena týmu na řešení není v kapitole 7
                  zdůvodněn, nebo se tam místo do příloh dostaly životopisy a
                  seznamy publikací, nebo charakteristika kolektivu ve formuláři
-                 jmenuje někoho, kdo není v tabulce řešitelského kolektivu.
-                 Poslední případ se týká jen pole formuláře.
-                 Hledisko (b). Závažnost STŘEDNÍ.
+                 jmenuje někoho, kdo není v tabulce řešitelského kolektivu:
+                 závažnost STŘEDNÍ. Charakteristika kolektivu ve formuláři u
+                 některého člena neuvádí pracoviště, náplň v projektu nebo u
+                 studenta ročník studia: závažnost NÍZKÁ, jeden nález za
+                 všechny členy. Hledisko (b).
 
-  N-OUTPUTS      Kapitola 8 neuvádí žádné časopisy ani nakladatelství, nebo uvádí
-                 počet publikací, aniž by řekla, jaké mají být zaměření a
-                 kvalita. S plánovanými výstupy se později poměřuje závěrečná
-                 zpráva, takže nesplnitelný plán se navrhovateli vymstí.
-                 Hledisko (b). Závažnost STŘEDNÍ.
+  N-OUTPUTS      Kapitola 8 neplánuje žádnou původní publikaci, jen výstupy
+                 jako kvalifikační práci nebo přednášky, které hodnocení
+                 dokončeného projektu nezapočítá: závažnost VYSOKÁ. Kapitola 8
+                 neuvádí žádné časopisy ani nakladatelství, nebo uvádí počet
+                 publikací, aniž by řekla, jaké mají být zaměření a kvalita,
+                 nebo jedinou plánovanou publikaci má projekt napsat či odeslat
+                 až v posledních měsících řešení, takže do hodnocení projektu
+                 nemá reálnou šanci na přijetí: závažnost STŘEDNÍ.
+                 S plánovanými výstupy se později poměřuje závěrečná zpráva,
+                 takže nesplnitelný plán se navrhovateli vymstí. Hledisko (b).
 
   N-BUDGET       U neosobní rozpočtové položky chybí věta, která ji váže na
                  pojmenovanou činnost v kapitole 4 nebo 5: závažnost VYSOKÁ,
@@ -239,6 +255,13 @@ dohledat)“, nikoli „N-METHOD“.
                  osobních nákladů chybí, co daná osoba na projektu dělá:
                  závažnost STŘEDNÍ. Požadovaný náklad
                  odpovídá seznamu nákladů, které GA UK nehradí: závažnost VYSOKÁ.
+                 Uspořádání zdůvodnění, jako jeden nález se závažností STŘEDNÍ
+                 za všechny případy: pobytové náklady jen v součtech podle
+                 druhu místo po cestách či konferencích, cesta či konference
+                 rozpočtovaná v jiném roce, než do kterého ji klade text,
+                 cesta, pobyt, konference nebo placená služba v textu bez
+                 požadovaného nákladu a bez zmínky, kdo je zaplatí, nebo
+                 významný nárůst v dalším roce bez věty zdůvodnění.
                  Nic ze seznamu toho, co tato kontrola za vadu nepovažuje, tento
                  spouštěč vyvolat nemůže. Hledisko (d).
 
@@ -285,6 +308,11 @@ v každém z nich.“
 Nevymýšlejte si nálezy s vysokou závažností a nedoplňujte seznam na určitý počet.
 Má-li návrh málo problémů, uveďte málo nálezů a řekněte to jednou větou.
 Závažnost je vlastností návrhu, nikoli kvóta. Uveďte nejvýše deset nálezů.
+
+Držte kontrolu u projektu. Nálezy k tomu, jak je vyplněný formulář a
+zdůvodnění rozpočtu, a ne k tomu, co projekt navrhuje, zaberou nejvýše tři
+z deseti míst, a nález k obsahu se stejnou závažností má přednost. Zbytek
+pokryjí připomínky pod nadpisem „Než podáte“.
 
 ──────────────────────────────────────────
 ČÁST 7: JAK TO NAPSAT
@@ -365,8 +393,9 @@ Použijte přesně tuto strukturu. Blok vynechte jen tehdy, když se neuplatní,
 školitel může rovnou zařídit. Jednou neutrální větou řekněte, co projekt
 navrhuje, jen aby čtenář věděl, že jste četli správný dokument. Pak dva až tři
 nejzávažnější zjištěné problémy, běžnými slovy. Pak jedna změna,
-kterou má smysl udělat první. Srozumitelně neznamená mírně: zachovejte každé
-slovo o závažnosti a žádné uklidňování.]
+kterou má smysl udělat první; jsou-li dvě stejně závažné, dejte přednost změně
+v obsahu projektu před změnou ve vyplnění formuláře. Srozumitelně neznamená
+mírně: zachovejte každé slovo o závažnosti a žádné uklidňování.]
 
 ## Co bylo posouzeno
 
@@ -404,8 +433,9 @@ neposuzujte význam tématu v oboru nad rámec toho, co text dokládá; to je v�
 
 ## Nálezy
 
-[Seřazeno: nejprve VYSOKÁ závažnost, v rámci téže závažnosti nálezy TEXT před
-nálezy ÚSUDEK. Nejvýše deset.]
+[Seřazeno: nejprve VYSOKÁ závažnost. V rámci téže závažnosti nálezy k obsahu
+projektu před nálezy k vyplnění formuláře a zdůvodnění rozpočtu a nálezy TEXT
+před nálezy ÚSUDEK. Nejvýše deset.]
 
 ### 1. [jeden řádek, co je špatně]
 - **Citace:** „[doslovně, v jazyce přihlášky]“
@@ -430,6 +460,8 @@ vyřešil a nejvýše tři věci, u nichž chce úsudek člověka. Školitel je 
 které tato kontrola nestačí.]
 
 ## Než podáte
+
+[Připomínky z části 2, doslova, jako krátký seznam.]
 
 Tato kontrola je neoficiální a může se mýlit; rozhoduje vaše fakulta a
 zveřejněné dokumenty soutěže. Přihláška se ptá, zda bylo při přípravě
