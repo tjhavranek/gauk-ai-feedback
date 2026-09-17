@@ -74,8 +74,10 @@ kritérium hodnocení projektu.
 ## Pro pokročilé
 
 Lokální formální kontrola (skript v Pythonu, který nic neodesílá) a volitelná,
-experimentální cesta přes agentní nástroje, jako je Claude Code nebo Codex CLI,
-jsou popsány v anglickém [README](README.md#2-the-local-formal-check).
+experimentální cesta přes agentní nástroje Claude Code nebo Codex, které
+fungují i v desktopových aplikacích Claude a ChatGPT bez terminálu, jsou
+popsány v anglickém [README](README.md#2-the-local-formal-check) a stručně i na
+[webové stránce](https://tjhavranek.github.io/gauk-ai-feedback/).
 
 ## Omezení
 

@@ -38,8 +38,9 @@ the local formal check and the agentic route.
 
 ## Three ways to use it
 
-You need nothing but a chatbot for the first. The other two are for students
-who are comfortable with a command line.
+You need nothing but a chatbot for the first. The second is for students who
+are comfortable with a command line; the third also works in the Claude and
+ChatGPT desktop apps, without one.
 
 1. With any chatbot: paste one prompt, then your draft. This is the main route
    and the one to start with.
@@ -47,7 +48,7 @@ who are comfortable with a command line.
    nothing anywhere, and reports what can be counted: pages, the first-year
    budget totals, sections, the years in the timetable, the length of the
    leader's publication list.
-3. With an agentic tool, optional and experimental: Claude Code, Codex CLI or a
+3. With an agentic tool, optional and experimental: Claude Code, Codex or a
    similar agent runs the check, reads your files, writes the review and then
    verifies every quote in it against your text.
 
@@ -125,13 +126,19 @@ prompt.
 
 ## 3. With an agentic tool (optional, experimental)
 
-Clone this repository, open Claude Code in its folder and ask it to check your
-application, for example "check my GA UK application in ../my_application".
+Download this repository as a ZIP (or clone it), copy your application files
+into a folder inside it, for example `my_application`, open the repository
+folder in Claude Code and ask it to check your application, for example "check
+my GA UK application in the folder my_application". No terminal is needed: Claude Code is the Code
+tab of the [Claude desktop app](https://claude.com/download), with a paid plan,
+and Codex is part of the [ChatGPT desktop app](https://chatgpt.com/download).
+The agent runs the Python scripts itself; if Python is missing, it says so and
+asks before installing it.
 The project skill in `.claude/skills/gauk-feedback/` makes it follow
 [`agentic/RUNBOOK.md`](agentic/RUNBOOK.md): run the formal check, read your
 files, write the review under the same rules as the chatbot prompt, and verify
 every quote against your text with `tools/verify_quotes.py` before showing it
-to you. Codex CLI and other agents that read `AGENTS.md` follow the same
+to you. Codex and other agents that read `AGENTS.md` follow the same
 runbook. The agent never changes your files.
 
 For a second opinion, [`agentic/`](agentic/) describes how to run two heavier

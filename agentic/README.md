@@ -11,9 +11,10 @@ every quote in the review against your text before you see it. It works under
 the same rules and the same instructions as the chatbot prompt, so the review
 has the same content.
 
-- [`RUNBOOK.md`](RUNBOOK.md) is the procedure. Claude Code follows it through
-  the project skill in `.claude/skills/gauk-feedback/`; Codex CLI and other
-  agents are pointed to it by `AGENTS.md`.
+- [`RUNBOOK.md`](RUNBOOK.md) is the procedure. Claude Code, in the Claude
+  desktop app or on the command line, follows it through the project skill in
+  `.claude/skills/gauk-feedback/`; Codex, in the ChatGPT desktop app or on the
+  command line, and other agents are pointed to it by `AGENTS.md`.
 - [`mad-research/`](mad-research/) explains how to run mad-research, an audit
   by Claude and Codex, with a GA UK rubric.
 - [`paper-workshop/`](paper-workshop/) explains how to run the first act of

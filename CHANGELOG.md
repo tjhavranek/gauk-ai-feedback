@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.5.1 - 2026-09-17
+
+- The agentic route points to the desktop apps, where no terminal is needed:
+  Claude Code in the Code tab of the Claude desktop app, and Codex in the
+  ChatGPT desktop app (the Codex app became part of it in July 2026). The steps
+  on the page and in the README now have the student copy the application into
+  a folder inside the tool.
+- The runbook says what to do when Python is missing: say so, install it only
+  with the user's agreement, and otherwise point to the web page.
+
 ## v0.5.0 - 2026-09-16
 
 Points that are easy to get wrong when filling in the application, added so

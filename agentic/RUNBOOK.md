@@ -1,7 +1,8 @@
 # Agentic review: the procedure
 
-Experimental. This is what an agentic tool (Claude Code, Codex CLI or similar)
-does when a student asks it to review their own GA UK application. It applies
+Experimental. This is what an agentic tool (Claude Code, Codex or a similar
+agent, in a desktop app or on the command line) does when a student asks it to
+review their own GA UK application. It applies
 the same rules and the same instructions as the chatbot prompt in `dist/`.
 What differs is the evidence: a script runs the formal check, and every quote
 in the review is checked against the text before the student sees it.
@@ -38,6 +39,11 @@ is `python3`.
 2. Install the dependencies if needed:
 
        python -m pip install -r requirements.txt
+
+   If Python itself is missing, say so in plain words. Install it only if the
+   user agrees; otherwise stop and point them to the formal check and the
+   chatbot prompt at https://tjhavranek.github.io/gauk-ai-feedback/, which need
+   nothing installed.
 
 3. Run the formal check. Add `--form <out>/form.yml` if you made the form in
    step 1:
