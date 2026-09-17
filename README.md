@@ -1,7 +1,7 @@
 # gauk-ai-feedback
 
-*Tomáš Havránek, Charles University · methods, data and code for
-meta-analysis at [meta-analysis.cz](https://meta-analysis.cz)*
+*Tomáš Havránek, Charles University · more tools, data and code at
+[meta-analysis.cz](https://meta-analysis.cz)*
 
 An unofficial pre-submission review for applications to the Charles University
 Grant Agency (GA UK, Grantová agentura Univerzity Karlovy). It reads a draft

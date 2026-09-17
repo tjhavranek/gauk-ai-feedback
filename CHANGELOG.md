@@ -9,6 +9,8 @@
   a folder inside the tool.
 - The runbook says what to do when Python is missing: say so, install it only
   with the user's agreement, and otherwise point to the web page.
+- The link to meta-analysis.cz reads "More tools, data and code", on the page
+  and in the READMEs.
 
 ## v0.5.0 - 2026-09-16
 

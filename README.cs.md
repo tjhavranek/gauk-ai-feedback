@@ -1,6 +1,6 @@
 # gauk-ai-feedback česky
 
-*Tomáš Havránek, Univerzita Karlova · metody, data a kód pro metaanalýzu na
+*Tomáš Havránek, Univerzita Karlova · další nástroje, data a kód na
 [meta-analysis.cz](https://meta-analysis.cz)*
 
 Neoficiální kontrola přihlášky do Grantové agentury Univerzity Karlovy (GA UK)
