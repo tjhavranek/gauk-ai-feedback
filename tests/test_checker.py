@@ -159,6 +159,57 @@ def main() -> int:
     check("a PDF and its Word draft are one attachment, and the PDF is used",
           found.get("proposal") == Path("navrh.pdf") and not amb, str(found))
 
+    print("\nsection headings worded differently")
+    _, crit, _ = gc.load_rules()
+    text = ("1. Current state of knowledge\nx\n2. Material resources for the project\nx\n"
+            "3. Objectives\nx\n4. Methods\nx\n5. Timeline\n2027\n6. Risks\nx\n"
+            "7. Research team\nx\n8. Presentation of results\nx")
+    _, heads = gc.section_lines(text, crit)
+    check("'Material resources' and 'Presentation of results' are recognised",
+          {2, 8} <= set(heads), str(heads))
+    _, heads = gc.section_lines("1. State of the art\nx\nMaterials and methods\ny\n"
+                                "Outcomes were measured weekly.\n", crit)
+    check("'Materials and methods' and a body sentence are not taken for headings",
+          set(heads) == {1}, str(heads))
+    text = ("1. Současný stav poznání\nx\n2. Materiální zajištění\nx\n3. Cíle\nx\n"
+            "4. Způsob řešení\nPostup:\n1. Schedule interviews with teachers\n"
+            "5. Plán prací\n2027\n6. Identifikace rizik\nx\n7. Řešitelský kolektiv\nx\n"
+            "8. Očekávané výsledky\nx")
+    lines, heads = gc.section_lines(text, crit)
+    check("a numbered list item inside another section is not taken for a heading",
+          5 not in heads or not lines[heads[5]].startswith("1."), str(heads))
+
+    # body sentences must not move a heading and so change what is reported
+    _, crit, rnd = gc.load_rules()
+
+    def proposal_findings(body: str, duration: str = "1") -> set[str]:
+        rep = gc.Report("t", 24, "2026-09-19", False, "2026-09-19")
+        gc._proposal_rules(Path("navrh.docx"), {"text": body, "format": "docx"},
+                           {"duration_years": duration}, rnd, crit, rep)
+        return {f.rule for f in rep.findings}
+
+    sections = ["1. Current state of knowledge", "2. Material provision", "3. Objectives",
+                "4. Method of work", "5. Timetable", "6. Identification of risks",
+                "7. Characteristics of the team", "8. Expected results and their presentation"]
+
+    def proposal(extra: dict[int, str]) -> str:
+        return "\n".join(f"{h}\n{extra.get(k, 'Text of the section.')}"
+                         for k, h in enumerate(sections, 1))
+
+    got = proposal_findings(proposal({4: "Scheduled interviews were tested in a pilot in 2026.",
+                                      5: "January to December 2027: data and analysis."}))
+    check("a body sentence starting with 'Scheduled' does not become the timetable",
+          not got & {"R17_TIMETABLE_YEARS", "R13B_SECTION_ORDER"}, str(got))
+    got = proposal_findings(proposal({5: "2027: data.\nExpected outcomes will be presented "
+                                         "at two conferences.\n2028: writing."}))
+    check("a body sentence starting with 'Expected outcomes' does not end the timetable",
+          "R17_TIMETABLE_YEARS" in got and "R13B_SECTION_ORDER" not in got, str(got))
+    body = proposal({6: "1. Equipment failure. Probability low; a second device is available."})
+    body = body.replace("2. Material provision", "2. Laboratory access")
+    got = proposal_findings(body)
+    check("a numbered risk item is not promoted to a missing section's heading",
+          "R13B_SECTION_ORDER" not in got, str(got))
+
     print("\nprojects in the CVs against the other-projects field")
     cv = {"cv_supervisor": "Projekty:\nŘešitel projektu GA ČR 25-01234S (2025–2027)\n"
                            "Člen výzkumné skupiny Cooperatio",

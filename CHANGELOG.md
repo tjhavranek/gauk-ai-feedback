@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.5.2 - 2026-09-19
+
+From testers' reports on real proposals:
+
+- The prompts say that the annotation is the web-form field: an abstract or
+  opening paragraph of the proposal is not assessed in its place, and an
+  annotation that was not pasted goes under "Not checked".
+- A draft presented as a GA UK application is reviewed as one even if it does
+  not follow the structure; the refusal covers material that is, or is said to
+  be, for another scheme.
+- The file check recognises the headings "Material resources" and
+  "Presentation of results" (or "Results and their presentation").
+- The page gives the reason for the leader's consent next to the checkbox
+  instead of behind a click.
+
 ## v0.5.1 - 2026-09-17
 
 - The agentic route points to the desktop apps, where no terminal is needed:

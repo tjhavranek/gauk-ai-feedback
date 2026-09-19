@@ -1,6 +1,6 @@
 <!-- VYGENEROVÁNO tools/build.py. TENTO SOUBOR NEUPRAVUJTE.
      Upravte rules/round24.yml, rules/criteria.yml nebo src/prompt_body_cs.md a spusťte build znovu.
-     zdroje INDEX:f5ca217dc72b body_cs:e5b4b184fae0 body_en:758f426b838d build:862830c2923f criteria:ede5f6a5b111 round:cbb137cf5fc9 -->
+     zdroje INDEX:f5ca217dc72b body_cs:53abc45cd1d5 body_en:837baaa1048a build:862830c2923f criteria:35a9330327df round:cbb137cf5fc9 -->
 
 ```text
 VERZE PRAVIDEL: GA UK, 24. kolo, přepsáno 2026-09-16 ze zveřejněných dokumentů 24. kola.

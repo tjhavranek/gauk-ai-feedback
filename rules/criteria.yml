@@ -183,6 +183,7 @@ proposal_sections:
       match:
         - "materiální zajištění"
         - "material provision"
+        - "material resources"
         - "facilities"
         - "equipment"
         - "infrastructure"
@@ -265,6 +266,8 @@ proposal_sections:
         - "prezentace výsledků"
         - "expected results"
         - "expected outputs"
+        - "presentation of results"
+        - "results and their presentation"
         - "dissemination"
         - "publication plan"
 
