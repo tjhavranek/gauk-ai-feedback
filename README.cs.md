@@ -39,7 +39,11 @@ trénováním riziko snižuje, sdílení tím ale povoleno není.
 2. Založte nový chat v libovolném chatbotu a zadání vložte. Za ně vložte svůj
    návrh: pole webového formuláře a text návrhu projektu, případně životopisy.
    Uveďte sekci (A, B nebo C), dobu řešení a verzi formuláře. Dlouhý návrh
-   můžete poslat v několika zprávách; řekněte, až bude kompletní.
+   můžete poslat v několika zprávách; řekněte, až bude kompletní. Microsoft Copilot
+   používejte přes [office365.cuni.cz](https://office365.cuni.cz/) s univerzitním
+   účtem CAS: podle UK se na tuto verzi vztahuje komerční ochrana dat. K vložení
+   osobních údajů dalších lidí, třeba životopisu vedoucího, stále potřebujete
+   jejich výslovný souhlas.
 3. Chatbot neumí spolehlivě počítat znaky ani strany. Chcete-li formální
    kontrolu i v číslech, vyplňte a vložte také
    [blok vlastního hlášení](dist/self_report_cs.md) s čísly z počitadel v

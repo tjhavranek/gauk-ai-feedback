@@ -32,6 +32,11 @@ can check your attachments in your own browser without uploading them.
 2. Open the prompt in [English](dist/prompt_en.md) or [Czech](dist/prompt_cs.md)
    and click the copy icon in the top right corner of the grey box.
 3. Paste it into a new chat in any chatbot, then paste your draft after it.
+   Use Microsoft Copilot through
+   [office365.cuni.cz](https://office365.cuni.cz/) with your university CAS
+   account: Charles University says that version has commercial data
+   protection. Pasting other people's personal data, such as the leader's CV,
+   still needs their explicit consent.
 
 That is all most students need. The rest of this page explains the review,
 the local formal check and the agentic route.

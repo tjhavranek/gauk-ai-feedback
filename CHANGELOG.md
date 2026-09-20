@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.5.3 - 2026-09-20
+
+- The page and the READMEs point to Microsoft Copilot through
+  office365.cuni.cz with a university CAS account, which Charles University
+  says has commercial data protection, with a button beside the other
+  chatbots. Pasting other people's personal data still needs their consent,
+  and the consent step says so.
+
 ## v0.5.2 - 2026-09-19
 
 From testers' reports on real proposals:
