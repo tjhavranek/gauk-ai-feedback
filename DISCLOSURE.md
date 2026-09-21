@@ -18,12 +18,12 @@ competition would be the wrong thing to publish, and a pessimistic number from
 it could stop someone from applying who should.
 
 The author sees nothing. There is no server, no account and no data
-collection. The chatbot or agent you choose receives your text; the author does
-not, and has no way of knowing who used the tool. The page links to a short
-feedback questionnaire, run on the university's Microsoft Forms. Answering is
-voluntary and anonymous: it needs no sign-in and asks nothing that identifies
-you. Do not put an application, a draft or part of a review into it, because
-the author sits on the Grant Council.
+collection: the chatbot or agent you choose receives your text; the author does
+not, and has no way of knowing who used the tool. The one exception is a short
+feedback questionnaire linked from the page, run on the university's Microsoft
+Forms. Answering is voluntary and anonymous: it needs no sign-in and asks
+nothing that identifies you. Do not put an application, a draft or part of a
+review into it, because the author sits on the Grant Council.
 
 It is public and the same for everyone. No applicant gets a version that others
 lack.
@@ -62,4 +62,4 @@ without warranty of any kind. Where the published documents or your faculty
 say something different, they are right. The author accepts no responsibility
 for decisions made on the basis of the tool's output.
 
-Last updated 15 September 2026.
+Last updated 21 September 2026.

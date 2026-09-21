@@ -432,6 +432,36 @@ def main() -> int:
               and ("REMINDERS BEFORE SUBMITTING" in txt or "PŘIPOMÍNKY PŘED PODÁNÍM" in txt))
         check(f"prompt_{lang}: no stale citation of a repealed measure",
               "11/2023" not in txt and "42/2025" not in txt.split("repeals")[0])
+        # The prompt names its own end marker, so that a chatbot can tell the
+        # student when a paste arrived cut short. A build that splits on the
+        # first marker instead of the last would ship a prompt of a few
+        # hundred characters that still looks well formed.
+        check(f"prompt_{lang}: the whole prompt was built, not cut at the first end marker",
+              len(txt) > 30000, f"{len(txt)} characters")
+        check(f"prompt_{lang}: the last line of the prompt is the end marker it names",
+              txt.rstrip().rstrip("`").rstrip().endswith("=== PROMPT END ==="))
+        # The prompt describes its end marker rather than quoting it: a quoted
+        # marker would sit inside every truncated prefix, so a chatbot could
+        # find it and conclude the prompt arrived whole.
+        body = (ROOT / "src" / f"prompt_body_{lang}.md").read_text(encoding="utf-8")
+        prompt_only = txt.replace("\r\n", "\n").split("```text\n", 1)[1].rsplit("\n```", 1)[0]
+        check(f"prompt_{lang}: the end marker is written once, at the end, and never quoted",
+              sum(1 for ln in body.split("\n") if ln.strip() == "=== PROMPT END ===") == 1
+              and prompt_only.count("=== PROMPT END ===") == 1)
+
+    import build as _bld
+    src_en = (ROOT / "src" / "prompt_body_en.md").read_text(encoding="utf-8")
+    for break_it, why in (
+            (lambda s: s.replace("\n=== PROMPT END ===", "", 1), "no end marker"),
+            (lambda s: s.replace("=== PROMPT BEGIN ===",
+                                 "=== PROMPT BEGIN ===\n=== PROMPT BEGIN ===", 1),
+             "two begin markers")):
+        try:
+            _bld.extract_prompt(break_it(src_en))
+            refused = False
+        except SystemExit:
+            refused = True
+        check(f"build: a prompt source with {why} is refused, not patched up", refused)
 
     print("\nthe web page")
     import json
@@ -443,8 +473,10 @@ def main() -> int:
                           .split("=", 1)[1].strip().rstrip(";"))
         for lang in ("en", "cs"):
             dist_txt = (ROOT / "dist" / f"prompt_{lang}.md").read_text(encoding="utf-8")
+            fenced = dist_txt.replace("\r\n", "\n").split("```text\n", 1)[1].rsplit("\n```", 1)[0]
             check(f"web: the {lang} prompt is exactly the one in dist/",
-                  data["prompt"][lang] in dist_txt.replace("\r\n", "\n"))
+                  data["prompt"][lang] == fenced,
+                  f"web {len(data['prompt'][lang])} chars, dist {len(fenced)}")
         check("web: the page shows the same reminders as the prompt",
               all(data["reminders"][lang] == [it[lang] for it in gc.load_rules()[2]
                                               ["reminders"]["items"]]

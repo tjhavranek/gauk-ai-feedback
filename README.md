@@ -34,9 +34,9 @@ can check your attachments in your own browser without uploading them.
 3. Paste it into a new chat, then paste your draft after it. Start with
    Microsoft Copilot via [office365.cuni.cz](https://office365.cuni.cz/),
    signed in with your university CAS account: Charles University says that
-   version has commercial data protection. ChatGPT, Claude and Gemini take the
-   same prompt. If a chatbot will not take all of it, attach the prompt as a
-   file instead. Pasting other people's personal data, such as the leader's
+   version has commercial data protection. The prompt is the same for ChatGPT,
+   Claude and Gemini. If a chatbot will not take all of it, download the
+   prompt as a file from the web page and attach it instead. Pasting other people's personal data, such as the leader's
    CV, still needs their explicit consent.
 
 Do this at least a few days before your faculty's deadline, so there is time
@@ -189,7 +189,8 @@ final reports. Faculty-specific rules and deadlines are not covered, and the
 faculty deadline is the one that binds you. The rules expire on 1 February
 2027, after which the checker refuses to run until they are updated.
 
-It has been tested on invented applications only; see
+Its automated tests use invented applications, and only a handful of real
+drafts have been checked with it; see
 [`docs/VALIDATION.md`](docs/VALIDATION.md). Language models miss problems that
 a specialist in your field would see, and they can be wrong with confidence.
 Push back on a finding you disagree with, and take the scientific questions to

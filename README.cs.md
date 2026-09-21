@@ -41,9 +41,9 @@ trénováním riziko snižuje, sdílení tím ale povoleno není.
    nebo C), dobu řešení a verzi formuláře. Dlouhý návrh můžete poslat
    v několika zprávách; řekněte, až bude kompletní. Začněte univerzitním
    Microsoft Copilotem přes [office365.cuni.cz](https://office365.cuni.cz/)
-   s účtem CAS: podle UK se na tuto verzi vztahuje komerční ochrana dat. Stejné
-   zadání přijmou i ChatGPT, Claude a Gemini. Pokud ho chatbot nepřijme celé,
-   přiložte ho jako soubor. K vložení osobních údajů dalších lidí, třeba
+   s účtem CAS: podle UK se na tuto verzi vztahuje komerční ochrana dat. Zadání je
+   stejné pro ChatGPT, Claude i Gemini. Pokud ho chatbot nepřijme celé,
+   stáhněte si ho jako soubor z webové stránky a přiložte ho. K vložení osobních údajů dalších lidí, třeba
    životopisu vedoucího, stále potřebujete jejich výslovný souhlas.
 3. Chatbot neumí spolehlivě počítat znaky ani strany. Chcete-li formální
    kontrolu i v číslech, vyplňte a vložte také
@@ -90,16 +90,15 @@ popsány v anglickém [README](README.md#2-the-local-formal-check) a stručně i
 
 Kontrola pokrývá nové přihlášky 24. kola (soutěž se otevírá 1. října 2026,
 projekty začínají v roce 2027), nikoli žádosti o pokračování ani závěrečné
-zprávy. Pravidla přestávají platit 1. února 2027. Kontrola byla vyzkoušena jen
-na smyšlených přihláškách. Jazykový model může přehlédnout, co by odborník
+zprávy. Pravidla přestávají platit 1. února 2027. Automatické testy používají
+smyšlené přihlášky; na skutečných návrzích ji zkusilo jen pár lidí. Jazykový model může přehlédnout, co by odborník
 viděl, a může se sebejistě mýlit. S nálezem, se kterým nesouhlasíte,
 polemizujte a vědecké otázky řešte se školitelem.
 
 Chybu v pravidlech prosím nahlaste v
 [issues](https://github.com/tjhavranek/gauk-ai-feedback/issues) s odkazem na
-zveřejněný zdroj. Nevkládejte tam žádnou část skutečné přihlášky. Na cokoli
-dalšího je ze stránky odkázaný krátký anonymní
-[dotazník](https://forms.cloud.microsoft/e/t38pQfuAmm).
+zveřejněný zdroj. Nevkládejte tam žádnou část skutečné přihlášky. Na cokoli dalšího
+slouží krátký anonymní [dotazník](https://forms.cloud.microsoft/e/t38pQfuAmm), na který odkazuje i stránka.
 
 Autor: Tomáš Havránek ([meta-analysis.cz](https://meta-analysis.cz)), Univerzita
 Karlova. Licence MIT.

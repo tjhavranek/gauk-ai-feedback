@@ -1,16 +1,31 @@
 # Changelog
 
-## v0.5.4 - 2026-09-21
+## v0.5.6 - 2026-09-21
 
-From the vice-rector for doctoral study, who tried the tool on a real
-application:
+The prompt is about 42,000 characters and some chats will not take a paste
+that long. A prompt cut short still looks well formed, and a review written
+from the first few thousand characters has none of the fixed sections and no
+worth, so the student had no way to tell.
 
-- The chatbot step names the university's Copilot first, with the university's
-  own reason for it, and the other chatbots after. The prompt is long, so the
-  step also says what to do if a chatbot will not take all of it: attach it as
-  a file, or use another one.
-- The page and both READMEs say to run the check at least a few days before
-  the faculty deadline, so that there is time to revise.
+- The prompt now opens by checking that it arrived whole, and refuses to
+  review anything if it did not, telling the student to send it as a file or
+  use another chatbot instead. It describes its end marker rather than
+  quoting it, because a quoted marker would sit inside every cut-short copy.
+  It stays silent when the prompt is whole, treats the application that
+  follows as expected rather than as a missing end, and says it cannot
+  confirm, rather than asserting a cut, when the prompt came as an
+  attachment it cannot fully see. Checked against a model on truncated and
+  whole prompts, in Czech and English, and with the prompt and the
+  application pasted in one message.
+- The chatbot step names what a cut-short paste looks like from the student's
+  side: the paste stops short, the chatbot says the text is too long, or the
+  review lacks the parts listed in step 5.
+- The build refuses a prompt source that does not have exactly one begin
+  marker line and one end marker line, in that order, instead of quietly
+  supplying one. A quoted marker had already made one build produce a
+  585-character prompt that still looked well formed. Tests cover both, and
+  the web page's copy of the prompt is now compared with the published one
+  for equality rather than containment.
 
 ## v0.5.5 - 2026-09-21
 
@@ -18,8 +33,21 @@ application:
   steps and from the footer. It needs no sign-in and asks nothing that
   identifies the respondent. Two of its questions ask which chatbot was used
   and whether it took the whole prompt at the first try, which is the one
-  thing about the Copilot recommendation that could not be established in
-  advance.
+  thing about the Copilot recommendation that was not tested in advance.
+- The chatbot step says what a prompt cut short looks like, so that a review
+  missing its fixed parts is recognised as a truncated prompt rather than
+  read as a review.
+
+## v0.5.4 - 2026-09-21
+
+From the vice-rector for doctoral study, who tried the tool:
+
+- The chatbot step names the university's Copilot first, with the university's
+  own reason for it, and the other chatbots after. The prompt is long, so the
+  step also says what to do if a chatbot will not take all of it: attach it as
+  a file, or use another one.
+- The page and both READMEs say to run the check at least a few days before
+  the faculty deadline, so that there is time to revise.
 
 ## v0.5.3 - 2026-09-20
 

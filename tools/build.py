@@ -663,9 +663,24 @@ def splice(body: str, index, criteria, rnd, lang: str) -> str:
 
 
 def extract_prompt(body: str) -> str:
-    if "=== PROMPT BEGIN ===" not in body:
-        raise SystemExit("source file has no === PROMPT BEGIN === marker")
-    inner = body.split("=== PROMPT BEGIN ===", 1)[1].split("=== PROMPT END ===", 1)[0]
+    """The prompt, between its two marker lines.
+
+    A marker counts only as a line of its own. The prompt tells the chatbot
+    that it ends with the end marker, so that a paste which arrived cut short
+    is recognised rather than reviewed; a build that accepted a marker
+    mentioned mid-sentence, or synthesised a missing one, would ship a short
+    prompt that still looked well formed.
+    """
+    lines = body.split("\n")
+    begins = [i for i, ln in enumerate(lines) if ln.strip() == "=== PROMPT BEGIN ==="]
+    ends = [i for i, ln in enumerate(lines) if ln.strip() == "=== PROMPT END ==="]
+    for name, found in (("BEGIN", begins), ("END", ends)):
+        if len(found) != 1:
+            raise SystemExit(f"source file has {len(found)} === PROMPT {name} === "
+                             "marker lines, expected exactly one")
+    if begins[0] > ends[0]:
+        raise SystemExit("=== PROMPT END === comes before === PROMPT BEGIN ===")
+    inner = "\n".join(lines[begins[0] + 1:ends[0]])
     return "=== PROMPT BEGIN ===\n" + inner.strip("\n") + "\n\n=== PROMPT END ==="
 
 

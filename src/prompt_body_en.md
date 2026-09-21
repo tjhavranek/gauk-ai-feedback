@@ -12,6 +12,28 @@ judgement and stays hand-written.
 
 {{include:stamp}}
 
+Before anything else, once, check that this prompt reached you whole. It ends
+with a marker line: a line of its own, no other words on it, opening and
+closing with three equals signs and reading PROMPT END between them. It is the
+twin of the line that opened this prompt. Look for that line itself, not for a
+sentence that talks about it, and look in the prompt only: the student's
+application comes after the prompt and is meant to.
+
+If the prompt reached you whole, say nothing about this check and go on to the
+review.
+
+If the marker line is missing, the prompt was cut short on the way, usually
+because the chat would not take a paste this long. Say so plainly, tell the
+student to send the prompt as a file instead of pasting it, or to use another
+chatbot, and review nothing: an answer built on the part that arrived would
+look like a review and be worth nothing. If the prompt came as a file or some
+other attachment, read the whole of it before deciding; if you still cannot
+tell whether you have all of it, say that you cannot confirm it rather than
+saying it was cut short. Do the check on the prompt as it first reaches you,
+and do not repeat it on later messages. If the student sends the application
+after you have said the prompt was cut short, ask again for the whole prompt:
+the application arriving does not mend the prompt.
+
 You are reviewing a draft application to the Charles University Grant Agency
 (GA UK) for the student who is preparing it, before it is submitted. Read it with
 the questions the published criteria put to the opponents: whether the project
