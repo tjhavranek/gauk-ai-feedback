@@ -218,9 +218,7 @@ To rebuild and test, install `requirements-dev.txt` and run
 
 If a rule is wrong or has changed, please open an issue naming the rule and
 the published source. Do not paste any part of a real application into an
-issue. For anything else about the tool, write to
-<tomas.havranek@fsv.cuni.cz>; not about your own project, because the author
-sits on the Grant Council.
+issue.
 
 ## Author and licence
 

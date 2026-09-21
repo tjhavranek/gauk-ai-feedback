@@ -11,8 +11,6 @@ application:
   a file, or use another one.
 - The page and both READMEs say to run the check at least a few days before
   the faculty deadline, so that there is time to revise.
-- An email address for comments on the tool, with the reason not to send an
-  application to it. The disclosure says the same.
 
 ## v0.5.3 - 2026-09-20
 
