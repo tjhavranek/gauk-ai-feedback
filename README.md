@@ -31,15 +31,17 @@ can check your attachments in your own browser without uploading them.
    (see [Before you paste anything](#before-you-paste-anything)).
 2. Open the prompt in [English](dist/prompt_en.md) or [Czech](dist/prompt_cs.md)
    and click the copy icon in the top right corner of the grey box.
-3. Paste it into a new chat in any chatbot, then paste your draft after it.
-   Use Microsoft Copilot through
-   [office365.cuni.cz](https://office365.cuni.cz/) with your university CAS
-   account: Charles University says that version has commercial data
-   protection. Pasting other people's personal data, such as the leader's CV,
-   still needs their explicit consent.
+3. Paste it into a new chat, then paste your draft after it. Start with
+   Microsoft Copilot via [office365.cuni.cz](https://office365.cuni.cz/),
+   signed in with your university CAS account: Charles University says that
+   version has commercial data protection. ChatGPT, Claude and Gemini take the
+   same prompt. If a chatbot will not take all of it, attach the prompt as a
+   file instead. Pasting other people's personal data, such as the leader's
+   CV, still needs their explicit consent.
 
-That is all most students need. The rest of this page explains the review,
-the local formal check and the agentic route.
+Do this at least a few days before your faculty's deadline, so there is time
+to revise. That is all most students need; the rest of this page explains the
+review, the local formal check and the agentic route.
 
 ## Three ways to use it
 
@@ -216,7 +218,9 @@ To rebuild and test, install `requirements-dev.txt` and run
 
 If a rule is wrong or has changed, please open an issue naming the rule and
 the published source. Do not paste any part of a real application into an
-issue.
+issue. For anything else about the tool, write to
+<tomas.havranek@fsv.cuni.cz>; not about your own project, because the author
+sits on the Grant Council.
 
 ## Author and licence
 

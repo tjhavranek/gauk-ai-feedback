@@ -36,14 +36,15 @@ trénováním riziko snižuje, sdílení tím ale povoleno není.
 
 1. Otevřete [zadání v češtině](dist/prompt_cs.md) a klikněte na ikonu
    kopírování vpravo nahoře v šedém rámečku.
-2. Založte nový chat v libovolném chatbotu a zadání vložte. Za ně vložte svůj
-   návrh: pole webového formuláře a text návrhu projektu, případně životopisy.
-   Uveďte sekci (A, B nebo C), dobu řešení a verzi formuláře. Dlouhý návrh
-   můžete poslat v několika zprávách; řekněte, až bude kompletní. Microsoft Copilot
-   používejte přes [office365.cuni.cz](https://office365.cuni.cz/) s univerzitním
-   účtem CAS: podle UK se na tuto verzi vztahuje komerční ochrana dat. K vložení
-   osobních údajů dalších lidí, třeba životopisu vedoucího, stále potřebujete
-   jejich výslovný souhlas.
+2. Založte nový chat a zadání vložte. Za ně vložte svůj návrh: pole webového
+   formuláře a text návrhu projektu, případně životopisy. Uveďte sekci (A, B
+   nebo C), dobu řešení a verzi formuláře. Dlouhý návrh můžete poslat
+   v několika zprávách; řekněte, až bude kompletní. Začněte univerzitním
+   Microsoft Copilotem přes [office365.cuni.cz](https://office365.cuni.cz/)
+   s účtem CAS: podle UK se na tuto verzi vztahuje komerční ochrana dat. Stejné
+   zadání přijmou i ChatGPT, Claude a Gemini. Pokud ho chatbot nepřijme celé,
+   přiložte ho jako soubor. K vložení osobních údajů dalších lidí, třeba
+   životopisu vedoucího, stále potřebujete jejich výslovný souhlas.
 3. Chatbot neumí spolehlivě počítat znaky ani strany. Chcete-li formální
    kontrolu i v číslech, vyplňte a vložte také
    [blok vlastního hlášení](dist/self_report_cs.md) s čísly z počitadel v
@@ -54,8 +55,10 @@ trénováním riziko snižuje, sdílení tím ale povoleno není.
    nejvýše deset nálezů s doslovnou citací a konkrétní nápravou a odstavec,
    který můžete přeposlat školiteli.
 
-Návrh upravte a kontrolu jednou nebo dvakrát zopakujte. Další kola na stejném
-textu se už většinou opakují a lepším čtenářem je pak školitel.
+Kontrolu si udělejte alespoň pár dní před fakultním termínem podání, ať zbude
+čas na úpravy. Návrh upravte a kontrolu jednou nebo dvakrát zopakujte. Další
+kola na stejném textu se už většinou opakují a lepším čtenářem je pak
+školitel.
 
 ## Co kontrola nedělá
 
@@ -94,7 +97,9 @@ polemizujte a vědecké otázky řešte se školitelem.
 
 Chybu v pravidlech prosím nahlaste v
 [issues](https://github.com/tjhavranek/gauk-ai-feedback/issues) s odkazem na
-zveřejněný zdroj. Nevkládejte tam žádnou část skutečné přihlášky.
+zveřejněný zdroj. Nevkládejte tam žádnou část skutečné přihlášky. Cokoli
+dalšího k nástroji pište na <tomas.havranek@fsv.cuni.cz>; ne o vlastním
+projektu, autor je členem Grantové rady.
 
 Autor: Tomáš Havránek ([meta-analysis.cz](https://meta-analysis.cz)), Univerzita
 Karlova. Licence MIT.

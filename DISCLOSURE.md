@@ -19,7 +19,10 @@ it could stop someone from applying who should.
 
 The author sees nothing. There is no server, no account and no data
 collection. The chatbot or agent you choose receives your text; the author does
-not, and has no way of knowing who used the tool.
+not, and has no way of knowing who used the tool. The page does give an email
+address for comments on the tool itself. Writing is voluntary and nothing is
+sent unless you write; applications, drafts and parts of a review should not be
+sent there, because the author sits on the Grant Council.
 
 It is public and the same for everyone. No applicant gets a version that others
 lack.
