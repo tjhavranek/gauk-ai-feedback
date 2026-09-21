@@ -12,6 +12,15 @@ application:
 - The page and both READMEs say to run the check at least a few days before
   the faculty deadline, so that there is time to revise.
 
+## v0.5.5 - 2026-09-21
+
+- A short anonymous feedback questionnaire, linked at the end of the chatbot
+  steps and from the footer. It needs no sign-in and asks nothing that
+  identifies the respondent. Two of its questions ask which chatbot was used
+  and whether it took the whole prompt at the first try, which is the one
+  thing about the Copilot recommendation that could not be established in
+  advance.
+
 ## v0.5.3 - 2026-09-20
 
 - The page and the READMEs point to Microsoft Copilot through

@@ -19,7 +19,11 @@ it could stop someone from applying who should.
 
 The author sees nothing. There is no server, no account and no data
 collection. The chatbot or agent you choose receives your text; the author does
-not, and has no way of knowing who used the tool.
+not, and has no way of knowing who used the tool. The page links to a short
+feedback questionnaire, run on the university's Microsoft Forms. Answering is
+voluntary and anonymous: it needs no sign-in and asks nothing that identifies
+you. Do not put an application, a draft or part of a review into it, because
+the author sits on the Grant Council.
 
 It is public and the same for everyone. No applicant gets a version that others
 lack.

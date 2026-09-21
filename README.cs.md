@@ -97,7 +97,9 @@ polemizujte a vědecké otázky řešte se školitelem.
 
 Chybu v pravidlech prosím nahlaste v
 [issues](https://github.com/tjhavranek/gauk-ai-feedback/issues) s odkazem na
-zveřejněný zdroj. Nevkládejte tam žádnou část skutečné přihlášky.
+zveřejněný zdroj. Nevkládejte tam žádnou část skutečné přihlášky. Na cokoli
+dalšího je ze stránky odkázaný krátký anonymní
+[dotazník](https://forms.cloud.microsoft/e/t38pQfuAmm).
 
 Autor: Tomáš Havránek ([meta-analysis.cz](https://meta-analysis.cz)), Univerzita
 Karlova. Licence MIT.

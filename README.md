@@ -218,7 +218,8 @@ To rebuild and test, install `requirements-dev.txt` and run
 
 If a rule is wrong or has changed, please open an issue naming the rule and
 the published source. Do not paste any part of a real application into an
-issue.
+issue. For anything else, there is a short anonymous
+[feedback questionnaire](https://forms.cloud.microsoft/e/t38pQfuAmm) linked from the page.
 
 ## Author and licence
 
