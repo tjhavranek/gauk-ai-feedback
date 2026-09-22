@@ -97,6 +97,19 @@ L = {
         ),
         "team_head": "THE TEAM",
         "reminders_head": "REMINDERS BEFORE SUBMITTING",
+        "report_rules_head": "WHAT THE PUBLISHED RULES REQUIRE",
+        "report_cont_what": (
+            "You are reviewing a CONTINUATION REQUEST together with the ANNUAL "
+            "REPORT for the year that is ending. The two are submitted as one "
+            "thing: the money asked for the next year, and the report on the "
+            "year behind, whose parts are the year's work, the outlook, what "
+            "was spent, a comment on the spending, and the results."),
+        "report_final_what": (
+            "You are reviewing a FINAL REPORT, the one a project files when it "
+            "ends. A project that ended early files one too, and a project "
+            "whose assessment was deferred files a supplemented report a year "
+            "later."),
+        "report_deadline": "Deadline",
         "language_head": "LANGUAGE OF THE APPLICATION",
         "up_to": "up to {n}",
         "if_applicable": "only if it applies",
@@ -150,6 +163,19 @@ L = {
         ),
         "team_head": "ŘEŠITELSKÝ KOLEKTIV",
         "reminders_head": "PŘIPOMÍNKY PŘED PODÁNÍM",
+        "report_rules_head": "CO ŽÁDAJÍ ZVEŘEJNĚNÁ PRAVIDLA",
+        "report_cont_what": (
+            "Kontrolujete ŽÁDOST O POKRAČOVÁNÍ spolu s VÝROČNÍ ZPRÁVOU za "
+            "končící rok. Podávají se jako jeden celek: peníze na další rok a "
+            "zpráva za rok uplynulý, jejíž částmi jsou zpráva o řešení, "
+            "výhled, přehled vyčerpaných financí, komentář k nim a seznam "
+            "dosažených výsledků."),
+        "report_final_what": (
+            "Kontrolujete ZÁVĚREČNOU ZPRÁVU, kterou projekt podává na konci "
+            "řešení. Podává ji i projekt, který skončil předčasně, a projekt "
+            "s odloženým hodnocením podává po roce doplněnou závěrečnou "
+            "zprávu."),
+        "report_deadline": "Termín",
         "language_head": "JAZYK PŘIHLÁŠKY",
         "up_to": "nejvýše {n}",
         "if_applicable": "jen pokud se vás týká",
@@ -492,6 +518,22 @@ def r_reminders(index, criteria, rnd, lang) -> str:
     return "\n".join(out)
 
 
+def r_report_what(index, criteria, rnd, lang, part) -> str:
+    blk = rnd["running_projects"][part]
+    key = "report_cont_what" if part == "continuation" else "report_final_what"
+    out = _wrap(L[lang][key], 74)
+    out += [""] + _wrap(L[lang]["report_deadline"] + ": "
+                        + _t(blk["deadline_note"], lang), 74)
+    return "\n".join(out)
+
+
+def r_report_rules(index, criteria, rnd, lang, part) -> str:
+    out = [L[lang]["report_rules_head"], ""]
+    out += _bullets([_t(it, lang) for it in
+                     rnd["running_projects"][part]["items"]])
+    return "\n".join(out)
+
+
 def r_language(index, criteria, rnd, lang) -> str:
     out = [L[lang]["language_head"], ""]
     out += ["  " + w for w in _wrap(_t(rnd["language"]["note"], lang), 68)]
@@ -730,6 +772,20 @@ PROMPT_INTRO = {
 }
 
 
+REPORT_INTRO = {
+    "en": (
+        "Unofficial. Copy everything from `=== PROMPT BEGIN ===` to "
+        "`=== PROMPT END ===`, paste it into a new chat, then paste your "
+        "report after it. This prompt reviews a report on a funded project; a "
+        "new application has its own.\n\n"),
+    "cs": (
+        "Neoficiální. Zkopírujte vše od `=== PROMPT BEGIN ===` po "
+        "`=== PROMPT END ===`, vložte do nového chatu a za to vložte svou "
+        "zprávu. Toto zadání kontroluje zprávu o financovaném projektu; "
+        "přihláška nového projektu má vlastní.\n\n"),
+}
+
+
 def build(target: Path) -> dict:
     index, criteria, rnd = load_rules()
     problems = validate(criteria, rnd)
@@ -746,6 +802,8 @@ def build(target: Path) -> dict:
         "round": sha(RULES / index["current_rules_file"]),
         "body_en": sha(SRC / "prompt_body_en.md"),
         "body_cs": sha(SRC / "prompt_body_cs.md"),
+        "report_en": sha(SRC / "prompt_report_en.md"),
+        "report_cs": sha(SRC / "prompt_report_cs.md"),
         "build": sha(Path(__file__)),
     }
 
@@ -766,6 +824,21 @@ def build(target: Path) -> dict:
             encoding="utf-8", newline="\n",
         )
         written.append(rub.name)
+
+        body = extract_prompt((SRC / f"prompt_report_{lang}.md")
+                              .read_text(encoding="utf-8"))
+        for part, short in (("continuation", "cont"), ("final", "final")):
+            text = body
+            for slot, fn in (("report.what", r_report_what),
+                             ("report.rules", r_report_rules)):
+                text = text.replace("{{include:" + slot + "}}",
+                                    fn(index, criteria, rnd, lang, part))
+            text = splice(text, index, criteria, rnd, lang)
+            rep = target / f"report_{short}_{lang}.md"
+            rep.write_text(header(lang, hashes) + REPORT_INTRO[lang]
+                           + "```text\n" + text + "\n```\n",
+                           encoding="utf-8", newline="\n")
+            written.append(rep.name)
 
         sr = target / f"self_report_{lang}.md"
         sr.write_text(
@@ -801,6 +874,17 @@ def prompt_text(index, criteria, rnd, lang: str) -> str:
     in dist/prompt_<lang>.md."""
     body = extract_prompt((SRC / f"prompt_body_{lang}.md").read_text(encoding="utf-8"))
     return splice(body, index, criteria, rnd, lang)
+
+
+def report_text(index, criteria, rnd, lang: str, part: str) -> str:
+    """The report prompt for one mode, exactly as in dist/."""
+    text = extract_prompt((SRC / f"prompt_report_{lang}.md")
+                          .read_text(encoding="utf-8"))
+    for slot, fn in (("report.what", r_report_what),
+                     ("report.rules", r_report_rules)):
+        text = text.replace("{{include:" + slot + "}}",
+                            fn(index, criteria, rnd, lang, part))
+    return splice(text, index, criteria, rnd, lang)
 
 
 def site_problems(strings: dict) -> list[str]:
@@ -861,13 +945,26 @@ def build_site(target: Path, vendor: bool = False) -> None:
         shutil.copyfile(RULES / n, target / "py" / "rules" / n)
 
     prompts = {lang: prompt_text(index, criteria, rnd, lang) for lang in LANGS}
+    reports = {short: {lang: report_text(index, criteria, rnd, lang, part)
+                       for lang in LANGS}
+               for part, short in (("continuation", "cont"), ("final", "final"))}
     for lang in LANGS:
         (target / f"prompt_{lang}.txt").write_text(prompts[lang] + "\n",
                                                    encoding="utf-8", newline="\n")
+        # the attach-as-a-file route has to work in every mode
+        for short in reports:
+            (target / f"report_{short}_{lang}.txt").write_text(
+                reports[short][lang] + "\n", encoding="utf-8", newline="\n")
     data = {
         "strings": strings,
         "prompt": prompts,
         "promptFile": {lang: f"prompt_{lang}.txt" for lang in LANGS},
+        "reportFile": {short: {lang: f"report_{short}_{lang}.txt"
+                               for lang in LANGS}
+                       for short in ("cont", "final")},
+        # One prompt per mode of the switch. The report prompts are far
+        # shorter than the application one: they carry no application rules.
+        "reportPrompt": reports,
         "selfReport": {lang: r_self_report(index, criteria, rnd, lang) for lang in LANGS},
         "meta": {"round": rnd["round"], "verified": str(rnd["verified_on"]),
                  "sunset": str(index["sunset_on"])},
@@ -875,14 +972,6 @@ def build_site(target: Path, vendor: bool = False) -> None:
         "attachNames": {a["en_name"]: a["cs_name"] for a in rnd["attachments"]["items"]},
         "reminders": {lang: [_t(it, lang) for it in rnd["reminders"]["items"]]
                       for lang in LANGS},
-        # The two things a funded project files later. The review and the file
-        # check are for new applications; this is a list the student reads.
-        "running": {part: {"deadline": {lang: _t(rnd["running_projects"][part]["deadline_note"], lang)
-                                        for lang in LANGS},
-                           "items": {lang: [_t(it, lang)
-                                            for it in rnd["running_projects"][part]["items"]]
-                                     for lang in LANGS}}
-                    for part in ("continuation", "final")},
         "pyodide": {
             "index": "pyodide/",
             # pycryptodome lets pypdf open AES-encrypted PDFs, including ones

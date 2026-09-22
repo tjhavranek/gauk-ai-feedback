@@ -478,12 +478,21 @@ def main() -> int:
                   data["prompt"][lang] == fenced,
                   f"web {len(data['prompt'][lang])} chars, dist {len(fenced)}")
         rp = gc.load_rules()[2]["running_projects"]
-        check("web: the running-project lists are the ones in the rules",
-              all(data["running"][part]["items"][lang]
-                  == [it[lang] for it in rp[part]["items"]]
-                  and data["running"][part]["deadline"][lang] == rp[part]["deadline_note"][lang]
-                  for part in ("continuation", "final") for lang in ("en", "cs")))
-        check("web: every running-project line cites a published source",
+        for part, short in (("continuation", "cont"), ("final", "final")):
+            for lang in ("en", "cs"):
+                txt = bld.report_text(*gc.load_rules(), lang, part)
+                check(f"report_{short}_{lang}: carries every rule line for its mode",
+                      all(" ".join(it[lang].split()) in " ".join(txt.split())
+                          for it in rp[part]["items"]))
+                check(f"report_{short}_{lang}: the page copies exactly that prompt",
+                      data["reportPrompt"][short][lang] == txt)
+                other = "final" if part == "continuation" else "continuation"
+                only = [it for it in rp[other]["items"]
+                        if it["id"] not in {x["id"] for x in rp[part]["items"]}]
+                check(f"report_{short}_{lang}: and not the other mode's rules",
+                      not any(" ".join(it[lang].split()) in " ".join(txt.split())
+                              for it in only if it["id"] in ("final_deferral", "cont_team")))
+        check("every running-project line cites a published source",
               all(it.get("basis") for part in ("continuation", "final")
                   for it in rp[part]["items"]))
         check("web: the page shows the same reminders as the prompt",

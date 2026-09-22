@@ -20,6 +20,7 @@
   ];
   var lang = pickLang();
   var plang = lang;
+  var mode = "app";                     // app | cont | final
   var plangTouched = false;
   var files = {};
   var shown = {};
@@ -73,17 +74,7 @@
     $("rules-line").textContent = t("rules_line", {
       round: D.meta.round, verified: fmtDate(D.meta.verified), sunset: fmtDate(D.meta.sunset)
     });
-    // The two running-project lists come from the rules, like the reminders,
-    // so the page cannot drift from rules/round24.yml.
-    // An object, not an array of two strings: build.py reads a literal of that
-    // shape as the name of a file slot and then asks for a string that does
-    // not exist.
-    var RUNNING = { cont: "continuation", final: "final" };
-    Object.keys(RUNNING).forEach(function (part) {
-      var blk = D.running[RUNNING[part]];
-      $("running-" + part + "-deadline").textContent = blk.deadline[lang];
-      fill($("running-" + part), blk.items[lang], function (s) { return s; });
-    });
+    applyMode();
     var ex = $("expired");
     ex.hidden = !expired;
     if (expired) ex.textContent = t("expired_msg", { sunset: fmtDate(D.meta.sunset) });
@@ -150,11 +141,34 @@
     document.querySelectorAll("[data-plang]").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.dataset.plang === l));
     });
-    $("prompt-text").value = D.prompt[l];
+    $("prompt-text").value = promptText(l);
     var dl = $("dl-prompt");
-    dl.href = D.promptFile[l];
-    dl.setAttribute("download", l === "cs" ? "gauk_zadani_cs.txt" : "gauk_prompt_en.txt");
+    dl.href = mode === "app" ? D.promptFile[l] : D.reportFile[mode][l];
+    dl.setAttribute("download", mode === "app"
+      ? (l === "cs" ? "gauk_zadani_cs.txt" : "gauk_prompt_en.txt")
+      : "gauk_zprava_" + mode + "_" + l + ".txt");
     $("copy-status").textContent = "";
+  }
+
+  function promptText(l) {
+    return mode === "app" ? D.prompt[l] : D.reportPrompt[mode][l];
+  }
+
+  // The switch. "app" leaves the page exactly as it was; a report mode hides
+  // what belongs only to a new application and swaps the prompt.
+  function applyMode() {
+    document.querySelectorAll("[data-mode]").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.mode === mode));
+    });
+    var report = mode !== "app";
+    document.querySelectorAll(".app-only").forEach(function (e) { e.hidden = report; });
+    var note = $("mode-note");
+    note.hidden = !report;
+    if (report) {
+      note.textContent = t(mode === "cont" ? "mode_cont_note" : "mode_final_note");
+      openPanel("chat", false);
+    }
+    setPlang(plang);
   }
 
   function updateConsent() {
@@ -415,9 +429,12 @@
     document.querySelectorAll("[data-plang]").forEach(function (b) {
       b.addEventListener("click", function () { plangTouched = true; setPlang(b.dataset.plang); });
     });
+    document.querySelectorAll("[data-mode]").forEach(function (b) {
+      b.addEventListener("click", function () { mode = b.dataset.mode; applyMode(); });
+    });
     $("consent").addEventListener("change", updateConsent);
     $("copy-prompt").addEventListener("click", function () {
-      var text = D.prompt[plang];
+      var text = promptText(plang);
       copy(text, $("copy-status"), t("copied", { n: text.length.toLocaleString(lang === "cs" ? "cs-CZ" : "en-GB") }),
         function () { $("fallback").open = true; $("prompt-text").select(); });
     });

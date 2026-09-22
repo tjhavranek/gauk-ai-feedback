@@ -217,13 +217,18 @@ To rebuild and test, install `requirements-dev.txt` and run
 
 ## Already running a project
 
-A continuation request with its annual report, and a final report, are
-assessed differently, and neither the review nor the file check covers them.
-The page carries a short list for each instead, under
-[Already running a project](https://tjhavranek.github.io/gauk-ai-feedback/#running):
-what the money comment has to say, what has to be attached rather than
-described, the affiliation and dedication every output needs, and what a
-deferral of the assessment requires. Every line rests on the published
+The switch at the top of the page has three settings: a new application, a
+continuation request with its annual report, and a final report. On either
+report setting the page copies a different prompt, which reviews the report
+itself: whether the comment on the spending ties each sum to what it bought
+and explains every transfer, whether each result the report mentions is
+attached, what a deferred assessment requires, and what a finished project is
+assessed on. It never says whether the year's work justifies continuing or
+what mark the project would get; the rapporteur and the boards decide that.
+
+The report prompts are about 10,500 characters, a quarter of the application
+one, because they carry no application rules. The file check and the agentic
+route stay with new applications. Every rule rests on the published
 [Řeším projekt](https://cuni.cz/UK-12257.html) page, which also has a worked
 example of the spending comment.
 

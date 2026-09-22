@@ -40,6 +40,14 @@
     <p class="note" data-t-html="hero_note"></p>
   </section>
 
+  <div class="seg seg-mode" role="group" aria-labelledby="mode-label">
+    <span id="mode-label" class="seg-label" data-t="mode_label"></span>
+    <button type="button" data-mode="app" aria-pressed="true" data-t="mode_app"></button>
+    <button type="button" data-mode="cont" aria-pressed="false" data-t="mode_cont"></button>
+    <button type="button" data-mode="final" aria-pressed="false" data-t="mode_final"></button>
+  </div>
+  <p class="hint" id="mode-note" hidden></p>
+
   <section aria-labelledby="choose-h">
     <h2 id="choose-h" class="section-h" data-t="choose_h"></h2>
     <div class="choices">
@@ -48,19 +56,18 @@
         <span class="choice-title" data-t="c1_title"></span>
         <span class="choice-text" data-t="c1_text"></span>
       </button>
-      <button type="button" class="choice" id="tab-check" aria-controls="panel-check" aria-expanded="false" data-panel="check">
+      <button type="button" class="choice app-only" id="tab-check" aria-controls="panel-check" aria-expanded="false" data-panel="check">
         <span class="choice-top"><span class="choice-n">2</span><span class="badge" data-t="c2_badge"></span></span>
         <span class="choice-title" data-t="c2_title"></span>
         <span class="choice-text" data-t="c2_text"></span>
       </button>
     </div>
-    <button type="button" class="choice choice-slim" id="tab-agent" aria-controls="panel-agent" aria-expanded="false" data-panel="agent">
+    <button type="button" class="choice choice-slim app-only" id="tab-agent" aria-controls="panel-agent" aria-expanded="false" data-panel="agent">
       <span class="choice-n">3</span>
       <span class="choice-title" data-t="c3_title"></span>
       <span class="choice-text" data-t="c3_text"></span>
       <span class="badge badge-exp" data-t="c3_badge"></span>
     </button>
-    <p class="hint" data-t-html="running_pointer"></p>
   </section>
 
   <!-- 1. CHATBOT -->
@@ -104,7 +111,7 @@
         </div>
         <p class="hint" data-t="chat_s3_hint"></p>
       </li>
-      <li>
+      <li class="app-only">
         <h3 data-t="chat_s4_h"></h3>
         <p data-t="chat_s4_p"></p>
         <div class="row">
@@ -212,19 +219,6 @@
     <p data-t-html="agent_intro"></p>
     <ol class="plain" data-t-html="agent_steps"></ol>
     <p class="aside" data-t-html="agent_more"></p>
-  </section>
-
-  <!-- RUNNING PROJECTS: a list, not a review. Nothing above reads a report. -->
-  <section class="limits" id="running" aria-labelledby="running-h">
-    <h2 id="running-h" class="section-h" data-t="running_h"></h2>
-    <p data-t="running_intro"></p>
-    <h3 class="sub-h" data-t="running_cont_h"></h3>
-    <p class="hint" id="running-cont-deadline"></p>
-    <ul id="running-cont"></ul>
-    <h3 class="sub-h" data-t="running_final_h"></h3>
-    <p class="hint" id="running-final-deadline"></p>
-    <ul id="running-final"></ul>
-    <p class="aside" data-t-html="running_source"></p>
   </section>
 
   <section class="limits" aria-labelledby="limits-h">

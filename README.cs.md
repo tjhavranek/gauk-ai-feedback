@@ -97,14 +97,20 @@ polemizujte a vědecké otázky řešte se školitelem.
 
 ## Máte projekt už v řešení
 
-Žádost o pokračování s výroční zprávou a závěrečná zpráva se posuzují jinak a
-nepokrývá je posudek ani formální kontrola. Na stránce je místo toho ke
-každé krátký seznam, v části
-[Máte projekt už v řešení](https://tjhavranek.github.io/gauk-ai-feedback/#running):
-co musí říct komentář k čerpání, co se přikládá místo popisu, jakou afiliaci
-a dedikaci nese každý výstup a co je potřeba k odkladu hodnocení. Každý bod
-vychází ze zveřejněné stránky [Řeším projekt](https://cuni.cz/UK-12257.html),
-kde je i vzorový komentář k čerpání.
+Přepínač nahoře na stránce má tři polohy: nová přihláška, žádost o pokračování
+s výroční zprávou a závěrečná zpráva. V obou polohách pro zprávy stránka
+zkopíruje jiné zadání, které projde samotnou zprávu: zda komentář k čerpání
+váže každou částku na to, co se za ni pořídilo, a vysvětluje každý přesun, zda
+je u každého zmíněného výsledku uvedena příloha, co je potřeba k odkladu
+hodnocení a podle čeho se dokončený projekt hodnotí. Nikdy neříká, zda práce
+za uplynulý rok opravňuje k pokračování ani jaké hodnocení by projekt dostal;
+o tom rozhoduje zpravodaj a rady.
+
+Zadání pro zprávy mají asi 10 500 znaků, čtvrtinu proti zadání pro přihlášku,
+protože neobsahují pravidla pro přihlášky. Kontrola souborů a agentní nástroj
+zůstávají u nových přihlášek. Každé pravidlo vychází ze zveřejněné stránky
+[Řeším projekt](https://cuni.cz/UK-12257.html), kde je i vzorový komentář
+k čerpání.
 
 Chybu v pravidlech prosím nahlaste v
 [issues](https://github.com/tjhavranek/gauk-ai-feedback/issues) s odkazem na

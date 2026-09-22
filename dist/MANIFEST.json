@@ -10,11 +10,17 @@
     "round": "2b40491226b0b405778b66c160120dc1946d60f22cc9f7b439019ff6fc929070",
     "body_en": "8d242767a1ebcfd1c5d8f402e3f1971981fff7a5f8255e31d09d4042f7454021",
     "body_cs": "b61dfc6214c6c0cf898a1c34e2653aab2bafa2ec0b9ffe122d3103ec61640a15",
-    "build": "d2f9ba01e89872a7abfecc6a79ff996bd3133e7ca3e0f33f180370cdb28e4731"
+    "report_en": "4127ab491fc1154c1bc17992af39322d3702fc4e912f87e79d621a24d43fbd1f",
+    "report_cs": "f0aeb3f7cc17c56c2830738fc0168f39e142cc8c15fd4ea9ec12cf197e5ec7c0",
+    "build": "fded454ef7e7cae51014fa85705378215efb857fcfa58d370355f8013eb575b3"
   },
   "files": [
     "prompt_cs.md",
     "prompt_en.md",
+    "report_cont_cs.md",
+    "report_cont_en.md",
+    "report_final_cs.md",
+    "report_final_en.md",
     "rubric_locked_cs.md",
     "rubric_locked_en.md",
     "self_report_cs.md",

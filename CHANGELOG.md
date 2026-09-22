@@ -1,5 +1,31 @@
 # Changelog
 
+## v0.7.0 - 2026-09-22
+
+A switch at the top of the page: a new application, a continuation request
+with its annual report, or a final report. This replaces the static list of
+v0.6.0, which told students what to look for instead of looking for them.
+
+- On either report setting the page copies a prompt that reviews the report:
+  whether the comment on the spending ties each sum to what it bought and
+  explains every transfer both ways, whether each result the report mentions
+  is attached, what a deferred assessment requires, what a finished project is
+  assessed on, and whether any cost is one GA UK does not fund. It says what
+  it cannot see, every time, so that silence is not taken for a pass.
+- It never says whether the year's work justifies continuing, whether the
+  project should count as fulfilled, or what mark it would get. That belongs
+  to the rapporteur and the boards, and it refuses if asked.
+- The report prompts are about 10,500 characters against the application's
+  42,800, because they carry no application rules, and each has its own
+  downloadable file for a chat that will not take a long paste.
+- The new-application route is untouched: on the default setting the page is
+  what it was, and the file check and the agentic route stay with it. Choosing
+  a report hides what belongs only to an application rather than dressing it
+  up as something it can do.
+- Both report prompts are generated from the same source and the same rules,
+  with tests that each carries its own mode's rules and that the page copies
+  exactly the published prompt.
+
 ## v0.6.0 - 2026-09-22
 
 A funded project files two more things, and neither is a new application.
