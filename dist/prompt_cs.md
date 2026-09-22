@@ -1,6 +1,6 @@
 <!-- VYGENEROVÁNO tools/build.py. TENTO SOUBOR NEUPRAVUJTE.
      Upravte rules/round24.yml, rules/criteria.yml nebo src/prompt_body_cs.md a spusťte build znovu.
-     zdroje INDEX:f5ca217dc72b body_cs:9ffce2e99d28 body_en:6ac1805909e2 build:5502ad41e70e criteria:35a9330327df round:cbb137cf5fc9 -->
+     zdroje INDEX:f5ca217dc72b body_cs:5d272294dc54 body_en:72a424adec0c build:5502ad41e70e criteria:35a9330327df round:cbb137cf5fc9 -->
 
 # Kontrola přihlášky GA UK před podáním: zadání pro chatbota
 
@@ -585,6 +585,13 @@ dohledat)“, nikoli „N-METHOD“.
                  nebo jedinou plánovanou publikaci má projekt napsat či odeslat
                  až v posledních měsících řešení, takže do hodnocení projektu
                  nemá reálnou šanci na přijetí: závažnost STŘEDNÍ.
+                 Kapitola 8 plánuje patent a žádnou publikaci: závažnost
+                 NÍZKÁ a napište, proč jde jen o otázku. Kritéria hodnocení
+                 dokončeného projektu uznávají publikaci přijatou do tisku
+                 nebo patent; podle často kladených otázek je projekt splněn,
+                 jen když z něj vzejde aspoň jedna publikace. Zveřejněné
+                 dokumenty se tu neshodují, proto se před sázkou na samotný
+                 patent zeptejte fakulty nebo kanceláře GA UK.
                  S plánovanými výstupy se později poměřuje závěrečná zpráva,
                  takže nesplnitelný plán se navrhovateli vymstí. Hledisko (b).
 

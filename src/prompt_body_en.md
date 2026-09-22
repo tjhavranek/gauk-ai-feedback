@@ -269,9 +269,16 @@ not "N-METHOD".
                  the only planned publication is to be written or submitted in
                  the last months of the project, with no realistic route to
                  acceptance by the time the project is assessed: severity
-                 MEDIUM. Planned outputs are what a final report is later
-                 measured against, so a plan the project cannot deliver costs
-                 the applicant later. Criterion (b).
+                 MEDIUM. Section 8 plans a patent and no publication at all:
+                 severity LOW, and say why it is only a question. The criteria
+                 for assessing a finished project accept a publication
+                 accepted for print or a patent; the FAQ says a project counts
+                 as fulfilled only if at least one publication comes out of
+                 it. The two published documents do not agree, so ask the
+                 faculty or the GA UK office before planning a patent alone.
+                 Planned outputs are what a final report is later measured
+                 against, so a plan the project cannot deliver costs the
+                 applicant later. Criterion (b).
 
   N-BUDGET       A non-personnel budget item has no sentence tying it to a
                  named activity in section 4 or section 5: severity HIGH,

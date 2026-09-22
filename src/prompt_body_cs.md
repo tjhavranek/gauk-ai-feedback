@@ -271,6 +271,13 @@ dohledat)“, nikoli „N-METHOD“.
                  nebo jedinou plánovanou publikaci má projekt napsat či odeslat
                  až v posledních měsících řešení, takže do hodnocení projektu
                  nemá reálnou šanci na přijetí: závažnost STŘEDNÍ.
+                 Kapitola 8 plánuje patent a žádnou publikaci: závažnost
+                 NÍZKÁ a napište, proč jde jen o otázku. Kritéria hodnocení
+                 dokončeného projektu uznávají publikaci přijatou do tisku
+                 nebo patent; podle často kladených otázek je projekt splněn,
+                 jen když z něj vzejde aspoň jedna publikace. Zveřejněné
+                 dokumenty se tu neshodují, proto se před sázkou na samotný
+                 patent zeptejte fakulty nebo kanceláře GA UK.
                  S plánovanými výstupy se později poměřuje závěrečná zpráva,
                  takže nesplnitelný plán se navrhovateli vymstí. Hledisko (b).
 

@@ -6,6 +6,12 @@
   already said and the outputs trigger did not. A patent-only plan is no
   longer short of an output, and the demand for journals or publishers now
   applies only where publications are planned.
+- Two published documents disagree about a patent on its own: the criteria for
+  assessing a finished project accept a publication accepted for print or a
+  patent, while the FAQ says a project counts as fulfilled only if at least
+  one publication comes out of it. A plan with a patent and no publication now
+  draws a low-severity question pointing at both, and sends the applicant to
+  the faculty or the office, rather than the tool picking a side.
 
 ## v0.5.6 - 2026-09-21
 
