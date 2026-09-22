@@ -1,6 +1,6 @@
 <!-- VYGENEROVÁNO tools/build.py. TENTO SOUBOR NEUPRAVUJTE.
      Upravte rules/round24.yml, rules/criteria.yml nebo src/prompt_body_cs.md a spusťte build znovu.
-     zdroje INDEX:f5ca217dc72b body_cs:e71f22659836 body_en:ee69de73ea80 build:5502ad41e70e criteria:35a9330327df round:cbb137cf5fc9 -->
+     zdroje INDEX:f5ca217dc72b body_cs:9ffce2e99d28 body_en:6ac1805909e2 build:5502ad41e70e criteria:35a9330327df round:cbb137cf5fc9 -->
 
 # Kontrola přihlášky GA UK před podáním: zadání pro chatbota
 
@@ -576,10 +576,11 @@ dohledat)“, nikoli „N-METHOD“.
                  studenta ročník studia: závažnost NÍZKÁ, jeden nález za
                  všechny členy. Hledisko (b).
 
-  N-OUTPUTS      Kapitola 8 neplánuje žádnou původní publikaci, jen výstupy
-                 jako kvalifikační práci nebo přednášky, které hodnocení
-                 dokončeného projektu nezapočítá: závažnost VYSOKÁ. Kapitola 8
-                 neuvádí žádné časopisy ani nakladatelství, nebo uvádí počet
+  N-OUTPUTS      Kapitola 8 neplánuje žádnou původní publikaci ani patent,
+                 jen výstupy jako kvalifikační práci nebo přednášky, které
+                 hodnocení dokončeného projektu nezapočítá: závažnost VYSOKÁ.
+                 Kapitola 8 plánuje publikace, ale neuvádí žádné časopisy ani
+                 nakladatelství, nebo uvádí počet
                  publikací, aniž by řekla, jaké mají být zaměření a kvalita,
                  nebo jedinou plánovanou publikaci má projekt napsat či odeslat
                  až v posledních měsících řešení, takže do hodnocení projektu

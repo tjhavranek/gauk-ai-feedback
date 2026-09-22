@@ -262,10 +262,11 @@ dohledat)“, nikoli „N-METHOD“.
                  studenta ročník studia: závažnost NÍZKÁ, jeden nález za
                  všechny členy. Hledisko (b).
 
-  N-OUTPUTS      Kapitola 8 neplánuje žádnou původní publikaci, jen výstupy
-                 jako kvalifikační práci nebo přednášky, které hodnocení
-                 dokončeného projektu nezapočítá: závažnost VYSOKÁ. Kapitola 8
-                 neuvádí žádné časopisy ani nakladatelství, nebo uvádí počet
+  N-OUTPUTS      Kapitola 8 neplánuje žádnou původní publikaci ani patent,
+                 jen výstupy jako kvalifikační práci nebo přednášky, které
+                 hodnocení dokončeného projektu nezapočítá: závažnost VYSOKÁ.
+                 Kapitola 8 plánuje publikace, ale neuvádí žádné časopisy ani
+                 nakladatelství, nebo uvádí počet
                  publikací, aniž by řekla, jaké mají být zaměření a kvalita,
                  nebo jedinou plánovanou publikaci má projekt napsat či odeslat
                  až v posledních měsících řešení, takže do hodnocení projektu

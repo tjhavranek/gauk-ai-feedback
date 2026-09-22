@@ -260,10 +260,11 @@ not "N-METHOD".
                  the year of study: severity LOW, one finding for all members.
                  Criterion (b).
 
-  N-OUTPUTS      Section 8 plans no original publication at all, only
-                 outputs such as a thesis or talks, which the assessment of a
-                 finished project does not count: severity HIGH. Section 8
-                 names no journals or publishers, or gives a count of
+  N-OUTPUTS      Section 8 plans no original publication and no patent at
+                 all, only outputs such as a thesis or talks, which the
+                 assessment of a finished project does not count: severity
+                 HIGH. Section 8 plans publications but names no journals or
+                 publishers, or gives a count of
                  publications with no statement of their focus and quality, or
                  the only planned publication is to be written or submitted in
                  the last months of the project, with no realistic route to

@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.5.7 - 2026-09-22
+
+- A planned patent counts as a finished project's output, which the reminders
+  already said and the outputs trigger did not. A patent-only plan is no
+  longer short of an output, and the demand for journals or publishers now
+  applies only where publications are planned.
+
 ## v0.5.6 - 2026-09-21
 
 The prompt is about 42,000 characters and some chats will not take a paste
