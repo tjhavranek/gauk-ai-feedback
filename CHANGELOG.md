@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.6.0 - 2026-09-22
+
+A funded project files two more things, and neither is a new application.
+
+- A section on the page, "Already running a project", with a short list for a
+  continuation request with its annual report, and one for a final report:
+  what the comment on the spending has to say, what is attached rather than
+  described, the affiliation and dedication every output carries, what a
+  deferred assessment requires, and what a finished project is assessed on.
+  Both lists are generated from `rules/round24.yml` like the reminders, so the
+  page cannot drift from them, and every line rests on the published
+  "Řeším projekt" page.
+- The review and the file check are unchanged and still cover new
+  applications only. The prompt goes on refusing a continuation request or a
+  report, and now says where the list is. Nothing on the page reads a report.
+- The notice shown once the round-24 rules expire says that it is the
+  application rules that have run out: final reports are due in April, after
+  that date, and the list does not depend on the round's calendar.
+
 ## v0.5.7 - 2026-09-22
 
 - A planned patent counts as a finished project's output, which the reminders

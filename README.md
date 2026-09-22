@@ -215,6 +215,18 @@ To rebuild and test, install `requirements-dev.txt` and run
 `python tools/build.py`, `python tests/make_fixtures.py` and
 `python tests/test_checker.py`.
 
+## Already running a project
+
+A continuation request with its annual report, and a final report, are
+assessed differently, and neither the review nor the file check covers them.
+The page carries a short list for each instead, under
+[Already running a project](https://tjhavranek.github.io/gauk-ai-feedback/#running):
+what the money comment has to say, what has to be attached rather than
+described, the affiliation and dedication every output needs, and what a
+deferral of the assessment requires. Every line rests on the published
+[Řeším projekt](https://cuni.cz/UK-12257.html) page, which also has a worked
+example of the spending comment.
+
 ## Problems and corrections
 
 If a rule is wrong or has changed, please open an issue naming the rule and

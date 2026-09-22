@@ -250,6 +250,15 @@ def validate(criteria: dict, rnd: dict) -> list[str]:
             if sid not in ids:
                 problems.append(f"round.reminders.{it.get('id')}: basis "
                                 f"'{sid}' is not a defined source")
+    for part in ("continuation", "final"):
+        blk = rnd.get("running_projects", {}).get(part, {})
+        want_both(blk.get("deadline_note", {}), f"round.running.{part}.deadline")
+        for it in blk.get("items", []):
+            want_both(it, f"round.running.{part}.{it.get('id')}")
+            for sid in re.findall(r"[A-Z][A-Z0-9]*_[A-Z0-9_]+", it.get("basis", "")):
+                if sid not in ids:
+                    problems.append(f"round.running.{part}.{it.get('id')}: basis "
+                                    f"'{sid}' is not a defined source")
     for f in rnd["form_fields"]["fields"]:
         want_both(f, f"round.form_fields.{f['id']}")
 
@@ -866,6 +875,14 @@ def build_site(target: Path, vendor: bool = False) -> None:
         "attachNames": {a["en_name"]: a["cs_name"] for a in rnd["attachments"]["items"]},
         "reminders": {lang: [_t(it, lang) for it in rnd["reminders"]["items"]]
                       for lang in LANGS},
+        # The two things a funded project files later. The review and the file
+        # check are for new applications; this is a list the student reads.
+        "running": {part: {"deadline": {lang: _t(rnd["running_projects"][part]["deadline_note"], lang)
+                                        for lang in LANGS},
+                           "items": {lang: [_t(it, lang)
+                                            for it in rnd["running_projects"][part]["items"]]
+                                     for lang in LANGS}}
+                    for part in ("continuation", "final")},
         "pyodide": {
             "index": "pyodide/",
             # pycryptodome lets pypdf open AES-encrypted PDFs, including ones

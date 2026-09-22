@@ -73,6 +73,17 @@
     $("rules-line").textContent = t("rules_line", {
       round: D.meta.round, verified: fmtDate(D.meta.verified), sunset: fmtDate(D.meta.sunset)
     });
+    // The two running-project lists come from the rules, like the reminders,
+    // so the page cannot drift from rules/round24.yml.
+    // An object, not an array of two strings: build.py reads a literal of that
+    // shape as the name of a file slot and then asks for a string that does
+    // not exist.
+    var RUNNING = { cont: "continuation", final: "final" };
+    Object.keys(RUNNING).forEach(function (part) {
+      var blk = D.running[RUNNING[part]];
+      $("running-" + part + "-deadline").textContent = blk.deadline[lang];
+      fill($("running-" + part), blk.items[lang], function (s) { return s; });
+    });
     var ex = $("expired");
     ex.hidden = !expired;
     if (expired) ex.textContent = t("expired_msg", { sunset: fmtDate(D.meta.sunset) });

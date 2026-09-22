@@ -95,6 +95,17 @@ smyšlené přihlášky; na skutečných návrzích ji zkusilo jen pár lidí. J
 viděl, a může se sebejistě mýlit. S nálezem, se kterým nesouhlasíte,
 polemizujte a vědecké otázky řešte se školitelem.
 
+## Máte projekt už v řešení
+
+Žádost o pokračování s výroční zprávou a závěrečná zpráva se posuzují jinak a
+nepokrývá je posudek ani formální kontrola. Na stránce je místo toho ke
+každé krátký seznam, v části
+[Máte projekt už v řešení](https://tjhavranek.github.io/gauk-ai-feedback/#running):
+co musí říct komentář k čerpání, co se přikládá místo popisu, jakou afiliaci
+a dedikaci nese každý výstup a co je potřeba k odkladu hodnocení. Každý bod
+vychází ze zveřejněné stránky [Řeším projekt](https://cuni.cz/UK-12257.html),
+kde je i vzorový komentář k čerpání.
+
 Chybu v pravidlech prosím nahlaste v
 [issues](https://github.com/tjhavranek/gauk-ai-feedback/issues) s odkazem na
 zveřejněný zdroj. Nevkládejte tam žádnou část skutečné přihlášky. Na cokoli dalšího

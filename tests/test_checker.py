@@ -477,6 +477,15 @@ def main() -> int:
             check(f"web: the {lang} prompt is exactly the one in dist/",
                   data["prompt"][lang] == fenced,
                   f"web {len(data['prompt'][lang])} chars, dist {len(fenced)}")
+        rp = gc.load_rules()[2]["running_projects"]
+        check("web: the running-project lists are the ones in the rules",
+              all(data["running"][part]["items"][lang]
+                  == [it[lang] for it in rp[part]["items"]]
+                  and data["running"][part]["deadline"][lang] == rp[part]["deadline_note"][lang]
+                  for part in ("continuation", "final") for lang in ("en", "cs")))
+        check("web: every running-project line cites a published source",
+              all(it.get("basis") for part in ("continuation", "final")
+                  for it in rp[part]["items"]))
         check("web: the page shows the same reminders as the prompt",
               all(data["reminders"][lang] == [it[lang] for it in gc.load_rules()[2]
                                               ["reminders"]["items"]]

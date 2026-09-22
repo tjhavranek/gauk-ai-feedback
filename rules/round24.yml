@@ -441,6 +441,79 @@ reminders:
       cs: "Plánované výsledky: dokončený projekt se posuzuje podle původních publikací přijatých do tisku (případně patentu) a podle toho, co návrh plánoval. Délku řešení volte tak, aby to bylo reálné."
 
 # ---------------------------------------------------------------------------
+# RUNNING PROJECTS. Neither reviewed by this tool nor measured by the checker:
+# a short list for the two things a funded project files later. Every line
+# rests on the published "Řeším projekt" page, FINAL_CRITERIA.
+# ---------------------------------------------------------------------------
+running_projects:
+  continuation:
+    deadline_note:
+      en: "The faculty deadline is the one that binds you; the rectorate deadline is 21 January 2027. A project whose work is interrupted files one too."
+      cs: "Závazný je fakultní termín; rektorátní termín je 21. ledna 2027. Žádost podává i řešitel přerušeného projektu."
+    items:
+      - id: cont_two_parts
+        basis: "FINAL_CRITERIA"
+        en: "It is two things at once: the money asked for next year, and the annual report on the year behind you, which has five parts of its own (the year's work, the outlook, what was spent, a comment on the spending, and the results)."
+        cs: "Jde o dvě věci najednou: peníze na další rok a výroční zprávu za končící rok, a ta má vlastních pět částí (zpráva o řešení, výhled, přehled vyčerpaných financí, komentář k nim a seznam dosažených výsledků)."
+      - id: cont_money_named
+        basis: "FINAL_CRITERIA"
+        en: "Saying the money went as planned is not enough: name what each sum was spent on, in Czech crowns. Too little detail is itself a reason for next year's money to be cut."
+        cs: "Nestačí napsat, že se čerpalo podle plánu: u každé částky uveďte, na co šla, a to v korunách. Málo podrobností je samo o sobě důvodem ke zkrácení financí na další rok."
+      - id: cont_comment_matches
+        basis: "FINAL_CRITERIA"
+        en: "The comment adds up to the table above it, line by line, as the worked example on the GA UK page does."
+        cs: "Komentář sedí na tabulku nad ním, položku po položce, jako ve vzorovém příkladu na stránkách GA UK."
+      - id: cont_changes
+        basis: "FINAL_CRITERIA"
+        en: "A change during the year is stated and explained: why it happened, what the money went to instead, and why it was not spent as planned. Moving at most 20,000 crowns within one budget line needs no request (10,000 into personal costs), and the separate moves add up. A change that was approved is stated in the request."
+        cs: "Změnu během roku uveďte a zdůvodněte: proč k ní došlo, na co peníze místo toho šly a proč nebyly použity podle plánu. Přesun do 20 000 Kč v jednom ukazateli se žádat nemusí (do osobních nákladů 10 000 Kč) a jednotlivé přesuny se sčítají. Schválenou změnu v žádosti uveďte."
+      - id: cont_unspent
+        basis: "FINAL_CRITERIA"
+        en: "Money left unspent goes back to GA UK together with the matching share of the overhead, and the request says so."
+        cs: "Nedočerpané peníze se vracejí GA UK i s poměrnou částí doplňkových nákladů a v žádosti se to uvede."
+      - id: cont_results_attached
+        basis: "FINAL_CRITERIA"
+        en: "Every result you mention is attached as a file, not only described: data, a publication, a manuscript, a letter of acceptance, a patent. For a trip the project paid for, attach what came out of it, such as the abstract, the poster or the talk."
+        cs: "Každý výsledek, který zmíníte, přiložte jako soubor, nejen ho popište: data, publikaci, rukopis, potvrzení o přijetí do tisku, patent. U cesty hrazené z projektu přiložte, co z ní vzešlo, třeba abstrakt, poster nebo přednášku."
+      - id: cont_dedication
+        basis: "FINAL_CRITERIA"
+        en: "Every output carries the university and faculty affiliation and the GA UK dedication with the project number from the application, posters and abstracts included. Without them it does not count."
+        cs: "Každý výstup nese afiliaci univerzity a fakulty a dedikaci GA UK s číslem projektu z aplikace, včetně posterů a abstraktů. Bez nich se neuzná."
+      - id: cont_team
+        basis: "FINAL_CRITERIA"
+        en: "The team may change without a request for a change, except the principal investigator and the project leader; say so and give the reason in the team characteristics field."
+        cs: "Řešitelský kolektiv lze měnit bez žádosti o změnu, kromě hlavního řešitele a vedoucího projektu; napište to a zdůvodněte v charakteristice kolektivu."
+  final:
+    deadline_note:
+      en: "The faculty deadline is the one that binds you; the rectorate deadline is 1 April 2027. A project that ended early files one too."
+      cs: "Závazný je fakultní termín; rektorátní termín je 1. dubna 2027. Zprávu podává i projekt, který skončil předčasně."
+    items:
+      - id: final_results_attached
+        basis: "FINAL_CRITERIA"
+        en: "The result is attached, not described: a conference abstract, a poster, preliminary data, a publication, a manuscript, a letter of acceptance, a patent. A comment on its own is not enough."
+        cs: "Výsledek se přikládá, ne popisuje: abstrakt z konference, poster, předběžná data, publikace, rukopis, potvrzení o přijetí do tisku, patent. Samotný komentář nestačí."
+      - id: final_what_counts
+        basis: "FINAL_CRITERIA"
+        en: "A project is assessed as fulfilled on an original publication accepted for print, or a patent; in section C the publication is in a journal with an impact factor. The output has to be on the project's subject, because the objectives could not be changed."
+        cs: "Jako splněný se projekt hodnotí podle původní publikace přijaté do tisku, případně patentu; v sekci C jde o publikaci v impaktovaném časopise. Výstup se musí týkat tématu projektu, cíle měnit nelze."
+      - id: final_student_author
+        basis: "FINAL_CRITERIA"
+        en: "A student from the team has to be an author or a co-author. An output by the project leader alone is not the project's result, so do not list it."
+        cs: "Autorem nebo spoluautorem musí být student z týmu. Výstup samotného vedoucího projektu není výsledkem projektu, proto ho neuvádějte."
+      - id: final_money_detail
+        basis: "FINAL_CRITERIA"
+        en: "Say what the money bought, not summed up only but payment by payment, in Czech crowns. A change is stated with its reason, including why the money was not spent where it was planned; anything left unspent goes back with its share of the overhead."
+        cs: "Napište, co se za peníze pořídilo, nejen souhrnně, ale po jednotlivých platbách, v korunách. Změnu uveďte i s důvodem, včetně toho, proč se peníze nečerpaly tam, kde byly plánované; nedočerpané se vracejí i s podílem doplňkových nákladů."
+      - id: final_deferral
+        basis: "FINAL_CRITERIA"
+        en: "To have the assessment deferred, the report has to explain the delay and a manuscript of the coming publication has to be attached; a draft is enough. A second deferral is only for parental leave or documented long-term illness and is asked for at the GA UK office. There is no third."
+        cs: "Chcete-li odklad hodnocení, zpráva musí zpoždění zdůvodnit a musí k ní být přiložen rukopis připravované publikace; stačí rozpracovaný. Druhý odklad je jen pro mateřskou a rodičovskou dovolenou nebo doloženou dlouhodobou nemoc a žádá se u kanceláře GA UK. Třetí není."
+      - id: final_dedication
+        basis: "FINAL_CRITERIA"
+        en: "Every output carries the university and faculty affiliation and the GA UK dedication with the project number from the application, posters and abstracts included. Without them it does not count."
+        cs: "Každý výstup nese afiliaci univerzity a fakulty a dedikaci GA UK s číslem projektu z aplikace, včetně posterů a abstraktů. Bez nich se neuzná."
+
+# ---------------------------------------------------------------------------
 # THE DECLARATION OF HONOUR, verbatim from the applicant guide. Two of its
 # clauses are things the tool must respect rather than merely check.
 # ---------------------------------------------------------------------------
