@@ -60,6 +60,7 @@ The rules are transcribed by hand from the published documents and may contain
 errors or go out of date. The tool is provided as it is, under the MIT licence,
 without warranty of any kind. Where the published documents or your faculty
 say something different, they are right. The author accepts no responsibility
-for decisions made on the basis of the tool's output.
+for decisions made on the basis of the tool's output, except so far as the law
+does not allow that to be excluded.
 
 Last updated 21 September 2026.
