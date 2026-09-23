@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.7.1 - 2026-09-23
+
+- On a phone the switch at the top is three full-width choices, one under
+  another and tall enough for a thumb, instead of a pill that wrapped into
+  an oval with one option stranded. The prompt-language control puts its
+  label above its two buttons. Wider screens are unchanged.
+- In the report modes the file check and the agentic route are now actually
+  hidden. They were marked hidden but a layout rule kept them on screen, so a
+  report setting still offered a check built for applications. The box for
+  describing AI use had the same fault and now appears only after "yes".
+
 ## v0.7.0 - 2026-09-22
 
 A switch at the top of the page: a new application, a continuation request

@@ -1,5 +1,11 @@
 /* gauk-ai-feedback: the web page. Plain CSS, system fonts, no third-party requests. */
 
+/* The page hides things with the hidden attribute. A rule that sets display
+   on an element (.choice, .field) would otherwise override it and leave the
+   element on screen: the report modes kept offering the file check that way,
+   and the AI-use box showed before anyone said AI was used. */
+[hidden] { display: none !important; }
+
 :root {
   --bg: #f7f6f2;
   --surface: #ffffff;
@@ -233,5 +239,21 @@ a:hover { text-decoration-thickness: 2px; }
   .steps > li { padding-left: 42px; }
   .hero { padding-top: 28px; }
   .lang { margin-left: 0; }
+  /* A pill cannot hold three options that wrap: on a phone it became an oval
+     with the third option stranded on its own line, and the unselected ones
+     read as grey text rather than choices. Here the mode switch is three
+     full-width choices, one under another, each tall enough for a thumb. */
+  .seg-mode { flex-direction: column; align-items: stretch; gap: 8px;
+              border: 0; border-radius: 0; padding: 0; }
+  .seg-mode .seg-label { padding: 0 2px 2px; }
+  .seg-mode button { min-height: 44px; padding: 10px 16px; text-align: left;
+                     font-size: 16px; color: var(--ink); background: var(--surface);
+                     border: 1.5px solid var(--line); border-radius: 12px; }
+  .seg-mode button[aria-pressed="true"] { border-color: var(--accent); }
+  /* The prompt-language control keeps two options side by side, with its
+     label above them instead of squeezed onto two lines inside the pill. */
+  .seg:not(.seg-mode) { display: flex; flex-wrap: wrap; border-radius: 16px; }
+  .seg:not(.seg-mode) .seg-label { flex-basis: 100%; padding: 4px 8px 4px; }
+  .seg:not(.seg-mode) button { flex: 1; min-height: 40px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
