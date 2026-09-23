@@ -459,6 +459,10 @@ running_projects:
         basis: "FINAL_CRITERIA"
         en: "Saying the money went as planned is not enough: name what each sum was spent on, in Czech crowns. Too little detail is itself a reason for next year's money to be cut."
         cs: "Nestačí napsat, že se čerpalo podle plánu: u každé částky uveďte, na co šla, a to v korunách. Málo podrobností je samo o sobě důvodem ke zkrácení financí na další rok."
+      - id: cont_next_year
+        basis: "FINAL_CRITERIA"
+        en: "The money asked for next year is specified and justified in the text, item by item and in Czech crowns, except the overhead, under the same rules as a new application. It may exceed the outlook in the original application by at most 10 percent."
+        cs: "Peníze na další rok konkretizujte a zdůvodněte v textu, položku po položce a v korunách, kromě doplňkových nákladů, podle stejných pravidel jako u přihlášky. Proti výhledu v původní přihlášce je lze navýšit nejvýše o 10 %."
       - id: cont_comment_matches
         basis: "FINAL_CRITERIA"
         en: "The comment adds up to the table above it, line by line, as the worked example on the GA UK page does."

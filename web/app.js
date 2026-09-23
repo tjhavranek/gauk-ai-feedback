@@ -168,11 +168,19 @@
       note.textContent = t(mode === "cont" ? "mode_cont_note" : "mode_final_note");
       openPanel("chat", false);
     }
+    // Steps 2, 3 and 5 describe what to paste and what comes back, which is
+    // not the same for a report as for an application.
+    ["chat_s2_p", "chat_s3_p", "chat_s5_p"].forEach(function (k) {
+      document.querySelector('[data-t="' + k + '"]').textContent = t(report ? k + "_report" : k);
+    });
     setPlang(plang);
+    updateConsent();
   }
 
   function updateConsent() {
-    var ok = $("consent").checked && !expired;
+    // The application rules expire on 1 February; final reports are due on
+    // 1 April, so the report prompts stay available after that date.
+    var ok = $("consent").checked && !(expired && mode === "app");
     $("copy-prompt").disabled = !ok;
     $("dl-prompt").hidden = !ok;
     $("fallback").hidden = !ok;

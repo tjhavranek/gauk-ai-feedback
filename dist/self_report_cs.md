@@ -1,6 +1,6 @@
 <!-- VYGENEROVÁNO tools/build.py. TENTO SOUBOR NEUPRAVUJTE.
      Upravte rules/round24.yml, rules/criteria.yml nebo src/prompt_body_cs.md a spusťte build znovu.
-     zdroje INDEX:f5ca217dc72b body_cs:b61dfc6214c6 body_en:8d242767a1eb build:fded454ef7e7 criteria:35a9330327df report_cs:f0aeb3f7cc17 report_en:4127ab491fc1 round:2b40491226b0 -->
+     zdroje INDEX:f5ca217dc72b body_cs:b61dfc6214c6 body_en:8d242767a1eb build:fded454ef7e7 criteria:35a9330327df report_cs:01c1b8e50934 report_en:32bbc22e45a7 round:68ce5b6eae1d -->
 
 ```text
 FORMÁLNÍ KONTROLA (vlastní hlášení)

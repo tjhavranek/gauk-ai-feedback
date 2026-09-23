@@ -114,12 +114,14 @@ potvrzení.
 Nejvýše osm nálezů, nejzávažnější první. Závažnost určuje to, co ukazuje text,
 nikdy odhad toho, jak se zachová kancelář:
 
-  VYSOKÁ   kvůli tomuhle by kancelář zprávu vrátila, nebo to porušuje
-           zveřejněné pravidlo
-  STŘEDNÍ  zprávu to oslabuje a před podáním to stojí za opravu
+  VYSOKÁ   kvůli tomuhle by kancelář zprávu vrátila: chybí povinná část,
+           peníze nejsou vyúčtované, zmíněný výsledek není přiložen
+  STŘEDNÍ  požadavek je splněn jen zčásti; před podáním to stojí za opravu
   NÍZKÁ    drobné zlepšení, nebo otázka, kterou rozhodne jen fakulta
 
-Každý nález cituje studenta doslova. Když citovat nemůžete, nemáte nález:
+Každý nález cituje studenta doslova. Pokud citovaná slova jmenují osobu,
+napište místo jména její roli v hranatých závorkách, třeba [vedoucí
+projektu]. Když citovat nemůžete, nemáte nález:
 místo toho u příslušné části zprávy napište, že jste to nepoznali. Opora je
 TEXT, když to návrh zjevně ukazuje, a ÚSUDEK, když čtete mezi řádky; napište
 kterou.
@@ -160,8 +162,9 @@ nekontrolovali.]
 ## Výsledky a přílohy
 
 [Každý výsledek, který zpráva zmiňuje, a zda u něj zpráva uvádí přílohu.
-Pojmenujte všechno, co je zmíněné bez přílohy: to je nejčastější důvod, proč
-se zpráva vrací. Netvrďte, že příloha v aplikaci chybí; to nevidíte.]
+Pojmenujte všechno, co je zmíněné bez přílohy: zveřejněná pravidla chtějí
+výsledky doložit, ne jen popsat. Netvrďte, že příloha v aplikaci chybí; to
+nevidíte.]
 
 ## Nálezy
 

@@ -121,12 +121,15 @@ PART 4. HOW TO WRITE A FINDING
 At most eight findings, the most serious first. Severity is decided by what
 the text shows, never by a guess about what the office will do:
 
-  HIGH    the office would send the report back for this, or it breaks a
-          published rule
-  MEDIUM  it weakens the report and is worth fixing before submitting
+  HIGH    the office would send the report back for this: a required part
+          missing, money not accounted for, a result mentioned but not
+          attached
+  MEDIUM  a requirement met only in part, worth fixing before submitting
   LOW     a small improvement, or a question only the faculty can settle
 
-Every finding quotes the student verbatim. If you cannot quote, you have no
+Every finding quotes the student verbatim. Where the quoted words name a
+person, put their role in square brackets instead of the name, such as
+[project leader]. If you cannot quote, you have no
 finding: say instead, under the part of the report it belongs to, that you
 could not tell. Basis is TEXT when the draft plainly shows it, and JUDGEMENT
 when you are reading between the lines; say which.
@@ -166,9 +169,9 @@ if not, say the table was not supplied and that you did not check it.]
 ## Results and what is attached
 
 [Every result the report mentions, and whether the report says it is attached.
-Name anything mentioned without an attachment: that is the commonest reason a
-report comes back. Do not claim an attachment is missing from the application
-itself; you cannot see it.]
+Name anything mentioned without an attachment: the published rules want
+results attached, not only described. Do not claim an attachment is missing
+from the application itself; you cannot see it.]
 
 ## Findings
 

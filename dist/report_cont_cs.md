@@ -1,6 +1,6 @@
 <!-- VYGENEROVÁNO tools/build.py. TENTO SOUBOR NEUPRAVUJTE.
      Upravte rules/round24.yml, rules/criteria.yml nebo src/prompt_body_cs.md a spusťte build znovu.
-     zdroje INDEX:f5ca217dc72b body_cs:b61dfc6214c6 body_en:8d242767a1eb build:fded454ef7e7 criteria:35a9330327df report_cs:f0aeb3f7cc17 report_en:4127ab491fc1 round:2b40491226b0 -->
+     zdroje INDEX:f5ca217dc72b body_cs:b61dfc6214c6 body_en:8d242767a1eb build:fded454ef7e7 criteria:35a9330327df report_cs:01c1b8e50934 report_en:32bbc22e45a7 round:68ce5b6eae1d -->
 
 Neoficiální. Zkopírujte vše od `=== PROMPT BEGIN ===` po `=== PROMPT END ===`, vložte do nového chatu a za to vložte svou zprávu. Toto zadání kontroluje zprávu o financovaném projektu; přihláška nového projektu má vlastní.
 
@@ -99,6 +99,10 @@ CO ŽÁDAJÍ ZVEŘEJNĚNÁ PRAVIDLA
   - Nestačí napsat, že se čerpalo podle plánu: u každé částky uveďte,
     na co šla, a to v korunách. Málo podrobností je samo o sobě
     důvodem ke zkrácení financí na další rok.
+  - Peníze na další rok konkretizujte a zdůvodněte v textu, položku po
+    položce a v korunách, kromě doplňkových nákladů, podle stejných
+    pravidel jako u přihlášky. Proti výhledu v původní přihlášce je
+    lze navýšit nejvýše o 10 %.
   - Komentář sedí na tabulku nad ním, položku po položce, jako ve
     vzorovém příkladu na stránkách GA UK.
   - Změnu během roku uveďte a zdůvodněte: proč k ní došlo, na co
@@ -162,12 +166,14 @@ potvrzení.
 Nejvýše osm nálezů, nejzávažnější první. Závažnost určuje to, co ukazuje text,
 nikdy odhad toho, jak se zachová kancelář:
 
-  VYSOKÁ   kvůli tomuhle by kancelář zprávu vrátila, nebo to porušuje
-           zveřejněné pravidlo
-  STŘEDNÍ  zprávu to oslabuje a před podáním to stojí za opravu
+  VYSOKÁ   kvůli tomuhle by kancelář zprávu vrátila: chybí povinná část,
+           peníze nejsou vyúčtované, zmíněný výsledek není přiložen
+  STŘEDNÍ  požadavek je splněn jen zčásti; před podáním to stojí za opravu
   NÍZKÁ    drobné zlepšení, nebo otázka, kterou rozhodne jen fakulta
 
-Každý nález cituje studenta doslova. Když citovat nemůžete, nemáte nález:
+Každý nález cituje studenta doslova. Pokud citovaná slova jmenují osobu,
+napište místo jména její roli v hranatých závorkách, třeba [vedoucí
+projektu]. Když citovat nemůžete, nemáte nález:
 místo toho u příslušné části zprávy napište, že jste to nepoznali. Opora je
 TEXT, když to návrh zjevně ukazuje, a ÚSUDEK, když čtete mezi řádky; napište
 kterou.
@@ -208,8 +214,9 @@ nekontrolovali.]
 ## Výsledky a přílohy
 
 [Každý výsledek, který zpráva zmiňuje, a zda u něj zpráva uvádí přílohu.
-Pojmenujte všechno, co je zmíněné bez přílohy: to je nejčastější důvod, proč
-se zpráva vrací. Netvrďte, že příloha v aplikaci chybí; to nevidíte.]
+Pojmenujte všechno, co je zmíněné bez přílohy: zveřejněná pravidla chtějí
+výsledky doložit, ne jen popsat. Netvrďte, že příloha v aplikaci chybí; to
+nevidíte.]
 
 ## Nálezy
 

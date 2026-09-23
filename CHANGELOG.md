@@ -1,5 +1,31 @@
 # Changelog
 
+## v0.7.2 - 2026-09-23
+
+A check of the whole tool, and the first run of the report prompts against a
+model: both caught every fault planted in a sample continuation request and a
+sample final report. Fixes, all from the switch of v0.7.0:
+
+- In the report modes, steps 2, 3 and 5 describe the report: what to paste and
+  what comes back. They still described an application, so step 3 asked for
+  the proposal and the section, and a correct report check would have looked
+  truncated against step 5.
+- The report modes stay available after the application rules expire on
+  1 February 2027, since final reports are due on 1 April. The application
+  route still locks on that date.
+- The page no longer says it does not cover continuation requests and final
+  reports, or points to a list that is gone.
+- The continuation prompt checks the money asked for next year: specified and
+  justified item by item in Czech crowns, at most 10 percent over the outlook.
+  It had no rule for the part of the request that is being decided.
+- The report prompts' severity scale says what each level looks like. As
+  written, anything breaking a published rule was HIGH, and every rule it
+  checks is a published one.
+- A quotation that names a person gives the person's role instead.
+- A claim that a missing attachment is the most common reason a report comes
+  back is gone. How often reports come back is known only from the office's
+  own files, and the prompt passed it on as a published rule.
+
 ## v0.7.1 - 2026-09-23
 
 - On a phone the switch at the top is three full-width choices, one under
