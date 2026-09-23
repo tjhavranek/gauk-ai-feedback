@@ -40,11 +40,13 @@
     <p class="note" data-t-html="hero_note"></p>
   </section>
 
-  <div class="seg seg-mode" role="group" aria-labelledby="mode-label">
-    <span id="mode-label" class="seg-label" data-t="mode_label"></span>
-    <button type="button" data-mode="app" aria-pressed="true" data-t="mode_app"></button>
-    <button type="button" data-mode="cont" aria-pressed="false" data-t="mode_cont"></button>
-    <button type="button" data-mode="final" aria-pressed="false" data-t="mode_final"></button>
+  <div class="mode-switch" role="group" aria-labelledby="mode-label">
+    <span id="mode-label" class="mode-label" data-t="mode_label"></span>
+    <div class="seg seg-mode">
+      <button type="button" data-mode="app" aria-pressed="true" data-t="mode_app"></button>
+      <button type="button" data-mode="cont" aria-pressed="false" data-t="mode_cont"></button>
+      <button type="button" data-mode="final" aria-pressed="false" data-t="mode_final"></button>
+    </div>
   </div>
   <p class="hint" id="mode-note" hidden></p>
 

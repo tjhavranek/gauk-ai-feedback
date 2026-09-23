@@ -168,10 +168,12 @@ a:hover { text-decoration-thickness: 2px; }
 .seg { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line); border-radius: 99px; padding: 3px; margin: 0 0 10px; }
 .seg-label { font-size: 14px; color: var(--muted); padding: 0 6px 0 10px; }
 /* The mode switch sits above the three routes and is the first thing a
-   student answers, so it is wider than the prompt-language control and wraps
-   on a phone instead of scrolling sideways. */
-.seg-mode { display: flex; flex-wrap: wrap; margin: 18px 0 6px; }
-.seg-mode .seg-label { flex-basis: 100%; padding: 2px 10px 6px; }
+   student answers. Its question stands above the pill, so the pill only has
+   to fit the three choices and keeps the shape of the other controls; it
+   wraps rather than scrolling sideways if the window is narrow. */
+.mode-switch { margin: 18px 0 6px; }
+.mode-label { display: block; font-size: 14px; color: var(--muted); padding: 0 2px 6px; }
+.seg-mode { flex-wrap: wrap; max-width: 100%; margin: 0; }
 #mode-note { margin: 0 0 14px; }
 .hint { font-size: 14px; color: var(--muted); }
 .status { font-size: 15px; font-weight: 600; color: var(--accent); min-height: 1.4em; margin: 4px 0 0; }
@@ -243,9 +245,9 @@ a:hover { text-decoration-thickness: 2px; }
      with the third option stranded on its own line, and the unselected ones
      read as grey text rather than choices. Here the mode switch is three
      full-width choices, one under another, each tall enough for a thumb. */
-  .seg-mode { flex-direction: column; align-items: stretch; gap: 8px;
+  .seg-mode { display: flex; flex-direction: column; align-items: stretch; gap: 8px;
               border: 0; border-radius: 0; padding: 0; }
-  .seg-mode .seg-label { padding: 0 2px 2px; }
+  .mode-label { padding: 0 2px 10px; }
   .seg-mode button { min-height: 44px; padding: 10px 16px; text-align: left;
                      font-size: 16px; color: var(--ink); background: var(--surface);
                      border: 1.5px solid var(--line); border-radius: 12px; }
